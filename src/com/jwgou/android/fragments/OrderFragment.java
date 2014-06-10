@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class OrderFragment extends Fragment implements BtnListener {
 
@@ -73,6 +74,7 @@ public class OrderFragment extends Fragment implements BtnListener {
 			protected void onPostExecute(String result) {
 				fullscreen_loading_root.setVisibility(View.GONE);
 				listview.onRefreshComplete();
+				Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
 				//TODO
 				super.onPostExecute(result);
 			}

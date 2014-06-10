@@ -9,13 +9,12 @@ import org.json.JSONObject;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.jwgou.android.MyMessageActivity;
 import com.jwgou.android.R;
-import com.jwgou.android.adapter.MyMessageAdapter;
-import com.jwgou.android.adapter.MyMessageAdapter.ItemListener;
+import com.jwgou.android.RedPackage;
+import com.jwgou.android.adapter.MyRedBagAdapter;
+import com.jwgou.android.adapter.MyRedBagAdapter.ItemListener;
 import com.jwgou.android.baseactivities.BaseApplication;
 import com.jwgou.android.baseservice.NetworkService;
-import com.jwgou.android.entities.Message;
 import com.jwgou.android.entities.RedBag;
 import com.jwgou.android.utils.Config;
 import com.jwgou.android.utils.HttpManager;
@@ -31,16 +30,15 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class MessageFragment extends Fragment implements ItemListener {
+public class RedBagFragment extends Fragment implements ItemListener {
 
 	private View view;
 	private int index;
 	private PullToRefreshListView listview;
 	private LinearLayout fullscreen_loading_root;
-	private ArrayList<Message> list = new ArrayList<Message>();
+	private ArrayList<RedBag> list = new ArrayList<RedBag>();
 	private BaseApplication app;
-	private int pageNums = 1;
-	private MyMessageAdapter mAdapter;
+	private MyRedBagAdapter mAdapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -48,7 +46,7 @@ public class MessageFragment extends Fragment implements ItemListener {
 		super.onCreate(savedInstanceState);
 		if (getArguments().containsKey("INDEX"))
 			index = getArguments().getInt("INDEX");
-		app = ((MyMessageActivity)getActivity()).getApp();
+		app = ((RedPackage)getActivity()).getApp();
 	}
 
 	@Override
@@ -61,7 +59,7 @@ public class MessageFragment extends Fragment implements ItemListener {
 
 	private void initView() {
 		listview = (PullToRefreshListView) view.findViewById(R.id.lvPullToRefresh);
-		mAdapter = new MyMessageAdapter(getActivity(), list, this, index);
+		mAdapter = new MyRedBagAdapter(getActivity(), list);
 		listview.setAdapter(mAdapter);
 		listview.setOnRefreshListener(new OnRefreshListener<ListView>() {
 
@@ -90,9 +88,9 @@ public class MessageFragment extends Fragment implements ItemListener {
 							JSONArray data = o.optJSONArray("ResponseData");
 							if (data != null && data.length() > 0) {
 								for (int i = 0; i < data.length(); i++) {
-									Message m = new Message();
-									m.Json2Self(data.optJSONObject(i));
-									list.add(m);
+									RedBag r = new RedBag();
+									r.Json2Self(data.optJSONObject(i));
+									list.add(r);
 								}
 								mAdapter.notifyDataSetChanged();
 							}
@@ -114,14 +112,14 @@ public class MessageFragment extends Fragment implements ItemListener {
 			@Override
 			protected String doInBackground(Void... params) {
 				if(index == 1)
-					return NetworkService.getInstance().GetReplyMyLetterListing(app.user.UId, pageNums++);
-				return NetworkService.getInstance().GetIReplyOtherLetterListing(app.user.UId, pageNums++);
+					return NetworkService.getInstance().GetUserRedList(app.user.UId);
+				return NetworkService.getInstance().GetUserOverdueRedList(app.user.UId);
 			}
 		});
 	}
 
 	@Override
-	public void OnClick(Message m, int type) {
+	public void OnClick(RedBag m, int type) {
 		Toast.makeText(getActivity(), "type=" + type, Toast.LENGTH_SHORT).show();
 		
 	}
