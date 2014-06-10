@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/include_header" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip">
+        <EditText android:textSize="16.0sp" android:textColor="#ff686868" android:id="@+id/etSellerName" android:background="@drawable/box_item_bg" android:padding="4.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="请输入买手名称" android:ems="10" android:scrollHorizontally="true" android:singleLine="true" android:layout_weight="1.0" android:inputType="text" />
+        <ImageView android:id="@+id/ivActionSearch" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/action_search" android:scaleType="centerCrop" />
+    </LinearLayout>
+    <FrameLayout android:id="@+id/flResultContainer" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" />
+</LinearLayout>

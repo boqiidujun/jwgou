@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@+id/rlCommentsContainer" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.jwgou.android.widgets.CircleImageView android:id="@+id/ivSenderIcon" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <RelativeLayout android:id="@+id/llSellerNameContainer" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/ivSenderIcon" android:layout_alignParentTop="true">
+            <TextView android:textSize="@dimen/text_size_large" android:textColor="#ff333333" android:gravity="center_vertical" android:id="@+id/tvSenderName" android:layout_width="180.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/text_size_small" android:textColor="#ff333333" android:id="@+id/tvPublishTime" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignBottom="@id/tvSenderName" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/text_size_small" android:textColor="#ff666666" android:id="@+id/tvCommentContent" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" android:layout_below="@id/llSellerNameContainer" android:layout_alignLeft="@id/llSellerNameContainer" />
+    </RelativeLayout>
+    <View android:id="@+id/vDivider" android:background="@color/divider_line" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginLeft="65.0dip" />
+</LinearLayout>

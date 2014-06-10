@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10.0dip"
+    android:layout_marginBottom="15.0dip"
+    android:background="@drawable/product_preview_info_bg" >
+
+    <com.momock.widget.PlainGridView
+        android:id="@+id/gvProudctPics"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="5.0dip" />
+
+    <TextView
+        android:id="@+id/tvProudctDesc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gvProudctPics"
+        android:layout_marginBottom="5.0dip"
+        android:paddingLeft="8.0dip"
+        android:paddingRight="5.0dip"
+        android:singleLine="false"
+        android:textColor="#ff333333"
+        android:textSize="@dimen/text_size_large" />
+
+    <LinearLayout
+        android:id="@+id/llCatalogsContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvProudctDesc"
+        android:layout_marginLeft="5.0dip"
+        android:orientation="vertical" >
+
+        <com.momock.widget.PlainListView
+            android:id="@+id/plvProductSpecifs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider_line"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:layout_below="@id/llCatalogsContainer"
+        android:layout_marginLeft="5.0dip"
+        android:layout_marginRight="5.0dip"
+        android:background="@color/divider_line" />
+
+    <LinearLayout
+        android:id="@+id/llProductPriceContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider_line"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="5.0dip" >
+
+        <TextView
+            android:id="@+id/tvPublishTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff999999"
+            android:textSize="@dimen/text_size_small" />
+
+        <TextView
+            android:id="@+id/tvProductStockNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15.0dip"
+            android:textColor="@color/theme_main_color"
+            android:textSize="@dimen/text_size_small" />
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="right"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="预估到手价 "
+                android:textColor="#ff999999"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥"
+                android:textColor="@color/theme_main_color"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:id="@+id/tvProductPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/theme_main_color"
+                android:textSize="@dimen/text_size_xlarge" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llBuyButtonContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="30.0dip"
+        android:layout_below="@id/llProductPriceContainer"
+        android:layout_marginLeft="2.0dip"
+        android:layout_marginTop="5.0dip"
+        android:background="@drawable/product_preview_operator_bar_bg"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/llCommentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2.0dip"
+                android:src="@drawable/comment_tip" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="评论"
+                android:textColor="#ff333333"
+                android:textSize="@dimen/text_size_medium" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1.0dip"
+            android:layout_height="fill_parent"
+            android:background="@color/divider_line" />
+
+        <LinearLayout
+            android:id="@+id/llShareButton"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2.0dip"
+                android:src="@drawable/forward_tip" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="分享"
+                android:textColor="#ff333333"
+                android:textSize="@dimen/text_size_medium" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llBuyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="1.0dip"
+            android:layout_weight="1.0"
+            android:background="@color/theme_main_color"
+            android:gravity="center" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2.0dip"
+                android:src="@drawable/buy_tip" />
+
+            <TextView
+                android:id="@+id/tvBuyButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="立即购买"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_medium" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.momock.widget.PlainListView
+        android:id="@+id/lvProductComments"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llBuyButtonContainer" />
+
+    <TextView
+        android:id="@+id/tvMoreComments"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lvProductComments"
+        android:background="@drawable/more_comment_bg"
+        android:gravity="center"
+        android:padding="5.0dip"
+        android:textColor="#ff333333"
+        android:textSize="@dimen/text_size_small" />
+
+</RelativeLayout>

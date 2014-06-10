@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/include_header" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.handmark.pulltorefresh.library.PullToRefreshListView android:id="@+id/lvProductsByLive" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" ptr:ptrMode="pullFromStart" xmlns:ptr="http://schemas.android.com/apk/res-auto" />
+        <include layout="@layout/include_fullscreen_loading" />
+        <ImageView android:id="@+id/ivProductsEmptyTip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/products_bylive_empty_tip" android:scaleType="fitCenter" />
+        <RelativeLayout android:id="@+id/rlOverlayClock" android:background="@drawable/overlay_clock_bg" android:paddingBottom="5.0dip" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:layout_alignParentRight="true">
+            <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@+id/tvClockTrip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="直播仅剩" />
+            <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@+id/tvOverlayClock" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/tvClockTrip" android:layout_alignLeft="@id/tvClockTrip" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

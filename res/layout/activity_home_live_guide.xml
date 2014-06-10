@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/include_header" />
+    <RelativeLayout android:id="@+id/rlLiveGuideContainer" android:background="@drawable/home_live_guide_background" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@+id/tvHomeMainTipArrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="65.0dip" android:src="@drawable/home_main_tip_arrow" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/home_main_tip_text" android:scaleType="fitCenter" android:layout_above="@id/tvHomeMainTipArrow" android:layout_alignParentLeft="true" />
+        <ImageView android:id="@+id/tvHomeLiveTipText" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/home_live_tip_text" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="10.0dip" android:layout_marginBottom="65.0dip" android:layout_below="@id/tvHomeLiveTipText">
+            <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <ImageView android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/home_live_tip_arrow" android:scaleType="fitStart" android:layout_weight="1.0" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

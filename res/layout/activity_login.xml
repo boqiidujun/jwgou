@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/top_title" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/signin_layout_not_oem"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20.0dip"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/username"
+                android:text="zj314000@126.com"
+                android:layout_width="fill_parent"
+                android:layout_height="40.0dip"
+                android:layout_marginLeft="22.0dip"
+                android:layout_marginRight="22.0dip"
+                android:background="@drawable/box_item_bg"
+                android:drawableLeft="@drawable/username_icon"
+                android:drawablePadding="5.0dip"
+                android:hint="@string/login_account_edit_hits"
+                android:padding="4.0dip"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textColor="#ff686868"
+                android:textSize="16.0sp" />
+
+            <EditText
+                android:id="@+id/password"
+                android:text="111111"
+                android:layout_width="fill_parent"
+                android:layout_height="40.0dip"
+                android:layout_marginLeft="22.0dip"
+                android:layout_marginRight="22.0dip"
+                android:layout_marginTop="20.0dip"
+                android:background="@drawable/box_item_bg"
+                android:drawableLeft="@drawable/password_icon"
+                android:drawablePadding="5.0dip"
+                android:hint="@string/login_password_edit_hits"
+                android:inputType="textPassword"
+                android:padding="4.0dip"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textColor="#ff686868"
+                android:textSize="16.0sp" />
+
+            <TextView
+                android:id="@+id/tvResetPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="22.0dip"
+                android:layout_marginTop="5.0dip"
+                android:text="@string/tip_reset_password"
+                android:textColor="#ff6b6b6b"
+                android:textSize="14.0sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/signin_layout_not_oem"
+            android:layout_marginLeft="22.0dip"
+            android:layout_marginRight="22.0dip"
+            android:layout_marginTop="20.0dip"
+            android:background="@drawable/button_ok_bg"
+            android:text="登录"
+            android:textColor="@android:color/white"
+            android:textSize="16.0sp" />
+    </RelativeLayout>
+
+</LinearLayout>

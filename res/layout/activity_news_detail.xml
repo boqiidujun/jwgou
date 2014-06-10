@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/include_header" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/svDetailContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0"
+        ptr:ptrMode="both" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/llNewsInfoContainer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/product_preview_holo_bg"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:id="@+id/rlSellerInfoContainer"
+                    android:layout_width="fill_parent"
+                    android:layout_height="70.0dip"
+                    android:paddingLeft="10.0dip"
+                    android:paddingRight="10.0dip" >
+
+                    <com.jwgou.android.widgets.CircleImageView
+                        android:id="@+id/ivSellerIcon"
+                        android:layout_width="55.0dip"
+                        android:layout_height="55.0dip"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true" />
+
+                    <LinearLayout
+                        android:id="@+id/llSellerNameContainer"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_marginTop="5.0dip"
+                        android:layout_toRightOf="@id/ivSellerIcon"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:id="@+id/ivSellerCountryFlag"
+                            android:layout_width="20.0dip"
+                            android:layout_height="12.0dip"
+                            android:scaleType="centerCrop" />
+
+                        <TextView
+                            android:id="@+id/tvSellerName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5.0dip"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:textColor="#ff333333"
+                            android:textSize="@dimen/text_size_large" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10.0dip"
+                    android:background="@drawable/product_preview_info_bg" >
+
+                    <LinearLayout
+                        android:id="@+id/llProductDescContainer"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="5.0dip" >
+
+                        <TextView
+                            android:id="@+id/tvProudctDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:singleLine="false"
+                            android:textColor="#ff333333"
+                            android:textSize="@dimen/text_size_large" />
+
+                        <ImageView
+                            android:id="@+id/ivNewsPic"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:scaleType="centerCrop" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/vDivider"
+                android:layout_width="fill_parent"
+                android:layout_height="2.0px"
+                android:background="@color/divider_line" />
+
+            <com.jwgou.android.widgets.NoScrollListView
+                android:id="@+id/lvComments"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:divider="@null" />
+
+            <include layout="@layout/include_fullscreen_loading" />
+        </LinearLayout>
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
+    <LinearLayout
+        android:id="@+id/llNewsOperatorContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:layout_gravity="bottom"
+        android:background="#fff1f1f1"
+        android:orientation="vertical" >
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:background="#ffd2d2d2" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/llCommentButton"
+                android:layout_width="0.0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:background="@drawable/product_detail_operator_bg"
+                android:gravity="center" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2.0dip"
+                    android:src="@drawable/product_detail_comment_tip" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="评论"
+                    android:textColor="@color/product_detail_operator_text_color"
+                    android:textSize="@dimen/text_size_medium" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1.0px"
+                android:layout_height="fill_parent"
+                android:background="#ffd2d2d2" />
+
+            <LinearLayout
+                android:id="@+id/llShareButton"
+                android:layout_width="0.0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:background="@drawable/product_detail_operator_bg"
+                android:gravity="center" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2.0dip"
+                    android:src="@drawable/product_detail_share_tip" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="分享"
+                    android:textColor="@color/product_detail_operator_text_color"
+                    android:textSize="@dimen/text_size_medium" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="125.0dip"
+        android:orientation="horizontal"
+        android:paddingBottom="5.0dip"
+        android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip"
+        android:paddingTop="5.0dip" >
+
+        <com.jwgou.android.widgets.CircleNetImageView
+            android:id="@+id/ivSellerIcon"
+            android:layout_width="70.0dip"
+            android:layout_height="70.0dip"
+            android:layout_marginTop="10.0dip"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginTop="5.0dip"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1.0dip"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/ivSellerCountryFlag"
+                    android:layout_width="20.0dip"
+                    android:layout_height="14.0dip"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="2.0dip"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/tvSellerName"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/ivSellerCountryFlag"
+                    android:textColor="@color/item_title_text"
+                    android:textSize="@dimen/text_size_xlarge" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="1.0dip"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="18.0dip"
+                        android:layout_height="18.0dip"
+                        android:layout_marginRight="2.0dip"
+                        android:padding="2.0dip"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/fans_num_tip_gary" />
+
+                    <TextView
+                        android:id="@+id/tvFansNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textColor="#ff888888"
+                        android:textSize="@dimen/text_size_medium" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20.0dip"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="18.0dip"
+                        android:layout_height="18.0dip"
+                        android:layout_marginRight="2.0dip"
+                        android:padding="2.0dip"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/live_num_tip_gary" />
+
+                    <TextView
+                        android:id="@+id/tvLivesNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textColor="#ff888888"
+                        android:textSize="@dimen/text_size_medium" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20.0dip"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="18.0dip"
+                        android:layout_height="18.0dip"
+                        android:layout_marginRight="2.0dip"
+                        android:padding="2.0dip"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/products_num_tip_gary" />
+
+                    <TextView
+                        android:id="@+id/tvProductsNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textColor="#ff888888"
+                        android:textSize="@dimen/text_size_medium" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="1.0dip"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tvLiveTime"
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:textColor="#ff888888"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/tvLiveBeginTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ff888888"
+                    android:textSize="@dimen/text_size_small" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvLiveDescription"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:maxLines="2"
+                android:singleLine="false"
+                android:textColor="#ff888888"
+                android:textSize="@dimen/text_size_medium" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:background="@color/divider_line" />
+
+</LinearLayout>

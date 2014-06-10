@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/text"
+        style="@style/TitleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="6.0dip"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_large"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/image"
+        style="@style/TitleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="6.0dip"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:scaleType="centerInside"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/count_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right|center"
+        android:background="@drawable/paopao"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:paddingBottom="4.0dip"
+        android:paddingLeft="6.0dip"
+        android:paddingRight="6.0dip"
+        android:textColor="@android:color/white"
+        android:textSize="12.0sp"
+        android:visibility="gone" />
+
+</FrameLayout>

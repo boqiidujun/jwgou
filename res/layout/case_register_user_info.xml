@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/include_header" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@+id/rlUserIcon" android:background="@drawable/user_icon" android:layout_width="150.0dip" android:layout_height="145.0dip" android:layout_marginTop="100.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="@android:color/white" android:gravity="center" android:background="#88000000" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="编辑" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@+id/ivUserIcon" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    </RelativeLayout>
+    <EditText android:textSize="16.0sp" android:textColor="#ff686868" android:id="@+id/etUserName" android:background="@drawable/box_item_bg" android:padding="4.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="10.0dip" android:hint="输入您的用户名" android:scrollHorizontally="true" android:singleLine="true" android:drawablePadding="5.0dip" android:inputType="text" />
+</LinearLayout>

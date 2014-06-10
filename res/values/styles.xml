@@ -1,0 +1,249 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="MspAppBaseTheme" parent="@android:style/Theme.Light.NoTitleBar" />
+
+    <style name="MspAppTheme" parent="@style/MspAppBaseTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="MspAppPayTheme" parent="@android:style/Theme.Translucent">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="ProgressDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/msp_dialog_progress_bg</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="TextLarge">
+        <item name="android:textSize">22.0sp</item>
+        <item name="android:textColor">#ff444444</item>
+    </style>
+
+    <style name="TextMedium">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">#ff444444</item>
+    </style>
+
+    <style name="TextSmall">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textColor">#ff888888</item>
+    </style>
+
+    <style name="mini_progressBar_webview">
+        <item name="android:maxHeight">5.0dip</item>
+        <item name="android:secondaryProgress">0</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/mini_progress_bar_webview</item>
+        <item name="android:minHeight">5.0dip</item>
+    </style>
+
+    <style name="mini_title_text_style">
+        <item name="android:textSize">14.0dip</item>
+        <item name="android:textColor">@color/mini_color_gray</item>
+        <item name="android:shadowColor">@color/mini_text_white</item>
+        <item name="android:shadowDy">1.5</item>
+        <item name="android:shadowRadius">1.0</item>
+    </style>
+
+    <style name="mini_safty_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="mini_UITextField">
+        <item name="android:background">@drawable/mini_ui_input_bg</item>
+        <item name="android:paddingLeft">@dimen/mini_margin_left</item>
+        <item name="android:paddingRight">@dimen/mini_margin_right</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">5.0dip</item>
+    </style>
+
+    <style name="mini_Dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@color/mini_win_background</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="text_20">
+        <item name="android:textSize">13.299988sp</item>
+    </style>
+
+    <style name="text_24">
+        <item name="android:textSize">16.0sp</item>
+    </style>
+
+    <style name="text_dark_gray_24" parent="@style/text_24">
+        <item name="android:textColor">@color/mini_text_black</item>
+    </style>
+
+    <style name="text_gray_20" parent="@style/text_20">
+        <item name="android:textColor">@color/mini_color_gray</item>
+    </style>
+
+    <style name="text_light_gray_20" parent="@style/text_20">
+        <item name="android:textColor">@color/mini_color_light_gray</item>
+    </style>
+
+    <style name="TranslucentActivity" parent="@android:style/Theme.Translucent">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.App" parent="@android:style/Theme">
+        <item name="android:screenOrientation">portrait</item>
+        <item name="android:windowBackground">@color/background_normal</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="ThemeAppBlackTextColor" parent="@style/Theme.App">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="ThemeAppBackground" parent="@style/Theme.App">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+
+    <style name="ThemeAppNormal">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="MenuDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="ListDialog" parent="@style/MenuDialog">
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+
+    <style name="List_View">
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:clickable">false</item>
+        <item name="android:drawingCacheQuality">high</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:listSelector">@android:color/transparent</item>
+        <item name="android:drawSelectorOnTop">false</item>
+        <item name="android:cacheColorHint">@null</item>
+        <item name="android:choiceMode">none</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:fastScrollEnabled">true</item>
+    </style>
+
+    <style name="ProgressBar_Circular" parent="@android:style/Widget.ProgressBar.Small" />
+
+    <style name="base_text">
+        <item name="android:textSize">18.0px</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="top_text" parent="@style/base_text">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:shadowDx">0.0</item>
+        <item name="android:shadowDy">2.0</item>
+        <item name="android:shadowRadius">0.1</item>
+    </style>
+
+    <style name="Tabbar_Bottom_Text">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">#ffffffff</item>
+    </style>
+
+    <style name="ListView">
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:clickable">false</item>
+        <item name="android:drawingCacheQuality">high</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:listSelector">@android:color/transparent</item>
+        <item name="android:drawSelectorOnTop">false</item>
+        <item name="android:cacheColorHint">@null</item>
+        <item name="android:divider">@null</item>
+        <item name="android:choiceMode">none</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:fastScrollEnabled">true</item>
+    </style>
+
+    <style name="TitleButton" parent="@style/top_text">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">2.0dip</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">30.0dip</item>
+        <item name="android:minHeight">30.0dip</item>
+    </style>
+
+    <style name="ListIcon">
+        <item name="android:layout_width">65.0dip</item>
+        <item name="android:layout_height">65.0dip</item>
+    </style>
+
+    <style name="TabTextStyle">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">@color/specification_tabname_color</item>
+        <item name="android:shadowDy">1.0</item>
+        <item name="android:shadowRadius">0.01</item>
+    </style>
+
+    <style name="HomeTabTextStyle">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textColor">@color/home_tabtext_color</item>
+        <item name="android:shadowColor">#ffffffff</item>
+        <item name="android:shadowDy">1.0</item>
+        <item name="android:shadowRadius">0.01</item>
+    </style>
+
+    <style name="OrderTabTextStyle">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="AppThemeBase" parent="@android:style/Theme.Light" />
+
+    <style name="AppCustomTheme" parent="@style/AppThemeBase">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- Application theme. -->
+
+    <style name="title">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="title_small">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="ProgressBar_Circular" parent="@android:style/Widget.ProgressBar.Small" />
+
+</resources>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background_color" >
+
+    <include
+        android:id="@+id/top_layout"
+        layout="@layout/include_header" />
+
+    <LinearLayout
+        android:id="@+id/location_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="30.0dip"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="20.0dip" >
+
+        <TextView
+            android:id="@+id/location_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/location_ing"
+            android:textColor="@android:color/black"
+            android:textSize="20.0sp" />
+
+        <TextView
+            android:id="@+id/location_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10.0dip"
+            android:singleLine="false"
+            android:text="@string/location_textview"
+            android:textColor="@android:color/black"
+            android:textSize="16.0sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/new_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/button_ok_bg"
+            android:gravity="center"
+            android:padding="10.0dip"
+            android:text="立刻发布新商品"
+            android:textColor="@android:color/white"
+            android:textSize="14.0sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/camera_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/black"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:fadingEdge="none"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:id="@+id/preview_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="6.0dip"
+                    android:onClick="onClickStartCamera"
+                    android:padding="10.0dip"
+                    android:src="@drawable/camara_icon"
+                    android:visibility="invisible" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <RelativeLayout
+            android:id="@+id/button_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black"
+            android:padding="4.0dip" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:onClick="onClickImportLocalImage"
+                android:padding="10.0dip"
+                android:scaleType="fitXY"
+                android:src="@drawable/local" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:onClick="onClickStartCamera"
+                android:padding="10.0dip"
+                android:src="@drawable/camara_icon" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="6.0dip"
+                android:onClick="onClickNextStep"
+                android:paddingBottom="10.0dip"
+                android:paddingTop="10.0dip"
+                android:scaleType="fitXY"
+                android:src="@drawable/next_button_bg" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <SurfaceView
+        android:id="@+id/previewSV"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/camera_layout"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/camera_back_icon"
+        android:visibility="gone" />
+
+</RelativeLayout>

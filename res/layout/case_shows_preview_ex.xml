@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/include_header" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/svPullToRefresh"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none"
+        ptr:ptrMode="pullFromStart" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/rlBannersContainer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vpBanner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="180.0dip" />
+
+                <com.ymatou.shop.widgets.CircleIndexIndicator
+                    android:id="@+id/ciiIndicator"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10.0dip"
+                    android:gravity="center"
+                    android:orientation="horizontal" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <RelativeLayout
+                    android:id="@+id/llLivingShowContainer"
+                    android:layout_width="fill_parent"
+                    android:layout_height="285.0dip"
+                    android:orientation="vertical" >
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/vpLivingShow"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent" />
+
+                    <RelativeLayout
+                        android:id="@+id/rlLivingsBarContainer"
+                        android:layout_width="fill_parent"
+                        android:layout_height="35.0dip"
+                        android:background="#aacc3333"
+                        android:gravity="center_vertical" >
+
+                        <TextView
+                            android:id="@+id/tvLiveShowTip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5.0dip"
+                            android:text="精选直播"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/text_size_large" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/tvLiveShowTip"
+                            android:layout_toRightOf="@id/tvLiveShowTip"
+                            android:paddingBottom="5.0dip"
+                            android:text="LiveShow"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/text_size_medium"
+                            android:textStyle="italic" />
+
+                        <TextView
+                            android:id="@+id/tvJumpToAllLiving"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_alignParentRight="true"
+                            android:drawableRight="@drawable/jumpto_all_living"
+                            android:gravity="center"
+                            android:paddingLeft="5.0dip"
+                            android:paddingRight="5.0dip"
+                            android:paddingTop="5.0dip"
+                            android:text="查看全部"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/text_size_small" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/ivLivingsEmptyTip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/livings_empty_tip" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/llComingLivesContainer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <View
+                        android:layout_width="5.0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_marginBottom="2.0dip"
+                        android:layout_marginLeft="8.0dip"
+                        android:layout_marginRight="8.0dip"
+                        android:layout_marginTop="2.0dip"
+                        android:background="@color/theme_main_color" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/comming_lives_tip"
+                        android:textColor="#ff333333"
+                        android:textSize="@dimen/text_size_xlarge" />
+
+                    <View
+                        android:layout_width="0.0dip"
+                        android:layout_height="1.0dip"
+                        android:layout_marginLeft="2.0dip"
+                        android:layout_marginRight="2.0dip"
+                        android:layout_weight="1.0"
+                        android:background="@color/divider_line" />
+
+                    <TextView
+                        android:id="@+id/tvJumpToAllCommingLives"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/all_coming_lives_button_bg"
+                        android:gravity="center"
+                        android:padding="4.0dip"
+                        android:text="查看全部"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/text_size_medium" />
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/lvCommingLives"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20.0dip"
+                    android:divider="@null"
+                    android:scrollbars="none" />
+            </LinearLayout>
+
+            <include layout="@layout/include_fullscreen_loading" />
+        </LinearLayout>
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
+</LinearLayout>

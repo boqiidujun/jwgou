@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/product_preview_info_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@+id/llProductDescContainer" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/text_size_large" android:textColor="#ff333333" android:id="@+id/tvProudctDesc" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="false" android:layout_weight="1.0" />
+        <ImageView android:id="@+id/ivNewsPic" android:layout_width="200.0dip" android:layout_height="200.0dip" android:scaleType="centerCrop" />
+    </LinearLayout>
+    <com.momock.widget.PlainListView android:id="@+id/lvProductComments" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" android:layout_below="@id/llProductDescContainer" />
+    <RelativeLayout android:background="@drawable/more_comment_bg" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/lvProductComments">
+        <TextView android:textSize="@dimen/text_size_small" android:textColor="#ff333333" android:gravity="center" android:id="@+id/tvMoreComments" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@+id/ivCommentButton" android:padding="4.0dip" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="2.0dip" android:src="@drawable/comment_tip" android:scaleType="centerCrop" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

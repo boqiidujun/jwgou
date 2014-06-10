@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/include_header" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <GridView android:id="@+id/gvPreviewSelector" android:layout_width="fill_parent" android:layout_height="fill_parent" android:numColumns="4" />
+        <include layout="@layout/include_fullscreen_loading" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/tab_right_normal" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <HorizontalScrollView android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <com.momock.widget.HorPlainListView android:id="@+id/hplvSelects" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        </HorizontalScrollView>
+        <Button android:layout_gravity="right|center" android:id="@+id/btnOK" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="确定" />
+    </LinearLayout>
+</LinearLayout>

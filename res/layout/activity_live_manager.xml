@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/include_header" />
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView android:id="@+id/svPullToRefresh" android:layout_width="fill_parent" android:layout_height="fill_parent" ptr:ptrMode="pullFromStart" xmlns:ptr="http://schemas.android.com/apk/res-auto">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:id="@+id/llSellerLivingContainer" android:visibility="gone" layout="@layout/item_live_info_manager" />
+            <com.momock.widget.PlainListView android:id="@+id/lvSellerComingLives" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.momock.widget.PlainListView android:id="@+id/lvSellerHostoryLives" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+    <include layout="@layout/include_fullscreen_loading" />
+</LinearLayout>

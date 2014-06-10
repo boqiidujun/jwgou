@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@+id/table_iconView" android:layout_width="@dimen/item_left_icon_large" android:layout_height="@dimen/item_left_icon_large" android:layout_marginLeft="10.0dip" android:src="@drawable/mini_bank_icon" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@+id/table_arrow" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/table_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/linearLayout1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="64.0dip" android:layout_toRightOf="@id/table_iconView" android:layout_centerVertical="true" android:layout_alignWithParentIfMissing="true">
+        <TextView android:ellipsize="end" android:id="@+id/table_left_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="12.0dip" android:singleLine="true" android:includeFontPadding="false" style="@style/text_dark_gray_24" />
+        <TextView android:ellipsize="end" android:id="@+id/table_left_text_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="6.0dip" android:layout_marginBottom="12.0dip" android:singleLine="true" android:includeFontPadding="false" style="@style/text_light_gray_20" />
+    </LinearLayout>
+    <ImageView android:id="@+id/table_right_image" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginRight="10.0dip" android:adjustViewBounds="true" android:layout_toLeftOf="@id/table_arrow" android:layout_centerVertical="true" android:layout_alignWithParentIfMissing="true" />
+</merge>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="labelName" format="reference|string" />
+    <attr name="rightIcon" format="reference" />
+    <attr name="miniInputHint" format="reference|string" />
+    <attr name="isPassword" format="boolean" />
+    <attr name="maxInputLength" format="integer" />
+    <attr name="tableType">
+        <flag name="normal" value="0x00000010" />
+        <flag name="top" value="0x00000011" />
+        <flag name="bottom" value="0x00000012" />
+        <flag name="center" value="0x00000013" />
+    </attr>
+    <attr name="tableStyle">
+        <flag name="round_corner" value="0x00000010" />
+        <flag name="list_item" value="0x00000011" />
+    </attr>
+    <attr name="show_arrow" format="boolean" />
+    <attr name="arrow_type">
+        <flag name="arrow_right" value="0x00000020" />
+        <flag name="arrow_down" value="0x00000021" />
+        <flag name="arrow_up" value="0x00000022" />
+    </attr>
+    <attr name="left_text" format="reference|string" />
+    <attr name="left_text_2" format="reference|string" />
+    <attr name="left_image" format="reference" />
+    <attr name="left_imageWidth" format="reference|dimension" />
+    <attr name="left_imageHeight" format="reference|dimension" />
+    <attr name="left_largeSize" format="boolean" />
+    <attr name="right_image" format="reference" />
+    <attr name="change_backgroud" format="boolean" />
+    <attr name="swipeOpenOnLongPress" format="boolean" />
+    <attr name="swipeAnimationTime" format="integer" />
+    <attr name="swipeOffsetLeft" format="dimension" />
+    <attr name="swipeOffsetRight" format="dimension" />
+    <attr name="swipeCloseAllItemsWhenMoveList" format="boolean" />
+    <attr name="swipeFrontView" format="reference" />
+    <attr name="swipeBackView" format="reference" />
+    <attr name="swipeMode">
+        <enum name="none" value="0" />
+        <enum name="both" value="1" />
+        <enum name="right" value="2" />
+        <enum name="left" value="3" />
+    </attr>
+    <attr name="swipeActionLeft">
+        <enum name="reveal" value="0" />
+        <enum name="dismiss" value="1" />
+        <enum name="choice" value="2" />
+    </attr>
+    <attr name="swipeActionRight">
+        <enum name="reveal" value="0" />
+        <enum name="dismiss" value="1" />
+        <enum name="choice" value="2" />
+    </attr>
+    <attr name="swipeDrawableChecked" format="reference" />
+    <attr name="swipeDrawableUnchecked" format="reference" />
+    <attr name="onBackground" format="reference" />
+    <attr name="offBackground" format="reference" />
+    <attr name="state" format="boolean" />
+    <attr name="cornerRadius" format="dimension" />
+    <attr name="rotateDegree" format="integer" />
+    <attr name="background" format="reference" />
+    <attr name="spacing" format="dimension" />
+    <attr name="vpiCirclePageIndicatorStyle" format="reference" />
+    <attr name="vpiLinePageIndicatorStyle" format="reference" />
+    <attr name="vpiTitlePageIndicatorStyle" format="reference" />
+    <attr name="vpiTabPageIndicatorStyle" format="reference" />
+    <attr name="vpiUnderlinePageIndicatorStyle" format="reference" />
+    <attr name="centered" format="boolean" />
+    <attr name="selectedColor" format="color" />
+    <attr name="strokeWidth" format="dimension" />
+    <attr name="unselectedColor" format="color" />
+    <attr name="fillColor" format="color" />
+    <attr name="pageColor" format="color" />
+    <attr name="radius" format="dimension" />
+    <attr name="snap" format="boolean" />
+    <attr name="strokeColor" format="color" />
+    <attr name="lineWidth" format="dimension" />
+    <attr name="gapWidth" format="dimension" />
+    <attr name="clipPadding" format="dimension" />
+    <attr name="footerColor" format="color" />
+    <attr name="footerLineHeight" format="dimension" />
+    <attr name="footerIndicatorStyle">
+        <enum name="none" value="0" />
+        <enum name="triangle" value="1" />
+        <enum name="underline" value="2" />
+    </attr>
+    <attr name="footerIndicatorHeight" format="dimension" />
+    <attr name="footerIndicatorUnderlinePadding" format="dimension" />
+    <attr name="footerPadding" format="dimension" />
+    <attr name="selectedBold" format="boolean" />
+    <attr name="titlePadding" format="dimension" />
+    <attr name="topPadding" format="dimension" />
+    <attr name="fades" format="boolean" />
+    <attr name="fadeDelay" format="integer" />
+    <attr name="fadeLength" format="integer" />
+
+</resources>

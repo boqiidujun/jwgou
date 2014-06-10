@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <include
+        android:id="@+id/top_layout"
+        layout="@layout/include_header" />
+
+    <RelativeLayout
+        android:id="@+id/relativelayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_layout" >
+
+        <ImageView
+            android:id="@+id/product_imageview"
+            android:layout_width="64.0dip"
+            android:layout_height="80.0dip"
+            android:layout_marginLeft="15.0px"
+            android:contentDescription="@string/contentDescription"
+            android:paddingBottom="8.0dip"
+            android:paddingTop="8.0dip"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/product_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8.0dip"
+            android:layout_marginTop="8.0dip"
+            android:layout_toRightOf="@id/product_imageview"
+            android:maxLines="2"
+            android:singleLine="false"
+            android:textColor="@color/item_subtitle_text"
+            android:textSize="16.0sp" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/product_description"
+            android:layout_below="@id/product_description"
+            android:layout_marginTop="5.0dip"
+            android:text="@string/label_price"
+            android:textColor="@color/item_subtitle_text"
+            android:textSize="14.0sp" />
+
+        <TextView
+            android:id="@+id/stock_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/product_description"
+            android:layout_marginLeft="20.0dip"
+            android:layout_marginTop="5.0dip"
+            android:layout_toRightOf="@id/price"
+            android:text="@string/label_stock_left"
+            android:textColor="@color/item_subtitle_text"
+            android:textSize="14.0sp" />
+
+        <TextView
+            android:id="@+id/onshelf_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/price"
+            android:layout_below="@id/price"
+            android:layout_marginTop="5.0dip"
+            android:text="@string/label_onshelf_time"
+            android:textColor="@color/item_subtitle_text"
+            android:textSize="14.0sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/sendlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/send_comment_bg"
+        android:paddingBottom="6.0dip"
+        android:paddingLeft="10.0dip"
+        android:paddingRight="8.0dip"
+        android:paddingTop="6.0dip" >
+
+        <TextView
+            android:id="@+id/submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_ok_bg"
+            android:gravity="center"
+            android:paddingLeft="10.0dip"
+            android:paddingRight="10.0dip"
+            android:text="发送"
+            android:textColor="@android:color/white"
+            android:textSize="14.0sp" />
+
+        <EditText
+            android:id="@+id/comment_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10.0dip"
+            android:layout_toLeftOf="@id/submit_button"
+            android:background="@drawable/line_frame_bg"
+            android:hint="评论"
+            android:maxLength="60"
+            android:minLines="2"
+            android:padding="4.0dip"
+            android:singleLine="false"
+            android:textSize="15.0sp" />
+
+        <TextView
+            android:id="@+id/comment_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/submit_button"
+            android:layout_alignRight="@id/submit_button"
+            android:layout_below="@id/submit_button"
+            android:text="0/60"
+            android:textSize="14.0sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/sendlayout"
+        android:layout_below="@id/relativelayout"
+        android:padding="10.0dip"
+        android:singleLine="false"
+        android:textColor="@android:color/black"
+        android:textSize="16.0sp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:layout_below="@id/relativelayout"
+        android:background="@color/divider_line" />
+
+</RelativeLayout>

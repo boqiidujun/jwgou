@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include layout="@layout/include_header" />
+        <com.handmark.pulltorefresh.library.PullToRefreshScrollView android:id="@+id/ptfsvContainer" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" ptr:ptrMode="both" xmlns:ptr="http://schemas.android.com/apk/res-auto">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:id="@+id/llProductInfoContainer" android:background="@drawable/product_preview_holo_bg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <View android:background="@color/divider_line" android:layout_width="fill_parent" android:layout_height="2.0px" />
+                    <RelativeLayout android:id="@+id/rlSellerInfoContainer" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="70.0dip">
+                        <com.jwgou.android.widgets.CircleImageView android:id="@+id/ivSellerIcon" android:layout_width="55.0dip" android:layout_height="55.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/llSellerNameContainer" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="5.0dip" android:layout_toRightOf="@id/ivSellerIcon" android:layout_alignParentTop="true">
+                            <ImageView android:id="@+id/ivSellerCountryFlag" android:layout_width="20.0dip" android:layout_height="12.0dip" android:scaleType="centerCrop" />
+                            <TextView android:textSize="@dimen/text_size_large" android:textColor="#ff333333" android:gravity="center_vertical" android:id="@+id/tvSellerName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:singleLine="true" />
+                        </LinearLayout>
+                        <TextView android:textColor="#ff999999" android:id="@+id/tvSellerAddress" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:singleLine="true" android:drawableLeft="@drawable/location_tip_gary" android:layout_below="@id/llSellerNameContainer" android:layout_alignLeft="@id/llSellerNameContainer" />
+                    </RelativeLayout>
+                    <RelativeLayout android:background="@drawable/product_preview_info_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip">
+                        <RelativeLayout android:id="@+id/rlProductPicsContainer" android:paddingTop="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                            <android.support.v4.view.ViewPager android:id="@+id/vpProudctPics" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                            <com.ymatou.shop.widgets.CircleIndexIndicator android:gravity="center" android:orientation="horizontal" android:id="@+id/ciiIndicator" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+                        </RelativeLayout>
+                        <TextView android:textSize="@dimen/text_size_large" android:textColor="#ff333333" android:id="@+id/tvProudctDesc" android:paddingLeft="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" android:layout_below="@id/rlProductPicsContainer" />
+                        <TextView android:textSize="@dimen/text_size_medium" android:textColor="#ff999999" android:id="@+id/tvPublishTime" android:paddingLeft="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/tvProudctDesc" />
+                        <View android:id="@+id/vDividerLine" android:background="@color/divider_line" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_margin="5.0dip" android:layout_below="@id/tvPublishTime" />
+                        <LinearLayout android:orientation="vertical" android:id="@+id/llCatalogsContainer" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/vDividerLine">
+                            <com.momock.widget.PlainListView android:id="@+id/plvProductSpecifs" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                        </LinearLayout>
+                        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@+id/llProductPriceContainer" android:background="@drawable/product_detail_info_bottom_bg" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_below="@id/llCatalogsContainer">
+                            <TextView android:textSize="@dimen/text_size_small" android:textColor="@android:color/black" android:gravity="center" android:id="@+id/tvProductPrice" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="false" android:layout_weight="1.5" />
+                            <View android:background="@color/divider_line" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+                            <TextView android:textSize="@dimen/text_size_small" android:textColor="@color/theme_main_color" android:gravity="center" android:id="@+id/tvProductEarnestNum" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="false" android:layout_weight="1.0" />
+                            <View android:background="@color/divider_line" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+                            <TextView android:textSize="@dimen/text_size_small" android:textColor="@android:color/black" android:gravity="center" android:id="@+id/tvProductStockNum" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="false" android:layout_weight="1.0" />
+                            <View android:background="@color/divider_line" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+                            <LinearLayout android:gravity="center" android:id="@+id/llBuyButton" android:background="@drawable/product_detail_buy_button_hilite" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.5">
+                                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:src="@drawable/buy_tip" />
+                                <TextView android:textSize="@dimen/text_size_medium" android:textColor="@android:color/white" android:id="@+id/tvBuyButtonTip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="立即购买" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+                <View android:background="@color/divider_line" android:layout_width="fill_parent" android:layout_height="2.0px" />
+                <com.jwgou.android.widgets.NoScrollListView android:id="@+id/lvComments" android:background="@drawable/product_preview_holo_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@null" />
+                <include layout="@layout/include_fullscreen_loading" />
+            </LinearLayout>
+        </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+        <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@+id/llDetailOperatorContainer" android:background="#fff1f1f1" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <View android:background="#ffd2d2d2" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:gravity="center" android:id="@+id/llCommentButton" android:background="@drawable/product_detail_operator_bg" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:src="@drawable/product_detail_comment_tip" />
+                    <TextView android:textSize="@dimen/text_size_medium" android:textColor="@color/product_detail_operator_text_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="评论" />
+                </LinearLayout>
+                <View android:background="#ffd2d2d2" android:layout_width="1.0px" android:layout_height="fill_parent" />
+                <LinearLayout android:gravity="center" android:id="@+id/llShareButton" android:background="@drawable/product_detail_operator_bg" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:src="@drawable/product_detail_share_tip" />
+                    <TextView android:textSize="@dimen/text_size_medium" android:textColor="@color/product_detail_operator_text_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="分享" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout android:id="@+id/rlOverlayClock" android:background="@drawable/overlay_clock_bg" android:paddingBottom="5.0dip" android:layout_width="100.0dip" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:layout_alignParentRight="true">
+        <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@+id/tvClockTrip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="直播仅剩" />
+        <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@+id/tvOverlayClock" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/tvClockTrip" android:layout_alignLeft="@id/tvClockTrip" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/include_header" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ListView android:id="@+id/listview" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:paddingBottom="6.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@color/transparent" android:dividerHeight="10.0dip" android:layout_above="@id/layout" />
+            <ScrollView android:id="@+id/layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <RelativeLayout android:background="@drawable/line_frame_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+                        <EditText android:textSize="16.0sp" android:id="@+id/address_name" android:background="@null" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="收件人姓名" />
+                        <LinearLayout android:orientation="horizontal" android:id="@+id/count_textview_layout" android:background="@drawable/line_frame_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/address_name">
+                            <Spinner android:id="@+id/province_spinner" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                            <View android:background="@color/divider_line" android:layout_width="1.0px" android:layout_height="fill_parent" />
+                            <Spinner android:id="@+id/city_spinner" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                            <View android:background="@color/divider_line" android:layout_width="1.0px" android:layout_height="fill_parent" />
+                            <Spinner android:id="@+id/county_spinner" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                        </LinearLayout>
+                        <EditText android:textSize="15.0sp" android:id="@+id/postcode" android:background="@drawable/line_frame_bg" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="邮编" android:layout_below="@id/count_textview_layout" android:inputType="number" />
+                        <EditText android:textSize="15.0sp" android:id="@+id/address_detail" android:background="@null" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="详细地址" android:layout_below="@id/postcode" />
+                        <EditText android:textSize="15.0sp" android:id="@+id/phone" android:background="@drawable/line_frame_bg" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="手机" android:layout_below="@id/address_detail" android:inputType="number" />
+                        <EditText android:textSize="15.0sp" android:id="@+id/email" android:background="@null" android:padding="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="邮箱" android:layout_below="@id/phone" />
+                    </RelativeLayout>
+                    <TextView android:textSize="20.0sp" android:textColor="@android:color/white" android:gravity="center_horizontal" android:id="@+id/ok_textview" android:background="@drawable/button_bg" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="保存" />
+                </LinearLayout>
+            </ScrollView>
+        </RelativeLayout>
+        <RelativeLayout android:id="@+id/rlSlideGuide" android:background="#bb000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textColor="@android:color/white" android:gravity="center" android:id="@+id/tvSlideGuide" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="@string/tip_address_slide" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

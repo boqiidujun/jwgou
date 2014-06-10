@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/padding_medium" android:paddingRight="@dimen/padding_medium" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/list_bg_normal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/padding_medium" android:paddingTop="@dimen/padding_medium" android:paddingRight="@dimen/padding_medium" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/text_size_small" android:textColor="#ff7fccff" android:id="@+id/name_txt" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="@dimen/text_size_small" android:textColor="@color/item_subtitle_text" android:id="@+id/name_txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="留言：" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/text_size_small" android:textColor="@color/item_subtitle_text" android:id="@+id/content_txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:singleLine="false" />
+        <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/padding_medium" android:paddingRight="@dimen/padding_medium" android:paddingBottom="@dimen/padding_medium" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/text_size_small" android:textColor="@color/item_thirdtitle_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="最近下单时间：" />
+            <TextView android:textSize="@dimen/text_size_small" android:textColor="@color/item_thirdtitle_text" android:id="@+id/date_txt" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

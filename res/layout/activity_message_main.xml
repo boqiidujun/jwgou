@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost android:id="@android:id/tabhost" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <include layout="@layout/include_header" />
+            <LinearLayout android:orientation="horizontal" android:id="@+id/llSearchUserMessage" android:background="@color/theme_main_color" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:background="@drawable/box_item_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip">
+                    <AutoCompleteTextView android:textSize="16.0sp" android:textColor="#ff686868" android:id="@+id/actvUserName" android:background="@color/transparent" android:padding="5.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:hint="请输入用户名搜索" android:scrollHorizontally="true" android:singleLine="true" android:layout_weight="1.0" android:inputType="text" />
+                    <ImageView android:id="@+id/ivActionSearch" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/search" android:scaleType="fitCenter" />
+                </LinearLayout>
+            </LinearLayout>
+            <FrameLayout android:background="#ffefefef" android:paddingLeft="20.0dip" android:paddingTop="5.0dip" android:paddingRight="20.0dip" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TabWidget android:id="@android:id/tabs" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </FrameLayout>
+            <FrameLayout android:id="@android:id/tabcontent" android:background="@color/background_mi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </FrameLayout>
+</TabHost>

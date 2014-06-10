@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/mini_page_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/mini_ui_setting_title" />
+    <ScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/mini_text_size_14" android:textColor="@color/mini_color_light_gray" android:layout_gravity="left" android:id="@+id/debit_cards_tips" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mini_add_card_margin_left" android:layout_marginTop="@dimen/mini_margin_textview_13" android:layout_marginBottom="@dimen/mini_margin_textview_6" android:text="@string/mini_setting_debit_cards_tips" />
+            <LinearLayout android:orientation="vertical" android:id="@+id/debit_cards_group" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/mini_margin_13" android:layout_marginRight="@dimen/mini_margin_13" />
+            <TextView android:textSize="@dimen/mini_text_size_14" android:textColor="@color/mini_color_light_gray" android:layout_gravity="left" android:id="@+id/credit_cards_tips" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mini_add_card_margin_left" android:layout_marginTop="@dimen/mini_margin_textview_13" android:layout_marginBottom="@dimen/mini_margin_textview_6" android:text="@string/mini_setting_credit_cards_tips" />
+            <LinearLayout android:orientation="vertical" android:id="@+id/credit_cards_group" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/mini_margin_13" android:layout_marginRight="@dimen/mini_margin_13" android:layout_marginBottom="@dimen/mini_margin_27" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/divider_line" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:orientation="horizontal" android:background="#ffababab" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@+id/llLiveTimeContainer" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/text_size_small" android:textColor="@android:color/white" android:id="@+id/tvLiveBeginTime" android:paddingLeft="7.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="@dimen/text_size_small" android:textColor="@android:color/white" android:id="@+id/tvLiveEndTime" android:background="#ffababab" android:paddingLeft="7.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/text_size_small" android:textColor="@android:color/white" android:gravity="left|center" android:id="@+id/tvDiffTimeOfLive" android:background="#ffababab" android:paddingLeft="7.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/text_size_medium" android:textColor="@android:color/white" android:gravity="center" android:layout_gravity="right" android:id="@+id/tvLiveAddProduct" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="100.0dip">
+        <RelativeLayout android:id="@+id/rlSellerIconContainer" android:padding="2.5dip" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_margin="10.0dip">
+            <com.jwgou.android.widgets.CircleImageView android:id="@+id/ivSellerIcon" android:layout_width="55.0dip" android:layout_height="55.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/text_size_large" android:textColor="#ff333333" android:gravity="left|center" android:id="@+id/tvLiveTitle" android:paddingTop="5.0dip" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <View android:background="#ffababab" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <TextView android:textSize="@dimen/text_size_medium" android:textColor="#ff333333" android:gravity="left|center" android:id="@+id/tvLiveDesc" android:paddingTop="5.0dip" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:singleLine="false" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

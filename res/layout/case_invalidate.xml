@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/include_header" />
+    <TextView android:textSize="16.0sp" android:textColor="#ff686868" android:id="@+id/tvInvalidateTip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="10.0dip" android:singleLine="false" />
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/box_item_bg" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="10.0dip">
+        <EditText android:textSize="16.0sp" android:textColor="#ff686868" android:id="@+id/etInvalidateCode" android:background="@android:color/white" android:padding="4.0dip" android:layout_width="0.0dip" android:layout_height="40.0dip" android:hint="请输入验证码" android:scrollHorizontally="true" android:singleLine="true" android:drawableLeft="@drawable/key_hint" android:drawablePadding="5.0dip" android:layout_weight="1.0" android:inputType="number" />
+        <TextView android:textColor="#ff000000" android:gravity="center" android:id="@+id/tvCountDown" android:background="@drawable/count_down_bg" android:padding="1.0dip" android:clickable="false" android:layout_width="100.0dip" android:layout_height="fill_parent" android:text="60秒后重发" />
+    </LinearLayout>
+    <TextView android:textSize="16.0sp" android:textColor="#ff686868" android:id="@+id/tvInputPasswordTip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="10.0dip" android:text="@string/input_password_trip" android:singleLine="false" />
+    <EditText android:textSize="16.0sp" android:textColor="#ff686868" android:id="@+id/etPassword" android:background="@drawable/box_item_bg" android:padding="4.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="10.0dip" android:hint="请输入密码" android:ems="10" android:scrollHorizontally="true" android:singleLine="true" android:drawableLeft="@drawable/key_hint" android:drawablePadding="5.0dip" android:inputType="textPassword" />
+</LinearLayout>

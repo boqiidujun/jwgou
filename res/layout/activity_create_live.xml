@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="#fff8f8f8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/include_header" />
+        <RelativeLayout android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@+id/ivLiveIcon" android:background="#ffcfcfcf" android:layout_width="75.0dip" android:layout_height="75.0dip" android:src="@drawable/camera_tip" android:scaleType="center" />
+            <LinearLayout android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0px" android:layout_height="0.0px">
+                <requestFocus />
+            </LinearLayout>
+            <EditText android:id="@+id/etLiveName" android:background="@drawable/box_item_bg" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:hint="告诉买家你在哪直播，扫哪些牌子" android:layout_toRightOf="@id/ivLiveIcon" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/llLocationButton" android:background="@drawable/round_button_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_below="@id/etLiveName" android:layout_alignLeft="@id/etLiveName">
+                <ImageView android:id="@+id/ivLocationTip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="3.0dip" android:src="@drawable/location_tip" />
+                <TextView android:textColor="@android:color/white" android:id="@+id/tvLocationTip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="@string/location_tip" android:singleLine="true" />
+            </LinearLayout>
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/text_size_small" android:textColor="@color/item_subtitle_text" android:gravity="left|center" android:id="@+id/tvCurrLocation" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+        <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:background="@color/divider_line" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <TextView android:textSize="@dimen/text_size_large" android:textStyle="bold" android:textColor="#ff666666" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="5.0dip" android:text="@string/live_desc_tip" />
+            <EditText android:gravity="top" android:id="@+id/etLiveDesc" android:background="@drawable/box_item_bg" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="100.0dip" android:hint="@string/live_desc_hint" android:singleLine="false" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="120.0dip">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llBeginTimePicker" android:background="@color/theme_main_color" android:padding="7.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llBeginPickerContainer" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/time_chooser" />
+                    <TextView android:textSize="@dimen/text_size_small" android:textColor="@android:color/white" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="设置开始时间" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llBeginPickedContainer" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <TextView android:textSize="@dimen/text_size_small" android:textColor="@android:color/white" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="开始时间" />
+                    <TextView android:textSize="@dimen/text_size_small" android:textColor="@android:color/white" android:gravity="center" android:id="@+id/tvBeginPickedCalendar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llEndTimePicker" android:background="#ff333333" android:padding="7.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llEndPickerContainer" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/time_chooser" />
+                    <TextView android:textSize="@dimen/text_size_small" android:textColor="@android:color/white" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="设置结束时间" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llEndPickedContainer" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <TextView android:textSize="@dimen/text_size_small" android:textColor="@android:color/white" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="结束时间" />
+                    <TextView android:textSize="@dimen/text_size_small" android:textColor="@android:color/white" android:gravity="center" android:id="@+id/tvEndPickedCalendar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llTimeDifference" android:background="#ffdddddd" android:padding="7.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <TextView android:textSize="@dimen/text_size_small" android:textColor="@android:color/white" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="共计" />
+                <TextView android:textSize="@dimen/text_size_small" android:textColor="@android:color/white" android:gravity="center" android:id="@+id/tvCalendarDiff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/text_size_small" android:textColor="#ff777777" android:gravity="left" android:id="@+id/tvBeginCalendarGMT8" android:paddingLeft="10.0dip" android:paddingTop="5.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <TextView android:textSize="@dimen/text_size_small" android:textColor="#ff777777" android:gravity="left" android:id="@+id/tvEndCalendarGMT8" android:paddingLeft="10.0dip" android:paddingTop="5.0dip" android:paddingRight="10.0dip" android:paddingBottom="5.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:background="@color/divider_line" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <TextView android:textSize="@dimen/text_size_large" android:textColor="@android:color/white" android:gravity="center" android:id="@+id/tvCreateLiveButton" android:background="@drawable/round_button_bg" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="创建" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

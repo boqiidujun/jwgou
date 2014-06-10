@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/mini_main_title" android:background="@drawable/mini_card_title_bg" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:textSize="@dimen/mini_text_size_xx_large" android:textColor="@color/mini_text_white" android:gravity="center" android:id="@+id/mini_page_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:shadowColor="@color/mini_text_shadow" />
+        <TextView android:textSize="@dimen/mini_text_size_x_small" android:textColor="@color/mini_text_white" android:gravity="center" android:id="@+id/mini_page_subtitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:shadowColor="@color/mini_text_shadow" />
+    </LinearLayout>
+    <ImageView android:id="@+id/mini_page_more_setting" android:background="@drawable/mini_btn_card_edit_selector" android:paddingLeft="@dimen/mini_margin_6" android:paddingTop="@dimen/mini_margin_6" android:paddingRight="@dimen/mini_margin_6" android:paddingBottom="@dimen/mini_margin_6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/mini_text_size_x_small" android:src="@drawable/mini_more" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>
