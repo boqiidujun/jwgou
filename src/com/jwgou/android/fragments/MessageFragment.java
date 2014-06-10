@@ -67,6 +67,8 @@ public class MessageFragment extends Fragment implements ItemListener {
 
 			@Override
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+				pageNums = 1;
+				list.clear();
 				getData();
 			}
 		});

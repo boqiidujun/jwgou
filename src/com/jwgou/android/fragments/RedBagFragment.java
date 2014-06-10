@@ -65,6 +65,7 @@ public class RedBagFragment extends Fragment implements ItemListener {
 
 			@Override
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+				list.clear();
 				getData();
 			}
 		});
