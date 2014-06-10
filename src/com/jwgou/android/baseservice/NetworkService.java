@@ -427,6 +427,34 @@ public class NetworkService {
 		return result;
 	}
 	
+	/**
+	 * 红包列表（未过期）
+	 * @param UserId
+	 * @return
+	 */
+	public String GetUserRedList(int UserId){
+		String result = "";
+		String url = getUrl("GetUserRedList");
+		RequestParameters params = new RequestParameters();
+		params.add("UserId", UserId);
+		result = clientHelper.execute(url, params, ClientHelper.GET);
+		return result;
+	}
+	
+	/**
+	 * 红包列表（已过期）
+	 * @param UserId
+	 * @return
+	 */
+	public String GetUserOverdueRedList(int UserId){
+		String result = "";
+		String url = getUrl("GetUserOverdueRedList");
+		RequestParameters params = new RequestParameters();
+		params.add("UserId", UserId);
+		result = clientHelper.execute(url, params, ClientHelper.GET);
+		return result;
+	}
+	
 	public String HttpConnect(URL url) {
 		String result = "";
 		try {
