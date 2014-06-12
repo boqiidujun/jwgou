@@ -60,6 +60,11 @@ public class OrderFragment extends Fragment implements BtnListener {
 
 			@Override
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+				if (refreshView.isHeaderShown()) {
+					pageNums = 1;
+					list.clear();
+				} else if (refreshView.isFooterShown()) {
+				}
 				getData();
 			}
 		});
@@ -81,7 +86,7 @@ public class OrderFragment extends Fragment implements BtnListener {
 
 			@Override
 			protected void onPreExecute() {
-				if(list.size() > 0)
+				if(list.size() == 0)
 					fullscreen_loading_root.setVisibility(View.VISIBLE);
 				super.onPreExecute();
 			}

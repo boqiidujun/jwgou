@@ -105,7 +105,7 @@ public class NetworkService {
 	 */
 	public String FocusBuyer(int UserId, int BuyerId){
 		String result = "";
-		String url = getUrl("DoFance") + "?";
+		String url = getUrl("FocusBuyer") + "?";
 		RequestParameters params = new RequestParameters();
 		params.add("UserId", UserId);
 		params.add("BuyerId", BuyerId);

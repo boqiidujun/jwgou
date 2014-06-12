@@ -14,31 +14,28 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.jwgou.android.adapter.MyAddressAdapter;
-import com.jwgou.android.adapter.MyListViewAdapter;
-import com.jwgou.android.adapter.MyAddressAdapter.ItemListener;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
+import com.jwgou.android.adapter.MyActionAdapter;
+import com.jwgou.android.adapter.MyViewPagerAdapter;
 import com.jwgou.android.baseactivities.BaseActivity;
 import com.jwgou.android.baseservice.NetworkService;
 import com.jwgou.android.entities.Action;
-import com.jwgou.android.entities.Address;
 import com.jwgou.android.utils.Config;
 import com.jwgou.android.utils.HttpManager;
 import com.jwgou.android.utils.Util;
-import com.jwgou.android.utils.Utility;
 
-public class AddressManagerActivity extends BaseActivity implements OnClickListener, ItemListener {
+public class AllLiveActivity extends BaseActivity implements OnClickListener{
 
 	private PullToRefreshListView listview;
-	private MyAddressAdapter mAdapter;
-	private ArrayList<Address> list = new ArrayList<Address>();
+	private MyActionAdapter mAdapter;
+	private ArrayList<Action> actionList = new ArrayList<Action>();
 	private LinearLayout fullscreen_loading_root;
 	private int pageNums = 1;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,47 +44,46 @@ public class AddressManagerActivity extends BaseActivity implements OnClickListe
 	}
 
 	private void initView() {
-		((Button) findViewById(R.id.back)).setOnClickListener(this);
-		((TextView) findViewById(R.id.title)).setText("收货地址");
-		listview = (PullToRefreshListView) findViewById(R.id.listview);
-		listview.setMode(Mode.BOTH);
+		((Button)findViewById(R.id.back)).setOnClickListener(this);
+		((TextView)findViewById(R.id.title)).setText("");
+		listview = (PullToRefreshListView)findViewById(R.id.listview);
+		mAdapter = new MyActionAdapter(this, actionList);
+		listview.setAdapter(mAdapter);
 		listview.setOnRefreshListener(new OnRefreshListener<ListView>() {
 
 			@Override
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
 				if (refreshView.isHeaderShown()) {
 					pageNums = 1;
-					list.clear();
+					actionList.clear();
 				} else if (refreshView.isFooterShown()) {
 				}
 				getData();
 			}
 		});
-		list = new ArrayList<Address>();
-		mAdapter = new MyAddressAdapter(this, list, this);
-		listview.setAdapter(mAdapter);
 		fullscreen_loading_root = (LinearLayout) findViewById(R.id.fullscreen_loading_root);
 		getData();
 	}
 
-	private void getData() {
+	protected void getData() {
 		new HttpManager(this).Excute(new AsyncTask<Void, Void, String>() {
 
 			@Override
 			protected void onPostExecute(String result) {
-				super.onPostExecute(result);
-				listview.onRefreshComplete();
 				fullscreen_loading_root.setVisibility(View.GONE);
-				if(!Util.isEmpty(result)){
+				listview.onRefreshComplete();
+				Toast.makeText(AllLiveActivity.this, result, Toast.LENGTH_SHORT).show();
+
+				if (!Util.isEmpty(result)) {
 					try {
 						JSONObject o = new JSONObject(result);
-						if (o.optInt("ResponseStatus", -1) == Config.SUCCESS) {
+						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
 							JSONArray data = o.optJSONArray("ResponseData");
 							if (data != null && data.length() > 0) {
 								for (int i = 0; i < data.length(); i++) {
-									Address a = new Address();
+									Action a = new Action();
 									a.Json2Self(data.optJSONObject(i));
-									list.add(a);
+									actionList.add(a);
 								}
 								mAdapter.notifyDataSetChanged();
 							}
@@ -96,48 +92,28 @@ public class AddressManagerActivity extends BaseActivity implements OnClickListe
 						e.printStackTrace();
 					}
 				}
+			
+				super.onPostExecute(result);
 			}
 
 			@Override
 			protected void onPreExecute() {
-				super.onPreExecute();
-				if(list.size() == 0)
+				if(actionList.size() == 0)
 					fullscreen_loading_root.setVisibility(View.VISIBLE);
+				super.onPreExecute();
 			}
 
 			@Override
 			protected String doInBackground(Void... params) {
-				return NetworkService.getInstance().GetAddressListing(getApp().user.UId, pageNums++);
+				return NetworkService.getInstance().GetActivityDoing();
 			}
 		});
-
 	}
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.back:
-			finish();
-			break;
-
-		default:
-			break;
-		}
-	}
-
-	@Override
-	public void ClickListener(int index, int type) {
-		ShowToast("index= " + index + ",type=" + type);
-		switch (type) {
-		case 1://default
-			
-			break;
-		case 2://delete
-			break;
-
-		default:
-			break;
-		}
+		// TODO Auto-generated method stub
+		
 	}
 
 }
