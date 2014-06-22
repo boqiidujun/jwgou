@@ -60,6 +60,8 @@ public class OrderFragment extends Fragment implements BtnListener {
 
 			@Override
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+				pageNums = 1;
+				list.clear();
 				getData();
 			}
 		});
