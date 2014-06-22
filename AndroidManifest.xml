@@ -71,6 +71,7 @@
         <activity android:name="MyOrderActivity" android:screenOrientation="portrait"></activity>
         <activity android:name="MyMessageActivity" android:screenOrientation="portrait"></activity>
         <activity android:name="AddressManagerActivity" android:screenOrientation="portrait"></activity>
+        <activity android:screenOrientation="portrait" android:name="AllLiveActivity"></activity>
     </application>
 
 </manifest>

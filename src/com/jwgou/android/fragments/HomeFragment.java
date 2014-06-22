@@ -14,6 +14,7 @@ import cn.sharesdk.framework.utils.UIHandler;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
+import com.jwgou.android.AllLiveActivity;
 import com.jwgou.android.R;
 import com.jwgou.android.adapter.MyListViewAdapter;
 import com.jwgou.android.adapter.MyViewPagerAdapter;
@@ -24,6 +25,7 @@ import com.jwgou.android.utils.HttpManager;
 import com.jwgou.android.utils.Util;
 import com.jwgou.android.utils.Utility;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler.Callback;
@@ -32,6 +34,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -41,7 +44,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class HomeFragment extends Fragment implements Callback {
+public class HomeFragment extends Fragment implements Callback, OnClickListener {
 
 	private View view;
 	private PullToRefreshScrollView mPullRefreshScrollView;
@@ -80,6 +83,7 @@ public class HomeFragment extends Fragment implements Callback {
 		livingShowContainer = (RelativeLayout) v.findViewById(R.id.LivingShowContainer);
 		viewpager = (ViewPager) v.findViewById(R.id.viewpager);
 		jumpToAllLiving = (TextView) v.findViewById(R.id.tvJumpToAllLiving);
+		jumpToAllLiving.setOnClickListener(this);
 		livingEmptyTip = (ImageView) v.findViewById(R.id.ivLivingsEmptyTip);
 		comingLivingContainer = (LinearLayout) v.findViewById(R.id.llComingLivesContainer);
 		jumpToAllCommingLives = (TextView) v.findViewById(R.id.tvJumpToAllCommingLives);
@@ -206,6 +210,18 @@ public class HomeFragment extends Fragment implements Callback {
 			break;
 		}
 		return false;
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.tvJumpToAllLiving:
+			startActivity(new Intent(getActivity(), AllLiveActivity.class));
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	
