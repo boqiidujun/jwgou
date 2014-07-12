@@ -62,6 +62,7 @@ public class JwgouOrderAdapter extends BaseAdapter {
 			holder.num = (TextView)convertView.findViewById(R.id.num);
 			holder.price = (TextView)convertView.findViewById(R.id.price);
 			holder.pay = (TextView)convertView.findViewById(R.id.pay);
+			holder.text5 = (TextView)convertView.findViewById(R.id.text5);
 			convertView.setTag(holder);
 		}else{
 			holder = (ViewHolder) convertView.getTag();
@@ -76,10 +77,11 @@ public class JwgouOrderAdapter extends BaseAdapter {
 		holder.title.setText(o.Title);
 		holder.time.setText("生成时间：" + o.AddTime);
 		holder.message.setText(o.BuyerMessage);
-		if(index == 0){
+		if(index == 1){
 			holder.pay.setBackgroundColor(Color.RED);
 			holder.pay.setText("订单已生成请付款");
 			holder.price.setVisibility(View.VISIBLE);
+			holder.text5.setVisibility(View.VISIBLE);
 			holder.price.setText(o.NowPrice + "");
 			holder.pay.setOnClickListener(new OnClickListener() {
 				
@@ -92,7 +94,9 @@ public class JwgouOrderAdapter extends BaseAdapter {
 		}else{
 			holder.pay.setBackgroundColor(Color.parseColor("#00000000"));
 			holder.pay.setText(o.Status);
+			holder.pay.setTextColor(Color.BLACK);
 			holder.price.setVisibility(View.GONE);
+			holder.text5.setVisibility(View.GONE);
 		}
 		holder.num.setText("" + o.Num);
 	}
@@ -103,6 +107,6 @@ public class JwgouOrderAdapter extends BaseAdapter {
 
 	class ViewHolder{
 		NetImageView image;
-		TextView title, time, message, pay, num, price;
+		TextView title, time, message, pay, num, price, text5;
 	}
 }

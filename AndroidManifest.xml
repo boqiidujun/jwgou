@@ -79,6 +79,7 @@
         <activity android:screenOrientation="portrait" android:name="JwgouDetail"></activity>
         <activity android:screenOrientation="portrait" android:name="JwgouCommitOrder"></activity>
         <activity android:screenOrientation="portrait" android:name="JwgouOrderActivity"></activity>
+        <activity android:screenOrientation="portrait" android:name="JwgouPay"></activity>
     </application>
 
 </manifest>

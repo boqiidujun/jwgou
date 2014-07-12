@@ -89,7 +89,7 @@ public class JwgouCommitOrder extends BaseActivity implements OnClickListener {
 //			ShowToast("请");
 //			return;
 //		}
-		if(a.AddressId == 0){
+		if(a == null || a.AddressId == 0){
 			ShowToast("请选择地址");
 			return;
 		}
