@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -133,6 +134,13 @@ public class AddressManagerActivity extends BaseActivity implements OnClickListe
 			
 			break;
 		case 2://delete
+			break;
+		case 3://select
+			Address a = list.get(index);
+			Intent i = new Intent();
+			i.putExtra("ADDRESS", a);
+			setResult(RESULT_OK, i);
+			finish();
 			break;
 
 		default:

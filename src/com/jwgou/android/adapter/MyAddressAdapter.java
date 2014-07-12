@@ -48,7 +48,7 @@ public class MyAddressAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		ViewHolder holder;
 		if(convertView == null){
 			convertView = mInflater.inflate(R.layout.item_address, null);
@@ -64,6 +64,14 @@ public class MyAddressAdapter extends BaseAdapter {
 		}
 		Address a = list.get(position);
 		initView(holder, a, position);
+		convertView.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(listener != null)
+					listener.ClickListener(position, 3);
+			}
+		});
 		return convertView;
 	}
 
@@ -91,7 +99,7 @@ public class MyAddressAdapter extends BaseAdapter {
 	}
 
 	public interface ItemListener{
-		void ClickListener(int index, int type);//1: default 2: delete
+		void ClickListener(int index, int type);//1: default 2: delete3:select
 	}
 	
 	class ViewHolder{

@@ -5,6 +5,7 @@ import cn.sharesdk.framework.ShareSDK;
 import com.jwgou.android.baseactivities.BaseFragmentActivity;
 import com.jwgou.android.fragments.BuyerFragment;
 import com.jwgou.android.fragments.HomeFragment;
+import com.jwgou.android.fragments.HomeFragment2;
 import com.jwgou.android.fragments.LiveFragment;
 import com.jwgou.android.fragments.UserinfoFragment;
 import com.jwgou.android.widgets.DummyTabContent;
@@ -23,7 +24,7 @@ public class MainActivity extends BaseFragmentActivity {
 	TabHost tabHost;
 	TabWidget tabWidget;
 	LinearLayout bottom_layout;
-	HomeFragment homeFragment;
+	HomeFragment2 homeFragment;
 	LiveFragment liveFragment;
 	BuyerFragment buyerFragment;
 	UserinfoFragment userinfoFragment;
@@ -66,7 +67,7 @@ public class MainActivity extends BaseFragmentActivity {
 					}
 				}
 				android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
-				homeFragment = (HomeFragment) fm.findFragmentByTag("home");
+				homeFragment = (HomeFragment2) fm.findFragmentByTag("home");
 				liveFragment = (LiveFragment) fm.findFragmentByTag("live");
 				buyerFragment = (BuyerFragment) fm.findFragmentByTag("buyer");
 				userinfoFragment = (UserinfoFragment) fm.findFragmentByTag("userinfo");
@@ -152,7 +153,7 @@ public class MainActivity extends BaseFragmentActivity {
 	public void isTabHome() {
 
 		if (homeFragment == null) {
-			ft.add(R.id.realtabcontent, new HomeFragment(), "home");
+			ft.add(R.id.realtabcontent, new HomeFragment2(), "home");
 		} else {
 			ft.show(homeFragment);
 		}

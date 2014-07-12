@@ -38,7 +38,55 @@ public class NetworkService {
 	public void UploadImage(Bitmap bitmap){
 //		"http://211.144.76.91:180/PhoneDate.asmx/UpLoadImg"
 	}
-	
+	public String GetJwGouProductsDoing() {
+		String result = "";
+		String url = getUrl("GetJwGouProductsDoing");
+		RequestParameters params = new RequestParameters();
+		result = clientHelper.execute(url, params, ClientHelper.GET);
+		return result;
+	}
+	public String GetJwGouProductsWillDoing() {
+		String result = "";
+		String url = getUrl("GetJwGouProductsWillDoing");
+		RequestParameters params = new RequestParameters();
+		result = clientHelper.execute(url, params, ClientHelper.GET);
+		return result;
+	}
+	public String GetJwGouProductsOver() {
+		String result = "";
+		String url = getUrl("GetJwGouProductsOver");
+		RequestParameters params = new RequestParameters();
+		result = clientHelper.execute(url, params, ClientHelper.GET);
+		return result;
+	}
+	public String GetJwGouOrderList_Pay(int UserId){
+		String result = "";
+		String url = getUrl("GetJwGouOrderList_Pay") + "?";
+		RequestParameters params = new RequestParameters();
+		params.add("UserId", UserId);
+		result = clientHelper.execute(url, params, ClientHelper.GET);
+		return result;
+	}
+	public String GetJwGouOrderList_Creat(int UserId){
+		String result = "";
+		String url = getUrl("GetJwGouOrderList_Creat") + "?";
+		RequestParameters params = new RequestParameters();
+		params.add("UserId", UserId);
+		result = clientHelper.execute(url, params, ClientHelper.GET);
+		return result;
+	}
+	public String PostJwGouJoin(int UserId, int Num, int JwGouListId, int AddressId, String BuyerMessage){
+		String result = "";
+		String url = getUrl("PostJwGouJoin") + "?";
+		RequestParameters params = new RequestParameters();
+		params.add("UserId", UserId);
+		params.add("Num", Num);
+		params.add("JwGouListId", JwGouListId);
+		params.add("AddressId", AddressId);
+		params.add("BuyerMessage", BuyerMessage);
+		result = clientHelper.execute(url, params, ClientHelper.POST);
+		return result;
+	}
 	/**
 	 * 用户登录
 	 * @param username 用户名
@@ -51,6 +99,15 @@ public class NetworkService {
 		RequestParameters params = new RequestParameters();
 		params.add("username", username);
 		params.add("password", password);
+		result = clientHelper.execute(url, params, ClientHelper.GET);
+		return result;
+	}
+	
+	public String GetJwGouProduct(int JwgouId){
+		String result = "";
+		String url = getUrl("GetJwGouProduct") + "?";
+		RequestParameters params = new RequestParameters();
+		params.add("JwgouId", JwgouId);
 		result = clientHelper.execute(url, params, ClientHelper.GET);
 		return result;
 	}
