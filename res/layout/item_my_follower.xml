@@ -85,7 +85,7 @@
                     android:background="@drawable/circle_white_bg"
                     android:padding="3.0dip" >
 
-                    <com.jwgou.android.widgets.CircleImageView
+                    <com.jwgou.android.widgets.CircleNetImageView
                         android:id="@+id/ivFollowerIcon"
                         android:layout_width="60.0dip"
                         android:layout_height="60.0dip"
@@ -245,6 +245,13 @@
                         android:textColor="#ff888888"
                         android:textSize="@dimen/text_size_small" />
                 </LinearLayout>
+                <Button 
+                    android:id="@+id/attention"
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="关注"
+                    />
             </LinearLayout>
         </RelativeLayout>
 

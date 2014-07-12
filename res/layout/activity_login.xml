@@ -65,6 +65,17 @@
                 android:text="@string/tip_reset_password"
                 android:textColor="#ff6b6b6b"
                 android:textSize="14.0sp" />
+
+            <TextView
+                android:id="@+id/tvregister"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="22.0dip"
+                android:text="注册"
+                android:textColor="#ff6b6b6b"
+                android:textSize="14.0sp" />
         </LinearLayout>
 
         <Button

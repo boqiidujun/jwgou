@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,7 @@ public class Login extends BaseActivity implements OnClickListener {
 
 	private void initView() {
 		((Button) findViewById(R.id.back)).setOnClickListener(this);
+		((TextView)findViewById(R.id.tvregister)).setOnClickListener(this);
 		((TextView) findViewById(R.id.title)).setText("登录中心");
 		username = (EditText) findViewById(R.id.username);
 		password = (EditText) findViewById(R.id.password);
@@ -48,6 +50,9 @@ public class Login extends BaseActivity implements OnClickListener {
 			break;
 		case R.id.login:
 			doLogin();
+			break;
+		case R.id.tvregister:
+			startActivity(new Intent(this, Register.class));
 			break;
 
 		default:

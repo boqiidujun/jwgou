@@ -14,12 +14,14 @@
         android:padding="5dp" >
 
         <TextView
+            android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="红包面值" />
 
         <TextView
             android:id="@+id/price"
+            android:textColor="#ff0000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0.00元" />
@@ -34,12 +36,14 @@
         android:padding="5dp" >
 
         <TextView
+            android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="红包编码" />
 
         <TextView
             android:id="@+id/code"
+            android:textColor="#989898"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
            	android:singleLine="true"
@@ -55,12 +59,14 @@
         android:padding="5dp" >
 
         <TextView
+            android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="到期时间" />
 
         <TextView
             android:id="@+id/time"
+            android:textColor="#ff0000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2014.9.1" />

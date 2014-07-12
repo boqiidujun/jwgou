@@ -17,27 +17,15 @@
             android:orientation="vertical"
             android:padding="20dp" >
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/register" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1、填写邮箱" />
-
-            <EditText
-                android:id="@+id/email"
+            <TextView 
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="(请填写您常用邮箱作为登录号)" />
+                android:text="注册完成"
+               	android:textSize="40sp"
+               	android:layout_marginTop="100dp"
+               	android:textColor="@android:color/black"
+               	android:gravity="center"
+                />
 
             <Button
                 android:id="@+id/login"
@@ -46,9 +34,9 @@
                 android:layout_below="@id/signin_layout_not_oem"
                 android:layout_marginLeft="22.0dip"
                 android:layout_marginRight="22.0dip"
-                android:layout_marginTop="20.0dip"
+                android:layout_marginTop="120.0dip"
                 android:background="@drawable/button_ok_bg"
-                android:text="登录"
+                android:text="立即登入"
                 android:textColor="@android:color/white"
                 android:textSize="16.0sp" />
         </LinearLayout>
