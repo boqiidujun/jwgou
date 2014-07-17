@@ -24,6 +24,15 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_t" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="正在抢购"
+                android:textColor="@android:color/white" />
+
             <LinearLayout
                 android:id="@+id/layout1"
                 android:layout_width="fill_parent"
@@ -34,7 +43,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="今晚推出" />
+                android:background="@drawable/bg_text"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="今晚推出"
+                android:textColor="@android:color/white" />
 
             <LinearLayout
                 android:id="@+id/layout2"
@@ -46,7 +59,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="往期预告" />
+                android:background="@drawable/bg_text"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="往期预告"
+                android:textColor="@android:color/white" />
 
             <LinearLayout
                 android:id="@+id/layout3"

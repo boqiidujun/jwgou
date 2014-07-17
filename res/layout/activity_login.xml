@@ -2,14 +2,42 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
     android:background="@android:color/white"
     android:orientation="vertical" >
 
-    <include layout="@layout/top_title" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#c40e24"
+        android:padding="15dp" >
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="用户登录" />
+
+        <TextView
+            android:id="@+id/right_text"
+            style="@style/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -21,7 +49,6 @@
 
             <EditText
                 android:id="@+id/username"
-                android:text="zj314000@126.com"
                 android:layout_width="fill_parent"
                 android:layout_height="40.0dip"
                 android:layout_marginLeft="22.0dip"
@@ -33,12 +60,12 @@
                 android:padding="4.0dip"
                 android:scrollHorizontally="true"
                 android:singleLine="true"
+                android:text="zj314000@126.com"
                 android:textColor="#ff686868"
                 android:textSize="16.0sp" />
 
             <EditText
                 android:id="@+id/password"
-                android:text="111111"
                 android:layout_width="fill_parent"
                 android:layout_height="40.0dip"
                 android:layout_marginLeft="22.0dip"
@@ -52,30 +79,39 @@
                 android:padding="4.0dip"
                 android:scrollHorizontally="true"
                 android:singleLine="true"
+                android:text="111111"
                 android:textColor="#ff686868"
                 android:textSize="16.0sp" />
 
-            <TextView
-                android:id="@+id/tvResetPassword"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginRight="22.0dip"
-                android:layout_marginTop="5.0dip"
-                android:text="@string/tip_reset_password"
-                android:textColor="#ff6b6b6b"
-                android:textSize="14.0sp" />
-
-            <TextView
-                android:id="@+id/tvregister"
-                android:layout_width="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginRight="22.0dip"
-                android:text="注册"
-                android:textColor="#ff6b6b6b"
-                android:textSize="14.0sp" />
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/tvregister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="注册"
+                    android:textColor="#ff6b6b6b"
+                    android:textSize="14.0sp" />
+
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/line_color" />
+
+                <TextView
+                    android:id="@+id/tvResetPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="忘记密码"
+                    android:textColor="#ff6b6b6b"
+                    android:textSize="14.0sp" />
+            </LinearLayout>
         </LinearLayout>
 
         <Button
@@ -83,13 +119,75 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/signin_layout_not_oem"
-            android:layout_marginLeft="22.0dip"
-            android:layout_marginRight="22.0dip"
+            android:layout_marginLeft="50.0dip"
+            android:padding="5dp"
+            android:layout_marginRight="50.0dip"
             android:layout_marginTop="20.0dip"
             android:background="@drawable/button_ok_bg"
             android:text="登录"
             android:textColor="@android:color/white"
             android:textSize="16.0sp" />
     </RelativeLayout>
+    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="30dp"
+        android:text="使用第三方账户登录"
+        />
+    
+    <TextView 
+        android:layout_width="250dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="1dp"
+        android:background="@color/line_color"
+        />
+    
+    <TextView 
+        android:id="@+id/alipay"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:drawableLeft="@drawable/ic_ali"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:text="支付宝"
+        />
+    
+    <TextView 
+        android:layout_width="250dp"
+        android:layout_height="1dp"
+        android:gravity="center"
+        android:background="@color/line_color"
+        />
+    
+    <TextView 
+        android:id="@+id/sina"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:drawableLeft="@drawable/ic_sina"
+        android:text="新浪微博"
+        />
+    
+    <TextView 
+        android:layout_width="250dp"
+        android:layout_height="1dp"
+        android:background="@color/line_color"
+        />
+    
+    <TextView 
+        android:id="@+id/qq"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:drawableLeft="@drawable/ic_qq"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:text="QQ"
+        />
 
 </LinearLayout>

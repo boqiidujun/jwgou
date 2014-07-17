@@ -33,6 +33,7 @@ public class Register4 extends BaseActivity implements OnClickListener {
 			finish();
 			break;
 		case R.id.login:
+			startActivity(new Intent(this, Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 			break;
 
 		default:

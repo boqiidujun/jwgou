@@ -22,7 +22,7 @@
 		
 		BypassApproval是绕过审核的标记，设置为true后AppId将被忽略，故不经过
 		审核的应用也可以执行分享，但是仅限于分享文字和图片，不能分享其他类型，
-		默认值为false。此外，微信收藏不支持此字段。
+		默认值为false。此外，微信收藏不支持此字段。
     -->
 
     <Wechat
@@ -42,8 +42,8 @@
         SortId="3" />
 
     <QQ
-        AppId="1101479516"
-        AppKey="HPeLc2FrGeeSdMrV"
+        AppId="101120370"
+        AppKey="614b13d7490c109784d7a135467b58a6"
         Enable="false"
         Id="4"
         SortId="4" />
@@ -51,8 +51,8 @@
     <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
 
     <QZone
-        AppId="1101479516"
-        AppKey="HPeLc2FrGeeSdMrV"
+        AppId="101120370"
+        AppKey="614b13d7490c109784d7a135467b58a6"
         Enable="false"
         Id="5"
         ShareByAppClient="true"
@@ -119,7 +119,7 @@
     	“product”。
     	
     	如果目标设备上已经安装了印象笔记客户端，ShareSDK允许应用调用本地API来完成分享，但
-    	是需要将应用信息中的“ShareByAppClient”设置为true，此字段默认值为false。
+    	是需要将应用信息中的“ShareByAppClient”设置为true，此字段默认值为false。
     -->
 
     <Evernote Enable="false" />
@@ -152,7 +152,7 @@
 		
 		BypassApproval是绕过审核的标记，设置为true后AppId将被忽略，故不经过
 		审核的应用也可以执行分享，但是仅限于分享文字或图片，不能分享其他类型，
-		默认值为false
+		默认值为false
     -->
 
     <Yixin Enable="false" />

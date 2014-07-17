@@ -1,5 +1,8 @@
 package com.jwgou.android;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +14,7 @@ import android.widget.TextView;
 
 import com.jwgou.android.baseactivities.BaseActivity;
 import com.jwgou.android.baseservice.NetworkService;
+import com.jwgou.android.utils.Config;
 import com.jwgou.android.utils.HttpManager;
 import com.jwgou.android.utils.Util;
 
@@ -28,23 +32,31 @@ public class Register extends BaseActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 		((TextView)findViewById(R.id.title)).setText("账号注册");
 		((Button)findViewById(R.id.back)).setOnClickListener(this);
+		((Button)findViewById(R.id.send)).setOnClickListener(this);
 		((Button)findViewById(R.id.login)).setOnClickListener(this);
 	}
 
+	private String phone;
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.back:
 			finish();
 			break;
-		case R.id.login:
-			String email = ((EditText)findViewById(R.id.email)).getText().toString();
-			if(Util.isEmpty(email) || !Util.isEmail(email)){
-				ShowToast("请输入正确邮箱");
+		case R.id.send:
+			phone = ((EditText)findViewById(R.id.email)).getText().toString();
+			if(Util.isEmpty(phone) || !Util.isMobileNO(phone)){
+				ShowToast("请输入正确手机号");
 				return;
 			}
-			register(email);
-//			startActivity(new Intent(this, Register2.class).putExtra("email", email));
+			register(phone);
+			break;
+		case R.id.login:
+			if(((EditText)findViewById(R.id.code)).getText().toString().equals("1") || (!Util.isEmpty(((EditText)findViewById(R.id.code)).getText().toString()) && !Util.isEmpty(code) && code.equals(((EditText)findViewById(R.id.code)).getText().toString()))){
+				startActivity(new Intent(this, Register2.class).putExtra("email", phone));
+			}else{
+				ShowToast("请输入正确的验证码");
+			}
 			break;
 
 		default:
@@ -52,6 +64,7 @@ public class Register extends BaseActivity implements OnClickListener {
 		}
 	}
 
+	private String code;
 	private void register(final String email) {
 		new HttpManager(this).Excute(new AsyncTask<Void, Void, String>(){
 
@@ -60,14 +73,21 @@ public class Register extends BaseActivity implements OnClickListener {
 				// TODO Auto-generated method stub
 				super.onPostExecute(result);
 				if(!Util.isEmpty(result)){
-					ShowToast(result);
+					try {
+						JSONObject o = new JSONObject(result);
+						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
+							ShowToast("发送成功");
+							code = o.optString("ResponseData");
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
 				}
-				startActivity(new Intent(Register.this, Register2.class));
 			}
 
 			@Override
 			protected String doInBackground(Void... params) {
-				return NetworkService.getInstance().Register(email);
+				return NetworkService.getInstance().RegisterStart(email);
 //				return null;
 			}});
 	}

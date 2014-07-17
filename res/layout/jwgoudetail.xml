@@ -5,23 +5,16 @@
     android:background="@android:color/white"
     android:orientation="vertical" >
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/top_title"
-        android:contentDescription="@string/title" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#dd8c93"
-        android:padding="5dp" >
+        android:background="#c40e24"
+        android:padding="15dp" >
 
         <Button
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:background="@drawable/ic_back" />
 
         <TextView
@@ -43,18 +36,21 @@
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:fadingEdge="none"
-        android:scrollbars="none"
         android:layout_height="fill_parent"
-        android:padding="5dp" >
+        android:fadingEdge="none"
+        android:padding="5dp"
+        android:scrollbars="none" >
 
         <RelativeLayout
+            android:id="@+id/rela"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/table_single_center_normal"
                 android:orientation="vertical" >
 
                 <TextView
@@ -63,35 +59,35 @@
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black" />
 
-            <FrameLayout
-                android:id="@+id/advertising_layout"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <com.jwgou.android.widgets.AdGallery
-                    android:id="@+id/gallery"
+                <FrameLayout
+                    android:id="@+id/advertising_layout"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:fadingEdge="none"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:soundEffectsEnabled="false"
-                    android:spacing="0dip" />
+                    android:layout_height="wrap_content" >
 
-                <LinearLayout
-                    android:id="@+id/dot_images"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingBottom="10dip" >
-                </LinearLayout>
-            </FrameLayout>
+                    <com.jwgou.android.widgets.AdGallery
+                        android:id="@+id/gallery"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:fadingEdge="none"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:soundEffectsEnabled="false"
+                        android:spacing="0dip" />
+
+                    <LinearLayout
+                        android:id="@+id/dot_images"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:orientation="horizontal"
+                        android:paddingBottom="10dip" >
+                    </LinearLayout>
+                </FrameLayout>
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="1px"
-                    android:background="@android:color/black" />
+                    android:background="@color/line_color" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -111,21 +107,21 @@
                             android:layout_weight="1"
                             android:text="今晚购价："
                             android:textColor="@android:color/black"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/tonight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0.00元"
-                            android:textColor="#ff0000"
+                            android:textColor="#c30d23"
                             android:textSize="15sp" />
                     </LinearLayout>
 
                     <TextView
                         android:layout_width="1px"
                         android:layout_height="fill_parent"
-                        android:background="@android:color/black" />
+                        android:background="@color/line_color" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -145,7 +141,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="780人"
-                            android:textColor="#ff0000"
+                            android:textColor="#c30d23"
                             android:textSize="20sp" />
                     </LinearLayout>
                 </LinearLayout>
@@ -153,7 +149,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="1px"
-                    android:background="@android:color/black" />
+                    android:background="@color/line_color" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -173,21 +169,21 @@
                             android:layout_weight="1"
                             android:text="最低冰点价："
                             android:textColor="@android:color/black"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/minprice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="012.00元"
-                            android:textColor="#ff0000"
+                            android:textColor="#c30d23"
                             android:textSize="15sp" />
                     </LinearLayout>
 
                     <TextView
                         android:layout_width="1px"
                         android:layout_height="fill_parent"
-                        android:background="@android:color/black" />
+                        android:background="@color/line_color" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -201,6 +197,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="每50人降5元"
+                            android:gravity="center"
                             android:textColor="@android:color/black" />
                     </LinearLayout>
                 </LinearLayout>
@@ -208,7 +205,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="1px"
-                    android:background="@android:color/black" />
+                    android:background="@color/line_color" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -221,36 +218,44 @@
                         android:layout_weight="0.7"
                         android:gravity="center_vertical" >
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="原价："
-                            android:textColor="@android:color/black"
-                            android:textSize="15sp" />
-
-                        <TextView
-                            android:id="@+id/oriprice"
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="012.00元"
-                            android:textColor="#ff0000"
-                            android:textSize="15sp" />
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="初始金额："
+                                android:textColor="@android:color/black"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/oriprice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="012.00元"
+                                android:textColor="#c30d23"
+                                android:textSize="15sp" />
+                        </LinearLayout>
 
                         <TextView
                             android:id="@+id/share"
                             android:layout_width="100dp"
                             android:layout_height="fill_parent"
-                            android:background="#ff0000"
+                            android:background="#db4a33"
                             android:gravity="center"
                             android:text="分享"
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp" />
                     </LinearLayout>
 
                     <TextView
                         android:layout_width="1px"
                         android:layout_height="fill_parent"
-                        android:background="@android:color/black" />
+                        android:background="@color/line_color" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -261,12 +266,34 @@
                             android:id="@+id/buy"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
-                            android:background="#ff0000"
+                            android:background="#db4a33"
                             android:gravity="center"
                             android:text="抢购"
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp" />
                     </LinearLayout>
                 </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@color/line_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="产品说明:"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -274,7 +301,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="100dp"
-                android:background="#ff0000"
+                android:background="@drawable/bg_time_text"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="10dp" >

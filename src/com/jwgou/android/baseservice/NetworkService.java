@@ -1,6 +1,10 @@
 package com.jwgou.android.baseservice;
 
 import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -8,6 +12,7 @@ import java.net.URL;
 import android.graphics.Bitmap;
 
 import com.jwgou.android.baseservice.ClientHelper.TimeOutListener;
+import com.jwgou.android.utils.Config;
 
 public class NetworkService {
 	public static final String SERVER = "http://211.144.76.91:180/";
@@ -34,10 +39,6 @@ public class NetworkService {
 
 	public String getUrl(String method) {
 		return SERVER_URL + method;
-	}
-
-	public void UploadImage(Bitmap bitmap) {
-		// "http://211.144.76.91:180/PhoneDate.asmx/UpLoadImg"
 	}
 
 	public String GetJwGouProductsDoing() {
@@ -79,6 +80,72 @@ public class NetworkService {
 		RequestParameters params = new RequestParameters();
 		params.add("UserId", UserId);
 		result = clientHelper.execute(url, params, ClientHelper.GET);
+		return result;
+	}
+
+	private File convertBitmapToFile(File file, Bitmap bitmap) {
+		try {
+			FileOutputStream out = new FileOutputStream(file);
+			if (bitmap.compress(Bitmap.CompressFormat.PNG, 0, out)) {
+				out.flush();
+				out.close();
+			}
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		return file;
+	}
+
+	public String uploadUserImg(Bitmap bitmap) {
+//		String actionUrl = SERVER_URL + "UpLoadImg";
+		String actionUrl = "http://localhost:27239/PhoneDate.asmx/UpLoadImg";
+		try {
+			URL url = new URL(actionUrl);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setDoInput(true);
+			con.setDoOutput(true);
+			con.setUseCaches(false);
+			con.setRequestMethod("POST");
+			DataOutputStream ds = new DataOutputStream(con.getOutputStream());
+//			Bitmap tempBitmap = Helper.setBitmapSize(bitmap, 192, 192);
+			File fold = new File(Config.PATH);
+			if (!fold.exists()) {
+				fold.mkdir();
+			}
+			File file = new File(Config.PATH + "/temp.png");
+			file = convertBitmapToFile(file, bitmap);
+			FileInputStream fStream = new FileInputStream(file);
+			int bufferSize = 1024;
+			byte[] buffer = new byte[bufferSize];
+			int length = -1;
+			while ((length = fStream.read(buffer)) != -1) {
+				ds.write(buffer, 0, length);
+			}
+			fStream.close();
+			ds.flush();
+			InputStream is = con.getInputStream();
+
+			int ch;
+			StringBuffer b = new StringBuffer();
+			while ((ch = is.read()) != -1) {
+				b.append((char) ch);
+			}
+			ds.close();
+			return b.toString();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+	public String RegisterJCUserName(String UserName) {
+		String result = "";
+		String url = getUrl("RegisterJCUserName") + "?";
+		RequestParameters params = new RequestParameters();
+		params.add("UserName", UserName);
+		result = clientHelper.execute(url, params, ClientHelper.POST);
 		return result;
 	}
 
@@ -201,12 +268,39 @@ public class NetworkService {
 	 * @param Email
 	 * @return
 	 */
-	public String Register(String Email) {
+	public String RegisterStart(String Email) {
 		String result = "";
-		String url = getUrl("Register") + "?";
+		String url = getUrl("RegisterStart") + "?";
 		RequestParameters params = new RequestParameters();
-		params.add("Email", Email);
+		params.add("Phone", Email);
 		result = clientHelper.execute(url, params, ClientHelper.GET);
+		return result;
+	}
+	
+	/**
+	 * 
+	Phone手机号码
+	password登陆密码
+	paypassword支付密码
+	Filename头图存放地址
+	LoginName用户名
+	 * @param Phone
+	 * @param password
+	 * @param paypassword
+	 * @param Filename
+	 * @param LoginName
+	 * @return
+	 */
+	public String RegisterEnd(String Phone, String password, String paypassword, String Filename, String LoginName) {
+		String result = "";
+		String url = getUrl("RegisterEnd") + "?";
+		RequestParameters params = new RequestParameters();
+		params.add("Phone", Phone);
+		params.add("password", password);
+		params.add("paypassword", paypassword);
+		params.add("Filename", Filename);
+		params.add("LoginName", LoginName);
+		result = clientHelper.execute(url, params, ClientHelper.POST);
 		return result;
 	}
 

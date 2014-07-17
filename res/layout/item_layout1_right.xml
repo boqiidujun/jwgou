@@ -1,45 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="220dp"
     android:orientation="vertical" >
 
-    <com.jwgou.android.widgets.NetImageView
-        android:id="@+id/image"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_horizontal"
-        android:layout_alignParentRight="true"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         android:orientation="vertical" >
-        <TextView 
-            android:id="@+id/text1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$32"
-            />
-        <TextView 
-            android:id="@+id/text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="冰点价：$32"
-            />
-        <TextView 
-            android:id="@+id/text3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="下单人数：32人"
-            />
-        <TextView 
-            android:id="@+id/text4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="仅差10人再降5元"
-            />
-    </LinearLayout>
 
-</RelativeLayout>
+        <com.jwgou.android.widgets.NetImageView
+            android:id="@+id/image"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="10dp" />
+
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/text0"
+                style="@style/Textlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_layout_item2"
+                android:drawableLeft="@drawable/ic_clock_new"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:layout_weight="0.15"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:text="00:00" />
+
+            <TextView
+                android:id="@+id/text1"
+                style="@style/Textlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_layout_item1"
+                android:layout_weight="0.15"
+                android:gravity="center"
+                android:text="￥32"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/text22"
+                style="@style/Textlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_layout_item2"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:layout_weight="0.15"
+                android:text="原价：￥32"
+                android:textSize="12sp" />
+            
+            <TextView
+                android:id="@+id/text2"
+                style="@style/Textlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.15"
+                android:background="@drawable/bg_layout_item3"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="冰点价：￥32"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/text3"
+                style="@style/Textlayout"
+                android:layout_width="fill_parent"
+                android:layout_weight="0.15"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_layout_item3"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="下单人数：32"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/text4"
+                style="@style/Textlayout"
+                android:layout_width="fill_parent"
+                android:layout_weight="0.25"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_layout_item3"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:minLines="2"
+                android:text="仅差10人再降5元"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="20dp" />
+
+</LinearLayout>

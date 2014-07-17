@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -110,7 +111,8 @@ public class JwgouDetail extends BaseActivity implements OnClickListener {
 				e.printStackTrace();
 			}
 		}
-		((TextView)findViewById(R.id.title_main)).setText(p.FmoContent);
+		((TextView)findViewById(R.id.title_main)).setText(Html.fromHtml(p.Title));
+		((TextView)findViewById(R.id.content)).setText(Html.fromHtml(p.FmoContent));
 		((TextView)findViewById(R.id.time)).setText(p.havetime + "");
 		((TextView)findViewById(R.id.tonight)).setText(p.NowPrice);
 		((TextView)findViewById(R.id.num)).setText(p.Num + "人");

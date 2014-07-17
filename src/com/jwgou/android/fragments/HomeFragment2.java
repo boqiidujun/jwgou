@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -84,17 +85,24 @@ public class HomeFragment2 extends Fragment {
 		for (int i = 0; i < data.length(); i++) {
 			Item item = new Item();
 			item.Json2Self(data.optJSONObject(i));
-			View v = mInflater.inflate(i % 2 == 0 ? R.layout.item_layout1_right : R.layout.item_layout1_left, null);
-			((NetImageView)v.findViewById(R.id.image)).setImageUrl(Util.GetImageUrl(item.Pic, Util.dip2px(getActivity(), 320), Util.dip2px(getActivity(), 100)), Config.PATH, null);
-			((TextView)v.findViewById(R.id.text1)).setText(item.YPrice);
-			((TextView)v.findViewById(R.id.text2)).setText("最终价："+ item.PayPrice);
-			((TextView)v.findViewById(R.id.text3)).setText("下单人数"+ item.HaveJionNum + "人");
+			View v = mInflater.inflate(R.layout.item_layout1_right, null);
+//			View v = mInflater.inflate(i % 2 == 0 ? R.layout.item_layout1_right : R.layout.item_layout1_left, null);
+			((NetImageView)v.findViewById(R.id.image)).setImageUrl(Util.GetImageUrl(item.Pic, Util.dip2px(getActivity(), 300), Util.dip2px(getActivity(), 200)), Config.PATH, null);
+			((TextView)v.findViewById(R.id.text1)).setText(item.NowPrice);
+			((TextView)v.findViewById(R.id.text0)).setCompoundDrawables(null, null, null, null);
+			((TextView)v.findViewById(R.id.text0)).setText("");
+			((TextView)v.findViewById(R.id.text2)).setText(Html.fromHtml("最终价：" + "<font color=\"#e4007f\">"+item.PayPrice+"</font>"));
+			((TextView)v.findViewById(R.id.text22)).setVisibility(View.GONE);
+			((TextView)v.findViewById(R.id.text3)).setText(Html.fromHtml("下单人数：" + "<font color=\"#e4007f\">"+item.HaveJionNum + "人" +"</font>"));
 			((TextView)v.findViewById(R.id.text4)).setVisibility(View.GONE);
 			layout3.addView(v);
 		}
 	}
 
 	class Item{
+		String cutPrice;
+		String NextNum;
+		long HaveTime;
 		String Pic;
 		int HaveJionNum;
 		String MinPrice;
@@ -106,8 +114,11 @@ public class HomeFragment2 extends Fragment {
 		String NowPrice;
 		public Item Json2Self(JSONObject o){
 			Pic = o.optString("Pic");
+			HaveTime = o.optLong("HaveTime");
 			HaveJionNum = o.optInt("HaveJionNum");
 			MinPrice = o.optString("MinPrice");
+			NextNum = o.optString("NextNum");
+			cutPrice = o.optString("cutPrice");
 			YPrice = o.optString("YPrice");
 			NextNeedNum = o.optString("NextNeedNum");
 			JwgouId = o.optInt("JwgouId");
@@ -123,11 +134,14 @@ public class HomeFragment2 extends Fragment {
 		for (int i = 0; i < data.length(); i++) {
 			Item item = new Item();
 			item.Json2Self(data.optJSONObject(i));
-			View v = mInflater.inflate(i % 2 == 0 ? R.layout.item_layout1_right : R.layout.item_layout1_left, null);
-			((NetImageView)v.findViewById(R.id.image)).setImageUrl(Util.GetImageUrl(item.Pic, Util.dip2px(getActivity(), 320), Util.dip2px(getActivity(), 100)), Config.PATH, null);
-			((TextView)v.findViewById(R.id.text1)).setText(item.YPrice);
-			((TextView)v.findViewById(R.id.text2)).setText("冰点价："+ item.MinPrice);
-			((TextView)v.findViewById(R.id.text3)).setText("下单人数"+ item.HaveJionNum + "人");
+			View v = mInflater.inflate(R.layout.item_layout1_right, null);
+//			View v = mInflater.inflate(i % 2 == 0 ? R.layout.item_layout1_right : R.layout.item_layout1_left, null);
+			((NetImageView)v.findViewById(R.id.image)).setImageUrl(Util.GetImageUrl(item.Pic, Util.dip2px(getActivity(), 300), Util.dip2px(getActivity(), 200)), Config.PATH, null);
+			((TextView)v.findViewById(R.id.text1)).setText(item.NowPrice);
+			((TextView)v.findViewById(R.id.text0)).setText(item.HaveTime + "");
+			((TextView)v.findViewById(R.id.text2)).setText(Html.fromHtml("冰点价：" + "<font color=\"#e4007f\">"+item.MinPrice+"</font>"));
+			((TextView)v.findViewById(R.id.text22)).setText(Html.fromHtml("原价：" + "<font color=\"#e4007f\">"+item.YPrice+"</font>"));
+			((TextView)v.findViewById(R.id.text3)).setText(Html.fromHtml("下单人数：" + "<font color=\"#e4007f\">"+item.HaveJionNum+ "人" +"</font>"));
 			((TextView)v.findViewById(R.id.text4)).setText(item.NextNeedNum);
 			final int id = item.JwgouId;
 			v.setOnClickListener(new OnClickListener() {
@@ -171,18 +185,44 @@ public class HomeFragment2 extends Fragment {
 
 	protected void initLayout2(JSONArray data) {
 		layout2.removeAllViews();
-		for (int i = 0; i < data.length() / 2; i++) {
+		for (int i = 0; i < data.length(); i++) {
 			Item item = new Item();
-			item.Json2Self(data.optJSONObject(i * 2));
-			Item item2 = new Item();
-			item2.Json2Self(data.optJSONObject(i * 2 + 1));
-			View v = mInflater.inflate(R.layout.item_layout2, null);
-			((NetImageView)v.findViewById(R.id.image1)).setImageUrl(Util.GetImageUrl(item.Pic, Util.dip2px(getActivity(), 150), Util.dip2px(getActivity(), 150)), Config.PATH, null);
-			((TextView)v.findViewById(R.id.text1)).setText(item.Title);
-			((NetImageView)v.findViewById(R.id.image2)).setImageUrl(Util.GetImageUrl(item2.Pic, Util.dip2px(getActivity(), 150), Util.dip2px(getActivity(), 150)), Config.PATH, null);
-			((TextView)v.findViewById(R.id.text2)).setText(item2.Title);
+			item.Json2Self(data.optJSONObject(i));
+			View v = mInflater.inflate(R.layout.item_layout1_right, null);
+//			View v = mInflater.inflate(i % 2 == 0 ? R.layout.item_layout1_right : R.layout.item_layout1_left, null);
+			((NetImageView)v.findViewById(R.id.image)).setImageUrl(Util.GetImageUrl(item.Pic, Util.dip2px(getActivity(), 300), Util.dip2px(getActivity(), 200)), Config.PATH, null);
+			((TextView)v.findViewById(R.id.text1)).setText("￥？");
+			((TextView)v.findViewById(R.id.text0)).setCompoundDrawables(null, null, null, null);
+			((TextView)v.findViewById(R.id.text0)).setText("");
+			((TextView)v.findViewById(R.id.text22)).setText(Html.fromHtml("初始价：" + "<font color=\"#e4007f\">"+item.YPrice+"</font>"));
+			((TextView)v.findViewById(R.id.text2)).setText(Html.fromHtml("降价条件：" + "<font color=\"#e4007f\">"+item.NextNum+"</font>"));
+			((TextView)v.findViewById(R.id.text3)).setText(Html.fromHtml("降价金额：" + "<font color=\"#e4007f\">"+item.cutPrice+"</font>")); 
+			((TextView)v.findViewById(R.id.text4)).setText(Html.fromHtml("冰点价：" + "<font color=\"#e4007f\">"+item.MinPrice+"</font>"));
+			final int id = item.JwgouId;
+			v.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					startActivity(new Intent(getActivity(), JwgouDetail.class).putExtra("ID", id));
+					
+				}
+			});
 			layout2.addView(v);
 		}
+	
+//		layout2.removeAllViews();
+//		for (int i = 0; i < data.length() / 2; i++) {
+//			Item item = new Item();
+//			item.Json2Self(data.optJSONObject(i * 2));
+//			Item item2 = new Item();
+//			item2.Json2Self(data.optJSONObject(i * 2 + 1));
+//			View v = mInflater.inflate(R.layout.item_layout2, null);
+//			((NetImageView)v.findViewById(R.id.image1)).setImageUrl(Util.GetImageUrl(item.Pic, Util.dip2px(getActivity(), 150), Util.dip2px(getActivity(), 150)), Config.PATH, null);
+//			((TextView)v.findViewById(R.id.text1)).setText(item.Title);
+//			((NetImageView)v.findViewById(R.id.image2)).setImageUrl(Util.GetImageUrl(item2.Pic, Util.dip2px(getActivity(), 150), Util.dip2px(getActivity(), 150)), Config.PATH, null);
+//			((TextView)v.findViewById(R.id.text2)).setText(item2.Title);
+//			layout2.addView(v);
+//		}
 	}
 
 	private void getData() {

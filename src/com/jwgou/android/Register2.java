@@ -1,7 +1,6 @@
 package com.jwgou.android;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,8 +9,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.jwgou.android.baseactivities.BaseActivity;
-import com.jwgou.android.baseservice.NetworkService;
-import com.jwgou.android.utils.HttpManager;
 import com.jwgou.android.utils.Util;
 
 public class Register2 extends BaseActivity implements OnClickListener {
@@ -32,10 +29,10 @@ public class Register2 extends BaseActivity implements OnClickListener {
 		((TextView)findViewById(R.id.title)).setText("账号注册");
 		((Button)findViewById(R.id.back)).setOnClickListener(this);
 		((Button)findViewById(R.id.login)).setOnClickListener(this);
-		et1 = (EditText)findViewById(R.id.et11); 
-		et2 = (EditText)findViewById(R.id.et2); 
-		et3 = (EditText)findViewById(R.id.et3); 
-		et4 = (EditText)findViewById(R.id.et4); 
+		et1 = (EditText)findViewById(R.id.et1); 
+		et2 = (EditText)findViewById(R.id.et11); 
+		et3 = (EditText)findViewById(R.id.et2); 
+		et4 = (EditText)findViewById(R.id.et22); 
 	}
 
 	@Override
@@ -45,7 +42,31 @@ public class Register2 extends BaseActivity implements OnClickListener {
 			finish();
 			break;
 		case R.id.login:
-			Register();
+			if(IsEmpty(et1.getText().toString())){
+				ShowToast("请输入登录密码");
+				return;
+			}
+			if(IsEmpty(et2.getText().toString())){
+				ShowToast("请再次输入登录密码");
+				return;
+			}
+			if(IsEmpty(et3.getText().toString())){
+				ShowToast("请输入支付密码");
+				return;
+			}
+			if(IsEmpty(et4.getText().toString())){
+				ShowToast("请再次输入支付密码");
+				return;
+			}
+			if(!et1.getText().toString().equals(et2.getText().toString())){
+				ShowToast("两次登录密码输入不一致");
+				return;
+			}
+			if(!et3.getText().toString().equals(et4.getText().toString())){
+				ShowToast("两次支付密码输入不一致");
+				return;
+			}
+			startActivity(new Intent(this, Register3.class).putExtra("email", email).putExtra("login", et1.getText().toString()).putExtra("pay", et3.getText().toString()));
 			break;
 
 		default:
@@ -53,24 +74,8 @@ public class Register2 extends BaseActivity implements OnClickListener {
 		}
 	}
 
-	private void Register() {
-		new HttpManager(this).Excute(new AsyncTask<Void, Void, String>(){
-
-			@Override
-			protected void onPostExecute(String result) {
-				// TODO Auto-generated method stub
-				super.onPostExecute(result);
-				if(!Util.isEmpty(result)){
-					
-				}
-				startActivity(new Intent(Register2.this, Register3.class));
-			}
-
-			@Override
-			protected String doInBackground(Void... params) {
-				return NetworkService.getInstance().Register(email);
-//				return null;
-			}});
+	private boolean IsEmpty(String s){
+		return Util.isEmpty(s);
 	}
 
 }

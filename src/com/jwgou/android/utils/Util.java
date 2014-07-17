@@ -1,10 +1,12 @@
 package com.jwgou.android.utils;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -95,6 +97,43 @@ public class Util {
 		}
 	}
 
+	
+	/**
+	 * 存储数据到文件
+	 * @param content
+	 */
+	public static void saveFile(String content, String filePath){
+		File mFile = new File(filePath);
+        File pFile = mFile.getParentFile();
+        if(pFile != null && !pFile.exists()){  
+        	pFile.mkdirs();  
+        }
+		if(mFile.isFile() && mFile.exists())
+			mFile.delete();
+		writeFile(filePath, content);
+		
+	}
+
+	private static void writeFile(String fileName, String data) {
+		BufferedWriter buf = null;
+		try {
+			buf = new BufferedWriter(new FileWriter(fileName, true));
+			buf.write(data, 0, data.length());
+			buf.newLine();
+		} catch (OutOfMemoryError oom) {
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (buf != null)
+					buf.close();
+			} catch (IOException e) {
+			}
+		}
+
+	}
+	
 	public static float GetDistanceToKM(float distance) {
 		return distance / 1000;
 	}

@@ -5,7 +5,34 @@
     android:background="@android:color/white"
     android:orientation="vertical" >
 
-    <include layout="@layout/top_title" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#c40e24"
+        android:padding="15dp" >
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="用户注册" />
+
+        <TextView
+            android:id="@+id/right_text"
+            style="@style/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -21,7 +48,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="2、填写验证码" />
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="三、设置密码" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="20dp"
+                android:text="1、设置登录密码" />
+
+            <EditText
+                android:id="@+id/et1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@android:color/black"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="重新输入登录密码" />
 
             <EditText
                 android:id="@+id/et11"
@@ -30,9 +78,10 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_marginTop="20dp" 
                 android:layout_height="wrap_content"
-                android:text="3、设置登录密码" />
+                android:textColor="@android:color/black"
+                android:layout_marginTop="20dp"
+                android:text="2、设置支付密码" />
 
             <EditText
                 android:id="@+id/et2"
@@ -41,27 +90,16 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_height="wrap_content"
-                android:text="重新输入登录密码" />
+                android:textColor="@android:color/black"
+                android:layout_marginTop="20dp"
+                android:text="重新输入支付密码" />
 
             <EditText
-                android:id="@+id/et3"
+                android:id="@+id/et22"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_height="wrap_content"
-                android:text="设置支付密码" />
-
-            <EditText
-                android:id="@+id/et4"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-
-           
             <Button
                 android:id="@+id/login"
                 android:layout_width="fill_parent"
@@ -70,6 +108,7 @@
                 android:layout_marginLeft="22.0dip"
                 android:layout_marginRight="22.0dip"
                 android:layout_marginTop="20.0dip"
+                android:padding="10dp"
                 android:background="@drawable/button_ok_bg"
                 android:text="下一步"
                 android:textColor="@android:color/white"

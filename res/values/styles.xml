@@ -2,7 +2,7 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="MspAppBaseTheme" parent="@android:style/Theme.Light.NoTitleBar" />
 
@@ -31,6 +31,10 @@
     <style name="TextMedium">
         <item name="android:textSize">18.0sp</item>
         <item name="android:textColor">#ff444444</item>
+    </style>
+
+    <style name="Textlayout">
+        <item name="android:textColor">#ffffff</item>
     </style>
 
     <style name="TextSmall">
@@ -243,7 +247,5 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">15sp</item>
     </style>
-
-    <style name="ProgressBar_Circular" parent="@android:style/Widget.ProgressBar.Small" />
 
 </resources>
