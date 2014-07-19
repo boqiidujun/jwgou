@@ -3,10 +3,10 @@ package com.jwgou.android;
 import cn.sharesdk.framework.ShareSDK;
 
 import com.jwgou.android.baseactivities.BaseFragmentActivity;
-import com.jwgou.android.fragments.BuyerFragment;
+import com.jwgou.android.fragments.Jwgou3Fragment;
 import com.jwgou.android.fragments.HomeFragment;
 import com.jwgou.android.fragments.HomeFragment2;
-import com.jwgou.android.fragments.LiveFragment;
+import com.jwgou.android.fragments.Jwgou2Fragment;
 import com.jwgou.android.fragments.UserinfoFragment;
 import com.jwgou.android.widgets.DummyTabContent;
 
@@ -25,8 +25,8 @@ public class MainActivity extends BaseFragmentActivity {
 	TabWidget tabWidget;
 	LinearLayout bottom_layout;
 	HomeFragment2 homeFragment;
-	LiveFragment liveFragment;
-	BuyerFragment buyerFragment;
+	Jwgou2Fragment liveFragment;
+	Jwgou3Fragment buyerFragment;
 	UserinfoFragment userinfoFragment;
 	android.support.v4.app.FragmentTransaction ft;
 	RelativeLayout tabIndicator1, tabIndicator2, tabIndicator3, tabIndicator4;
@@ -68,8 +68,8 @@ public class MainActivity extends BaseFragmentActivity {
 				}
 				android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
 				homeFragment = (HomeFragment2) fm.findFragmentByTag("home");
-				liveFragment = (LiveFragment) fm.findFragmentByTag("live");
-				buyerFragment = (BuyerFragment) fm.findFragmentByTag("buyer");
+				liveFragment = (Jwgou2Fragment) fm.findFragmentByTag("live");
+				buyerFragment = (Jwgou3Fragment) fm.findFragmentByTag("buyer");
 				userinfoFragment = (UserinfoFragment) fm.findFragmentByTag("userinfo");
 				ft = fm.beginTransaction();
 
@@ -161,7 +161,7 @@ public class MainActivity extends BaseFragmentActivity {
 
 	public void isTabNear() {
 		if (liveFragment == null) {
-			ft.add(R.id.realtabcontent, new LiveFragment(), "live");
+			ft.add(R.id.realtabcontent, new Jwgou2Fragment(), "live");
 		} else {
 			ft.show(liveFragment);
 		}
@@ -170,7 +170,7 @@ public class MainActivity extends BaseFragmentActivity {
 	public void isTabMine() {
 
 		if (buyerFragment == null) {
-			ft.add(R.id.realtabcontent, new BuyerFragment(), "buyer");
+			ft.add(R.id.realtabcontent, new Jwgou3Fragment(), "buyer");
 		} else {
 			ft.show(buyerFragment);
 		}

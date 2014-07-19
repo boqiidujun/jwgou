@@ -87,6 +87,7 @@ public class MyAddressAdapter extends BaseAdapter {
 					listener.ClickListener(index, 2);
 			}
 		});
+		holder.checkbox.setChecked(a.UserDefault == 1);
 		holder.checkbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			
 			@Override

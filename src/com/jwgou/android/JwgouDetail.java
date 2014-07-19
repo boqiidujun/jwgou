@@ -2,6 +2,7 @@ package com.jwgou.android;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -10,6 +11,8 @@ import org.json.JSONObject;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
@@ -23,6 +26,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Gallery.LayoutParams;
+import android.widget.Toast;
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.framework.utils.UIHandler;
 
 import com.jwgou.android.baseactivities.BaseActivity;
 import com.jwgou.android.baseservice.NetworkService;
@@ -33,7 +41,7 @@ import com.jwgou.android.utils.Util;
 import com.jwgou.android.widgets.AdGallery;
 import com.jwgou.android.widgets.NetImageView;
 
-public class JwgouDetail extends BaseActivity implements OnClickListener {
+public class JwgouDetail extends BaseActivity implements OnClickListener, Callback {
 
 	private int JwgouId;
 	private AdGallery gallery;
@@ -207,6 +215,57 @@ public class JwgouDetail extends BaseActivity implements OnClickListener {
 		}
 	}
 
+	/**
+	 * 快捷分享的监听
+	 */
+	class OneKeyShareCallback implements PlatformActionListener {
+
+		@Override
+		public void onCancel(Platform arg0, int arg1) {
+			UIHandler.sendEmptyMessage(0, JwgouDetail.this);
+		}
+
+		@Override
+		public void onComplete(Platform arg0, int arg1, HashMap<String, Object> arg2) {
+			UIHandler.sendEmptyMessage(1, JwgouDetail.this);
+		}
+
+		@Override
+		public void onError(Platform arg0, int arg1, Throwable arg2) {
+			Message msg = new Message();
+			msg.what = -1;
+			msg.obj = arg2;
+			UIHandler.sendMessage(msg, JwgouDetail.this);
+		}
+
+	}
+
+	/**
+	 * 快捷分享的方回调
+	 */
+	@Override
+	public boolean handleMessage(Message msg) {
+		switch (msg.what) {
+		case -1:
+			Toast.makeText(JwgouDetail.this, "分享失败", Toast.LENGTH_LONG).show();
+			// System.out.println("分享失败，原因：" + msg.obj);
+			break;
+		case 1:
+			Toast.makeText(this, "分享成功", Toast.LENGTH_SHORT).show();
+			break;
+		case 0:
+			Toast.makeText(JwgouDetail.this, "取消分享", Toast.LENGTH_SHORT).show();
+			break;
+		}
+		return false;
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		ShareSDK.stopSDK(this);
+	}
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -221,6 +280,7 @@ public class JwgouDetail extends BaseActivity implements OnClickListener {
 			startActivity(new Intent(this, JwgouCommitOrder.class).putExtra("PRODUCT", p));
 			break;
 		case R.id.share:
+			Util.share(this, new OneKeyShareCallback());
 			break;
 
 		default:

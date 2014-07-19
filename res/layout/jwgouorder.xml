@@ -5,70 +5,94 @@
     android:background="@android:color/white"
     android:orientation="vertical" >
 
-    <include layout="@layout/top_title"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#c40e24"
+        android:padding="15dp" >
 
-    <LinearLayout 
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_back"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="已参团订单" />
+
+        <TextView
+            android:id="@+id/right_text"
+            style="@style/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#d1d1d1"
-        android:gravity="center_vertical"
-        >
-        <TextView 
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+        android:gravity="center_vertical" >
+
+        <TextView
             android:id="@+id/tab1"
+            style="@style/text_dark_gray_24"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:drawablePadding="5dp"
             android:layout_gravity="center"
-            style="@style/text_dark_gray_24"
-            android:gravity="bottom|center_horizontal"
-            android:text="待付款"
+            android:layout_weight="1"
             android:background="@android:color/white"
-            />
-        
-        <TextView 
-            android:paddingTop="10dp"
+            android:drawablePadding="5dp"
+            android:gravity="bottom|center_horizontal"
             android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="已生成订单" />
+
+        <TextView
             android:id="@+id/tab2"
+            style="@style/text_dark_gray_24"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:drawablePadding="5dp"
             android:layout_gravity="center"
-            style="@style/text_dark_gray_24"
-            android:gravity="bottom|center_horizontal"
-            android:text="待生成订单"
+            android:layout_weight="1"
             android:background="@android:color/white"
-            />
-        
+            android:drawablePadding="5dp"
+            android:gravity="bottom|center_horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="待生成订单" />
     </LinearLayout>
-    
-    <LinearLayout 
+
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="3dp"
-        >
-        <View 
+        android:layout_height="3dp" >
+
+        <View
             android:id="@+id/view1"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="#ff0000"
-            />
-        <View 
+            android:background="#ff0000" />
+
+        <View
             android:id="@+id/view2"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="#aaaaaa"
-            />
+            android:background="#aaaaaa" />
     </LinearLayout>
-    
+
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </FrameLayout>
-    
+
 </LinearLayout>

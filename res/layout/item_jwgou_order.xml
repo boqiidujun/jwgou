@@ -20,6 +20,7 @@
         <TextView
             android:id="@+id/title"
             android:layout_width="fill_parent"
+            android:textColor="@android:color/black"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="钙镁锌" />
@@ -44,6 +45,7 @@
             android:id="@+id/message"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
             android:layout_marginTop="10dp"
             android:text="包装结实" />
 

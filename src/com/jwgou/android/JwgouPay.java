@@ -6,16 +6,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -75,8 +78,8 @@ public class JwgouPay extends BaseActivity implements OnClickListener {
 	
 	protected void initData(JSONObject data) {
 		((TextView)findViewById(R.id.text2)).setText(data.optString("AccountBalances") + "元");
-		DecimalFormat df = new DecimalFormat("#.00");
-		float money = (float) (o.NowPrice - data.optDouble("AccountBalances"));
+		DecimalFormat df = new DecimalFormat("#0.00");
+		float money = (float) (o.NowPrice - Math.min(o.NowPrice, data.optDouble("AccountBalances")));
 		((TextView)findViewById(R.id.text3)).setText(df.format(money) + "");
 	}
 	private View view;
@@ -102,7 +105,17 @@ public class JwgouPay extends BaseActivity implements OnClickListener {
 			break;
 		case R.id.pay:
 			view = LayoutInflater.from(this).inflate(R.layout.dialog_password, null);
-			final AlertDialog dialog = new AlertDialog.Builder(JwgouPay.this).setView(view).show();
+			final Dialog dialog = new Dialog(this, R.style.MyDialog);
+			dialog.setContentView(view);
+			dialog.show();
+			Window dialogWindow = dialog.getWindow();
+	        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+	        dialogWindow.setGravity(Gravity.CENTER);
+	        lp.width = (int) (getWindowManager().getDefaultDisplay().getWidth() * 0.8);
+	        dialogWindow.setAttributes(lp);
+			
+//			final AlertDialog dialog = new AlertDialog.Builder(JwgouPay.this, R.style.MyDialog).setView(view).show();
+//			final AlertDialog dialog = new AlertDialog.Builder(JwgouPay.this).setView(view).show();
 			password = (EditText)view.findViewById(R.id.password);
 			sure = (TextView)view.findViewById(R.id.sure);
 			sure.setOnClickListener(new OnClickListener() {
@@ -134,10 +147,14 @@ public class JwgouPay extends BaseActivity implements OnClickListener {
 						JSONObject o = new JSONObject(result);
 						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
 							JSONObject data = o.optJSONObject("ResponseData");
-
-							String info = data.optString("OrderInfo");
-							startAlipay(info);
-						}
+							if(data == null){
+								finish();
+							}else{
+								String info = data.optString("OrderInfo");
+								startAlipay(info);	
+							}
+						}else
+							ShowToast(o.optString("ResponseMsg"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}

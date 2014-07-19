@@ -13,6 +13,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jwgou.android.JwgouCommitOrder;
 import com.jwgou.android.JwgouOrderActivity;
 import com.jwgou.android.JwgouPay;
+import com.jwgou.android.MainActivity;
 import com.jwgou.android.R;
 import com.jwgou.android.adapter.JwgouOrderAdapter;
 import com.jwgou.android.adapter.JwgouOrderAdapter.BtnListener;
@@ -51,7 +52,15 @@ public class JwgouOrderFragment extends Fragment implements BtnListener {
 		super.onCreate(savedInstanceState);
 		if (getArguments().containsKey("INDEX"))
 			index = getArguments().getInt("INDEX");
-		app = ((JwgouOrderActivity) getActivity()).getApp();
+		app = ((MainActivity) getActivity()).getApp();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		pageNums = 1;
+		list.clear();
+		getData();
 	}
 
 	@Override

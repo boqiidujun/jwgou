@@ -1,4 +1,4 @@
-package com.jwgou.android;
+package com.jwgou.android.fragments;
 
 import java.util.ArrayList;
 
@@ -6,59 +6,65 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
-
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.jwgou.android.MainActivity;
+import com.jwgou.android.R;
 import com.jwgou.android.adapter.MyAddressAdapter;
-import com.jwgou.android.adapter.MyListViewAdapter;
 import com.jwgou.android.adapter.MyAddressAdapter.ItemListener;
-import com.jwgou.android.baseactivities.BaseActivity;
 import com.jwgou.android.baseservice.NetworkService;
-import com.jwgou.android.entities.Action;
 import com.jwgou.android.entities.Address;
 import com.jwgou.android.utils.Config;
 import com.jwgou.android.utils.HttpManager;
 import com.jwgou.android.utils.Util;
-import com.jwgou.android.utils.Utility;
 
-public class AddressManagerActivity extends BaseActivity implements OnClickListener, ItemListener {
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class Jwgou3Fragment extends Fragment implements OnClickListener, ItemListener  {
 
 	private PullToRefreshListView listview;
 	private MyAddressAdapter mAdapter;
 	private ArrayList<Address> list = new ArrayList<Address>();
 	private LinearLayout fullscreen_loading_root;
 	private int pageNums = 1;
-
+	private View v;
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_list);
-		initView();
 	}
 
 	@Override
-	protected void onResume() {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		v = inflater.inflate(R.layout.activity_list, container, false);
+		initView();
+		return v;
+	}
+
+	@Override
+	public void onResume() {
 		pageNums = 1;
 		list.clear();
 		getData();
 	}
-
+	
 	private void initView() {
-		((Button) findViewById(R.id.back)).setOnClickListener(this);
-		((Button) findViewById(R.id.back)).setVisibility(View.VISIBLE);
-		((TextView) findViewById(R.id.title)).setText("收货地址");
-		listview = (PullToRefreshListView) findViewById(R.id.listview);
+		((Button) v.findViewById(R.id.back)).setOnClickListener(this);
+		((TextView) v.findViewById(R.id.title)).setText("收货地址");
+		listview = (PullToRefreshListView) v.findViewById(R.id.listview);
 		listview.setMode(Mode.BOTH);
 		listview.setOnRefreshListener(new OnRefreshListener<ListView>() {
 
@@ -73,14 +79,14 @@ public class AddressManagerActivity extends BaseActivity implements OnClickListe
 			}
 		});
 		list = new ArrayList<Address>();
-		mAdapter = new MyAddressAdapter(this, list, this);
+		mAdapter = new MyAddressAdapter(getActivity(), list, this);
 		listview.setAdapter(mAdapter);
-		fullscreen_loading_root = (LinearLayout) findViewById(R.id.fullscreen_loading_root);
+		fullscreen_loading_root = (LinearLayout) v.findViewById(R.id.fullscreen_loading_root);
 		getData();
 	}
 
-	private void getData() {
-		new HttpManager(this).Excute(new AsyncTask<Void, Void, String>() {
+	protected void getData() {
+		new HttpManager(getActivity()).Excute(new AsyncTask<Void, Void, String>() {
 
 			@Override
 			protected void onPostExecute(String result) {
@@ -116,7 +122,7 @@ public class AddressManagerActivity extends BaseActivity implements OnClickListe
 
 			@Override
 			protected String doInBackground(Void... params) {
-				return NetworkService.getInstance().GetAddressListing(getApp().user.UId, pageNums++);
+				return NetworkService.getInstance().GetAddressListing(((MainActivity)getActivity()).getApp().user.UId, pageNums++);
 			}
 		});
 
@@ -124,14 +130,8 @@ public class AddressManagerActivity extends BaseActivity implements OnClickListe
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.back:
-			finish();
-			break;
-
-		default:
-			break;
-		}
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -150,10 +150,10 @@ public class AddressManagerActivity extends BaseActivity implements OnClickListe
 			Delete(a, index);
 			break;
 		case 3://select
-			Intent i = new Intent();
-			i.putExtra("ADDRESS", a);
-			setResult(RESULT_OK, i);
-			finish();
+//			Intent i = new Intent();
+//			i.putExtra("ADDRESS", a);
+//			setResult(RESULT_OK, i);
+//			finish();
 			break;
 
 		default:
@@ -162,7 +162,7 @@ public class AddressManagerActivity extends BaseActivity implements OnClickListe
 	}
 
 	private void Delete(final Address a,final int index) {
-		new HttpManager(this).Excute(new AsyncTask<Void, Void, String>(){
+		new HttpManager(getActivity()).Excute(new AsyncTask<Void, Void, String>(){
 
 			@Override
 			protected void onPostExecute(String result) {
@@ -173,7 +173,7 @@ public class AddressManagerActivity extends BaseActivity implements OnClickListe
 							list.remove(index);
 							mAdapter.notifyDataSetChanged();
 						}else{
-							ShowToast(o.optString("ResponseMsg"));
+							Toast.makeText(getActivity(), o.optString("ResponseMsg"), Toast.LENGTH_SHORT).show();
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -183,12 +183,12 @@ public class AddressManagerActivity extends BaseActivity implements OnClickListe
 
 			@Override
 			protected String doInBackground(Void... params) {
-				return NetworkService.getInstance().DelAddress(a.AddressId, getApp().user.UId);
+				return NetworkService.getInstance().DelAddress(a.AddressId, ((MainActivity) getActivity()).getApp().user.UId);
 			}});
 	}
 
 	private void Default(final Address a, final int index) {
-		new HttpManager(this).Excute(new AsyncTask<Void, Void, String>(){
+		new HttpManager(getActivity()).Excute(new AsyncTask<Void, Void, String>(){
 
 			@Override
 			protected void onPostExecute(String result) {
@@ -202,7 +202,7 @@ public class AddressManagerActivity extends BaseActivity implements OnClickListe
 							list.get(index).UserDefault = 1;
 							mAdapter.notifyDataSetChanged();
 						}else{
-							ShowToast(o.optString("ResponseMsg"));
+							Toast.makeText(getActivity(), o.optString("ResponseMsg"), Toast.LENGTH_SHORT).show();
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -212,8 +212,7 @@ public class AddressManagerActivity extends BaseActivity implements OnClickListe
 
 			@Override
 			protected String doInBackground(Void... params) {
-				return NetworkService.getInstance().EidtDefaultAddress(a.AddressId, getApp().user.UId);
+				return NetworkService.getInstance().EidtDefaultAddress(a.AddressId, ((MainActivity) getActivity()).getApp().user.UId);
 			}});
 	}
-
 }

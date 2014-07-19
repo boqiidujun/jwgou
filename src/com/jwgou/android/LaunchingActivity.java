@@ -156,7 +156,7 @@ public class LaunchingActivity extends BaseActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		mHandler.sendEmptyMessageDelayed(0, 1);
+		mHandler.sendEmptyMessageDelayed(0, 2000);
 	}
 	
 }

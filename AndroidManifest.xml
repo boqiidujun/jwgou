@@ -30,7 +30,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
     <application
@@ -80,6 +80,12 @@
         <activity android:screenOrientation="portrait" android:name="JwgouCommitOrder"></activity>
         <activity android:screenOrientation="portrait" android:name="JwgouOrderActivity"></activity>
         <activity android:screenOrientation="portrait" android:name="JwgouPay"></activity>
+        <activity android:name="Password" android:screenOrientation="portrait"></activity>
+        <activity android:name="Password2" android:screenOrientation="portrait"></activity>
+        <activity android:name="Password3" android:screenOrientation="portrait"></activity>
+        <activity android:name="AliWebLoginActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="WebViewActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="AddAddressActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

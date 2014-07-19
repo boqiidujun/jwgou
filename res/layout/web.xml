@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@android:color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical" >
+
+    <!-- title -->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,8 +16,7 @@
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_back"
-            android:visibility="gone" />
+            android:background="@drawable/ic_back" />
 
         <TextView
             android:id="@+id/title"
@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="收货地址" />
+            android:text="@string/Q_and_A_label" />
 
         <TextView
             android:id="@+id/right_text"
@@ -35,22 +35,12 @@
             android:layout_centerVertical="true" />
     </RelativeLayout>
 
-    <include
+    <WebView
+        android:id="@+id/web_view"
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
+        android:layout_height="fill_parent"
         android:layout_weight="1"
-         layout="@layout/include_list" />
-    
-    <TextView
-            android:id="@+id/addaddress"
-            android:text="添加地址"
-            android:layout_width="fill_parent"
-            android:background="@drawable/right_button_bg"
-            android:padding="5dp"
-            android:gravity="center"
-            android:layout_margin="20dp"
-            android:textSize="14.0sp"
-            android:textColor="@android:color/white"
-            android:layout_height="wrap_content" />
+        android:fitsSystemWindows="true" >
+    </WebView>
 
 </LinearLayout>

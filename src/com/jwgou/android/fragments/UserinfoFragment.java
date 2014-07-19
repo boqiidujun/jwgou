@@ -1,11 +1,10 @@
 package com.jwgou.android.fragments;
 
-import com.jwgou.android.AddressManagerActivity;
 import com.jwgou.android.MainActivity;
 import com.jwgou.android.MyMessageActivity;
-import com.jwgou.android.MyOrderActivity;
 import com.jwgou.android.R;
 import com.jwgou.android.RedPackage;
+import com.jwgou.android.WebViewActivity;
 import com.jwgou.android.entities.User;
 import com.jwgou.android.utils.Config;
 import com.jwgou.android.utils.Util;
@@ -21,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class UserinfoFragment extends Fragment implements OnClickListener {
 
@@ -72,17 +72,22 @@ public class UserinfoFragment extends Fragment implements OnClickListener {
 			((MainActivity)getActivity()).setTab(0);
 			break;
 		case R.id.llSelfOrders:
-			startActivity(new Intent(getActivity(), MyOrderActivity.class));
+//			startActivity(new Intent(getActivity(), MyOrderActivity.class));
+			((MainActivity)getActivity()).setTab(1);
 			break;
 		case R.id.llSelfMessageCenter:
 			startActivity(new Intent(getActivity(), MyMessageActivity.class));
 			break;
 		case R.id.llVersionTip:
+			//TODO
+			Toast.makeText(getActivity(), "当前已经是最新版", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.llQandA:
+			startActivity(new Intent(getActivity(), WebViewActivity.class).putExtra("URL", "http://211.144.76.91:180/Q_A.aspx"));
 			break;
 		case R.id.llAddressManager:
-			startActivity(new Intent(getActivity(), AddressManagerActivity.class));
+//			startActivity(new Intent(getActivity(), AddressManagerActivity.class));
+			((MainActivity)getActivity()).setTab(2);
 			break;
 		case R.id.tvtolook:
 			startActivity(new Intent(getActivity(), RedPackage.class));

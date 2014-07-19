@@ -104,8 +104,8 @@ public class Register3 extends BaseActivity implements OnClickListener {
 						JSONObject o = new JSONObject(result);
 						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
 							startActivity(new Intent(Register3.this, Register4.class));
-						}
-						ShowToast(o.optString("ResponseMsg"));
+						}else
+							ShowToast(o.optString("ResponseMsg"));
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -144,8 +144,9 @@ public class Register3 extends BaseActivity implements OnClickListener {
 						JSONObject o = new JSONObject(result);
 						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
 							name = string;
-						}
-						ShowToast(o.optString("ResponseMsg"));
+							ShowToast(o.optString("ResponseData"));
+						}else
+							ShowToast(o.optString("ResponseMsg"));
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

@@ -74,6 +74,17 @@ public class NetworkService {
 		return result;
 	}
 
+	public String OtherLogin(String token, int OtherState, String uid) {
+		String result = "";
+		String url = getUrl("OtherLogin") + "?";
+		RequestParameters params = new RequestParameters();
+		params.add("token", token);
+		params.add("OtherState", OtherState);
+		params.add("uid", uid);
+		result = clientHelper.execute(url, params, ClientHelper.GET);
+		return result;
+	}
+
 	public String GetJwGouOrderList_Creat(int UserId) {
 		String result = "";
 		String url = getUrl("GetJwGouOrderList_Creat") + "?";
@@ -98,8 +109,8 @@ public class NetworkService {
 	}
 
 	public String uploadUserImg(Bitmap bitmap) {
-//		String actionUrl = SERVER_URL + "UpLoadImg";
-		String actionUrl = "http://localhost:27239/PhoneDate.asmx/UpLoadImg";
+		String actionUrl = SERVER_URL + "UpLoadImg";
+//		String actionUrl = "http://localhost:27239/PhoneDate.asmx/UpLoadImg";
 		try {
 			URL url = new URL(actionUrl);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -108,6 +119,8 @@ public class NetworkService {
 			con.setUseCaches(false);
 			con.setRequestMethod("POST");
 			DataOutputStream ds = new DataOutputStream(con.getOutputStream());
+			String s = "bmp=";
+			ds.write(s.getBytes());
 //			Bitmap tempBitmap = Helper.setBitmapSize(bitmap, 192, 192);
 			File fold = new File(Config.PATH);
 			if (!fold.exists()) {
@@ -277,6 +290,15 @@ public class NetworkService {
 		return result;
 	}
 	
+	public String EidtPassWordStart(String Email) {
+		String result = "";
+		String url = getUrl("EidtPassWordStart") + "?";
+		RequestParameters params = new RequestParameters();
+		params.add("Phone", Email);
+		result = clientHelper.execute(url, params, ClientHelper.GET);
+		return result;
+	}
+	
 	/**
 	 * 
 	Phone手机号码
@@ -300,6 +322,16 @@ public class NetworkService {
 		params.add("paypassword", paypassword);
 		params.add("Filename", Filename);
 		params.add("LoginName", LoginName);
+		result = clientHelper.execute(url, params, ClientHelper.POST);
+		return result;
+	}
+	public String EidtPassWord(String Phone, String password, String paypassword) {
+		String result = "";
+		String url = getUrl("EidtPassWord") + "?";
+		RequestParameters params = new RequestParameters();
+		params.add("Phone", Phone);
+		params.add("password", password);
+		params.add("paypassword", paypassword);
 		result = clientHelper.execute(url, params, ClientHelper.POST);
 		return result;
 	}
@@ -455,7 +487,7 @@ public class NetworkService {
 	 * @param UserId
 	 * @return
 	 */
-	public String AddAddress(String FullName, String FProvinceName, String FCityName, String FAreaName, String AddrLine, String Phone, int UserId) {
+	public String AddAddress(String FullName, String FProvinceName, String FCityName, String FAreaName, String AddrLine, String Phone, String ZIP, int UserId) {
 		String result = "";
 		String url = getUrl("AddAddress") + "?";
 		RequestParameters params = new RequestParameters();
@@ -465,8 +497,9 @@ public class NetworkService {
 		params.add("FAreaName", FAreaName);
 		params.add("AddrLine", AddrLine);
 		params.add("Phone", Phone);
+		params.add("ZIP", ZIP);
 		params.add("UserId", UserId);
-		result = clientHelper.execute(url, params, ClientHelper.GET);
+		result = clientHelper.execute(url, params, ClientHelper.POST);
 		return result;
 	}
 
@@ -486,7 +519,23 @@ public class NetworkService {
 		result = clientHelper.execute(url, params, ClientHelper.GET);
 		return result;
 	}
-
+	
+	/**
+	 * 修改默认地址
+	 * @param AddressId
+	 * @param UserId
+	 * @return
+	 */
+	public String EidtDefaultAddress(int AddressId, int UserId) {
+		String result = "";
+		String url = getUrl("EidtDefaultAddress") + "?";
+		RequestParameters params = new RequestParameters();
+		params.add("AddressId", AddressId);
+		params.add("UserId", UserId);
+		result = clientHelper.execute(url, params, ClientHelper.GET);
+		return result;
+	}
+	
 	/**
 	 * 回复我的评论
 	 * 

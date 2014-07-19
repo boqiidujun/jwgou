@@ -6,315 +6,358 @@
     android:background="@android:color/white"
     android:orientation="vertical" >
 
-    <include layout="@layout/top_title" />
-
     <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="120.0dip"
-        android:padding="5.0dip" >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#c40e24"
+        android:padding="15dp" >
 
-        <com.jwgou.android.widgets.CircleNetImageView
-            android:id="@+id/civSelf"
-            android:layout_width="64.0dip"
-            android:layout_height="64.0dip"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true" />
-
-        <TextView
-            android:id="@+id/tvSelfName"
+        <Button
+            android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/civSelf"
-            android:layout_marginLeft="10.0dip"
-            android:layout_toRightOf="@id/civSelf"
-            android:textColor="#ff333333"
-            android:textSize="20.0sp" />
+            android:background="@drawable/ic_back"
+            android:visibility="gone" />
 
         <TextView
-            android:id="@+id/tvSelfBalanceTip"
+            android:id="@+id/title"
+            style="@style/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/tvSelfName"
-            android:layout_below="@id/tvSelfName"
-            android:layout_marginBottom="5.0dip"
-            android:layout_marginTop="5.0dip"
-            android:text="剩余金额:"
-            android:textColor="#ff666666"
-            android:textSize="14.0sp" />
+            android:layout_centerInParent="true"
+            android:text="个人中心" />
 
         <TextView
-            android:id="@+id/tvSelfBalance"
+            android:id="@+id/right_text"
+            style="@style/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/tvSelfBalanceTip"
-            android:layout_toRightOf="@id/tvSelfBalanceTip"
-            android:textColor="#ff666666"
-            android:textSize="14.0sp" />
-
-        <TextView
-            android:id="@+id/tvSelfGiftMoneyTip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5.0dip"
-            android:layout_below="@id/tvSelfBalanceTip"
-            android:layout_alignLeft="@id/tvSelfName"
-            android:text="红包余额:"
-            android:textColor="#ff666666"
-            android:textSize="14.0sp" />
-
-        <TextView
-            android:id="@+id/tvSelfGiftMoney"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="5.0dip"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/tvSelfGiftMoneyTip"
-            android:layout_toRightOf="@id/tvSelfGiftMoneyTip"
-            android:textColor="#ff666666"
-            android:textSize="14.0sp" />
-
-        <TextView
-            android:id="@+id/tvtolook"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="5.0dip"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/tvSelfGiftMoneyTip"
-            android:text="查看红包"
-            android:layout_marginRight="20dp"
-            android:textColor="@android:color/white"
-            android:padding="5dp"
-            android:gravity="center"
-            android:background="@drawable/right_button_bg"
             android:layout_alignParentRight="true"
-            android:textSize="14.0sp" />
+            android:layout_centerVertical="true" />
     </RelativeLayout>
 
-    <ImageView
+    <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="1.0px"
-        android:src="@color/divider_line" />
+        android:layout_height="fill_parent" >
 
-    <LinearLayout
-        android:id="@+id/llSelfOrders"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/self_info_item_bg"
-        android:orientation="vertical" >
-
-        <RelativeLayout
-            android:id="@+id/rlSelfOrders"
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="15.0dip" >
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/tvSelfOrdersTip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:text="我的订单"
-                android:textColor="#ff666666"
-                android:textSize="18.0sp" />
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="120.0dip"
+                android:padding="5.0dip" >
 
-            <TextView
-                android:id="@+id/tvSelfOrdersNum"
-                android:layout_width="20.0dip"
-                android:layout_height="20.0dip"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="30.0dip"
-                android:background="@drawable/paopao"
-                android:gravity="center"
-                android:padding="1.0dip"
-                android:textColor="@android:color/white"
-                android:textSize="12.0sp"
-                android:visibility="gone" />
+                <com.jwgou.android.widgets.CircleNetImageView
+                    android:id="@+id/civSelf"
+                    android:layout_width="64.0dip"
+                    android:layout_height="64.0dip"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:id="@+id/tvSelfName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/civSelf"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_toRightOf="@id/civSelf"
+                    android:textColor="#ff333333"
+                    android:textSize="20.0sp" />
+
+                <TextView
+                    android:id="@+id/tvSelfBalanceTip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tvSelfName"
+                    android:layout_below="@id/tvSelfName"
+                    android:layout_marginBottom="5.0dip"
+                    android:layout_marginTop="5.0dip"
+                    android:text="剩余金额:"
+                    android:textColor="#ff666666"
+                    android:textSize="14.0sp" />
+
+                <TextView
+                    android:id="@+id/tvSelfBalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/tvSelfBalanceTip"
+                    android:layout_toRightOf="@id/tvSelfBalanceTip"
+                    android:textColor="#ff666666"
+                    android:textSize="14.0sp" />
+
+                <TextView
+                    android:id="@+id/tvSelfGiftMoneyTip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tvSelfName"
+                    android:layout_below="@id/tvSelfBalanceTip"
+                    android:layout_marginTop="5.0dip"
+                    android:visibility="invisible"
+                    android:text="红包余额:"
+                    android:textColor="#ff666666"
+                    android:textSize="14.0sp" />
+
+                <TextView
+                    android:id="@+id/tvSelfGiftMoney"
+                    android:layout_width="wrap_content"
+                    android:visibility="invisible"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/tvSelfGiftMoneyTip"
+                    android:layout_marginTop="5.0dip"
+                    android:layout_toRightOf="@id/tvSelfGiftMoneyTip"
+                    android:textColor="#ff666666"
+                    android:textSize="14.0sp" />
+
+                <TextView
+                    android:id="@+id/tvtolook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/tvSelfGiftMoneyTip"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:visibility="invisible"
+                    android:layout_marginTop="5.0dip"
+                    android:background="@drawable/right_button_bg"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="查看红包"
+                    android:textColor="@android:color/white"
+                    android:textSize="14.0sp" />
+            </RelativeLayout>
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_height="1.0px"
+                android:src="@color/divider_line" />
+
+            <LinearLayout
+                android:id="@+id/llSelfOrders"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10.0dip"
-                android:src="@drawable/usercenter_arrow_icon" />
-        </RelativeLayout>
+                android:background="@drawable/self_info_item_bg"
+                android:orientation="vertical" >
 
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"
-            android:src="@color/divider_line" />
-    </LinearLayout>
+                <RelativeLayout
+                    android:id="@+id/rlSelfOrders"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15.0dip" >
 
-    <LinearLayout
-        android:id="@+id/llSelfMessageCenter"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/self_info_item_bg"
-        android:orientation="vertical" >
+                    <TextView
+                        android:id="@+id/tvSelfOrdersTip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="参团列表"
+                        android:textColor="#ff666666"
+                        android:textSize="18.0sp" />
 
-        <RelativeLayout
-            android:id="@+id/rlMessageCenter"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="15.0dip" >
+                    <TextView
+                        android:id="@+id/tvSelfOrdersNum"
+                        android:layout_width="20.0dip"
+                        android:layout_height="20.0dip"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="30.0dip"
+                        android:background="@drawable/paopao"
+                        android:gravity="center"
+                        android:padding="1.0dip"
+                        android:textColor="@android:color/white"
+                        android:textSize="12.0sp"
+                        android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/tvMessageCenterTip"
-                android:layout_width="wrap_content"
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10.0dip"
+                        android:src="@drawable/usercenter_arrow_icon" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0px"
+                    android:src="@color/divider_line" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSelfMessageCenter"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:text="消息中心"
-                android:textColor="#ff666666"
-                android:textSize="18.0sp" />
+                android:visibility="gone"
+                android:background="@drawable/self_info_item_bg"
+                android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/tvMessageCenterNum"
-                android:layout_width="20.0dip"
-                android:layout_height="20.0dip"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="30.0dip"
-                android:background="@drawable/paopao"
-                android:gravity="center"
-                android:padding="1.0dip"
-                android:textColor="@android:color/white"
-                android:textSize="12.0sp"
-                android:visibility="gone" />
+                <RelativeLayout
+                    android:id="@+id/rlMessageCenter"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15.0dip" >
 
-            <ImageView
-                android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/tvMessageCenterTip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="消息中心"
+                        android:textColor="#ff666666"
+                        android:textSize="18.0sp" />
+
+                    <TextView
+                        android:id="@+id/tvMessageCenterNum"
+                        android:layout_width="20.0dip"
+                        android:layout_height="20.0dip"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="30.0dip"
+                        android:background="@drawable/paopao"
+                        android:gravity="center"
+                        android:padding="1.0dip"
+                        android:textColor="@android:color/white"
+                        android:textSize="12.0sp"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10.0dip"
+                        android:src="@drawable/usercenter_arrow_icon" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0px"
+                    android:src="@color/divider_line" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llVersionTip"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10.0dip"
-                android:src="@drawable/usercenter_arrow_icon" />
-        </RelativeLayout>
+                android:background="@drawable/self_info_item_bg"
+                android:orientation="vertical" >
 
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"
-            android:src="@color/divider_line" />
-    </LinearLayout>
+                <RelativeLayout
+                    android:id="@+id/rlNewVersion"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15.0dip" >
 
-    <LinearLayout
-        android:id="@+id/llVersionTip"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/self_info_item_bg"
-        android:orientation="vertical" >
+                    <TextView
+                        android:id="@+id/tvNewVersionTip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="当前版本1.0.0"
+                        android:textColor="#ff666666"
+                        android:textSize="18.0sp" />
 
-        <RelativeLayout
-            android:id="@+id/rlNewVersion"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="15.0dip" >
+                    <TextView
+                        android:id="@+id/tvUpdateNewVersion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/round_button_bg"
+                        android:gravity="center"
+                        android:padding="5.0dip"
+                        android:text="点击更新"
+                        android:textColor="@android:color/white"
+                        android:textSize="16.0sp"
+                        android:visibility="gone" />
+                </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tvNewVersionTip"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0px"
+                    android:src="@color/divider_line" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llQandA"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:text="当前版本1.0.0"
-                android:textColor="#ff666666"
-                android:textSize="18.0sp" />
+                android:background="@drawable/self_info_item_bg"
+                android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/tvUpdateNewVersion"
-                android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/rlQandA"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15.0dip" >
+
+                    <TextView
+                        android:id="@+id/tvQandATip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="Q&amp;A"
+                        android:textColor="#ff666666"
+                        android:textSize="18.0sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10.0dip"
+                        android:src="@drawable/usercenter_arrow_icon" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0px"
+                    android:src="@color/divider_line" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llAddressManager"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/round_button_bg"
-                android:gravity="center"
-                android:padding="5.0dip"
-                android:text="点击更新"
-                android:textColor="@android:color/white"
-                android:textSize="16.0sp"
-                android:visibility="gone" />
-        </RelativeLayout>
+                android:background="@drawable/self_info_item_bg"
+                android:orientation="vertical" >
 
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"
-            android:src="@color/divider_line" />
-    </LinearLayout>
+                <RelativeLayout
+                    android:id="@+id/rlAddressManager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15.0dip" >
 
-    <LinearLayout
-        android:id="@+id/llQandA"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/self_info_item_bg"
-        android:orientation="vertical" >
+                    <TextView
+                        android:id="@+id/tvAddressManagerTip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="收货地址管理"
+                        android:textColor="#ff666666"
+                        android:textSize="18.0sp" />
 
-        <RelativeLayout
-            android:id="@+id/rlQandA"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="15.0dip" >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10.0dip"
+                        android:src="@drawable/usercenter_arrow_icon" />
+                </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tvQandATip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:text="Q&amp;A"
-                android:textColor="#ff666666"
-                android:textSize="18.0sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10.0dip"
-                android:src="@drawable/usercenter_arrow_icon" />
-        </RelativeLayout>
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"
-            android:src="@color/divider_line" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llAddressManager"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/self_info_item_bg"
-        android:orientation="vertical" >
-
-        <RelativeLayout
-            android:id="@+id/rlAddressManager"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="15.0dip" >
-
-            <TextView
-                android:id="@+id/tvAddressManagerTip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:text="收货地址管理"
-                android:textColor="#ff666666"
-                android:textSize="18.0sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10.0dip"
-                android:src="@drawable/usercenter_arrow_icon" />
-        </RelativeLayout>
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"
-            android:src="@color/divider_line" />
-    </LinearLayout>
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0px"
+                    android:src="@color/divider_line" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

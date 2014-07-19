@@ -5,23 +5,16 @@
     android:background="@android:color/white"
     android:orientation="vertical" >
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/top_title"
-        android:contentDescription="@string/title" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#dd8c93"
-        android:padding="5dp" >
+        android:background="#c40e24"
+        android:padding="15dp" >
 
         <Button
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:background="@drawable/ic_back" />
 
         <TextView
@@ -64,40 +57,46 @@
             <com.jwgou.android.widgets.NetImageView
                 android:id="@+id/image1"
                 android:layout_width="fill_parent"
-                android:visibility="gone"
-                android:layout_height="150dp" />
+                android:layout_height="150dp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/title_main"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical" >
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="10dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="数量：" />
+                    android:text="数量："
+                    android:textColor="@android:color/black" />
 
                 <EditText
                     android:id="@+id/edit"
                     android:layout_width="100dp"
+                    android:layout_height="wrap_content"
                     android:inputType="number"
-                    android:layout_height="wrap_content" />
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="件" />
+                    android:text="件"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="每人限购" />
+                    android:text="每人限购"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/num"
@@ -109,39 +108,58 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="件" />
+                    android:text="件"
+                    android:textColor="@android:color/black" />
             </LinearLayout>
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="留言" />
+                android:text="留言"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/edit_content"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:hint="请留下购买留言，方便卖家采购"
                 android:minLines="2" />
+            
+            <TextView 
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/black"
+                />
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="选择地址" />
+                android:layout_marginTop="10dp"
+                android:text="选择地址"
+                android:textColor="@android:color/black" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" >
 
                 <TextView
                     android:id="@+id/address"
-                    android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="请选择收货地址"
                     android:padding="10dp"
-                    android:textColor="@android:color/black" />
+                    android:text="请选择收货地址"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
             </LinearLayout>
+            <TextView 
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/black"
+                />
 
             <Button
                 android:id="@+id/commit"

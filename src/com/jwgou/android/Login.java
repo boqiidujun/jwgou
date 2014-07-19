@@ -95,8 +95,10 @@ public class Login extends BaseActivity implements OnClickListener {
 		if (plat.equals(QZone.NAME)) {
 			plat = "qq";
 //			fastLogin(Userid, pdb.getToken(), plat);
+			OtherLogin(pdb.getToken(), 1, pdb.getUserId());
 		} else if (plat.equals(SinaWeibo.NAME)) {
 			plat = "sina";
+			OtherLogin(pdb.getToken(), 0, pdb.getUserId());
 //			fastLogin(Userid, pdb.getToken(), plat);
 		} else {
 //			fastLogin(Userid, pdb.getToken(), plat);
@@ -267,10 +269,11 @@ public class Login extends BaseActivity implements OnClickListener {
 			startActivity(new Intent(this, Register.class));
 			break;
 		case R.id.tvResetPassword:
+			startActivity(new Intent(this, Password.class));
 			break;
 		case R.id.alipay:
 			startActivityForResult(
-					new Intent(this, AliWebLoginActivity.class).putExtra("URL", "http://www.baidu.com"), ALIWEB);
+					new Intent(this, AliWebLoginActivity.class).putExtra("URL", NetworkService.SERVER + "PhoneAlipayLogin.aspx"), ALIWEB);
 			break;
 		case R.id.qq:
 			authorize(new QZone(this));
@@ -282,6 +285,45 @@ public class Login extends BaseActivity implements OnClickListener {
 		default:
 			break;
 		}
+	}
+	
+	private void OtherLogin(final String token, final int state,final String uid){
+		final ProgressDialog dialog = new ProgressDialog(this);
+		dialog.setMessage("登录中...");
+		new HttpManager(this).Excute(new AsyncTask<Void, Void, String>() {
+
+			@Override
+			protected void onPreExecute() {
+				// TODO Auto-generated method stub
+				super.onPreExecute();
+				dialog.show();
+			}
+
+			@Override
+			protected String doInBackground(Void... params) {
+				return NetworkService.getInstance().OtherLogin(token, state, uid);
+			}
+
+			@Override
+			protected void onPostExecute(String result) {
+				if(dialog != null && dialog.isShowing() && dialog.getWindow().isActive())
+					dialog.dismiss();
+				if (!Util.isEmpty(result)) {
+					try {
+						JSONObject o = new JSONObject(result);
+						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
+							User u = new User();
+							u.Json2Self(o.optJSONObject("ResponseData"));
+							getApp().user = u;
+							setResult(RESULT_OK);
+							finish();
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		});
 	}
 
 	private void doLogin() {
