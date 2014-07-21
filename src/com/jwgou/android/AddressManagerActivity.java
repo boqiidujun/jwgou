@@ -49,12 +49,14 @@ public class AddressManagerActivity extends BaseActivity implements OnClickListe
 
 	@Override
 	protected void onResume() {
+		super.onResume();
 		pageNums = 1;
 		list.clear();
 		getData();
 	}
 
 	private void initView() {
+		((TextView)findViewById(R.id.addaddress)).setOnClickListener(this);
 		((Button) findViewById(R.id.back)).setOnClickListener(this);
 		((Button) findViewById(R.id.back)).setVisibility(View.VISIBLE);
 		((TextView) findViewById(R.id.title)).setText("收货地址");
@@ -128,7 +130,9 @@ public class AddressManagerActivity extends BaseActivity implements OnClickListe
 		case R.id.back:
 			finish();
 			break;
-
+		case R.id.addaddress:
+			startActivity(new Intent(this, AddAddressActivity.class));
+			break;
 		default:
 			break;
 		}

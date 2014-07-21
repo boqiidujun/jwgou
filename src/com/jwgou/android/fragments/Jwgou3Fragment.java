@@ -10,6 +10,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
+import com.jwgou.android.AddAddressActivity;
 import com.jwgou.android.MainActivity;
 import com.jwgou.android.R;
 import com.jwgou.android.adapter.MyAddressAdapter;
@@ -20,6 +21,7 @@ import com.jwgou.android.utils.Config;
 import com.jwgou.android.utils.HttpManager;
 import com.jwgou.android.utils.Util;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -56,12 +58,14 @@ public class Jwgou3Fragment extends Fragment implements OnClickListener, ItemLis
 
 	@Override
 	public void onResume() {
+		super.onResume();
 		pageNums = 1;
 		list.clear();
 		getData();
 	}
 	
 	private void initView() {
+		((TextView)v.findViewById(R.id.addaddress)).setOnClickListener(this);
 		((Button) v.findViewById(R.id.back)).setOnClickListener(this);
 		((TextView) v.findViewById(R.id.title)).setText("收货地址");
 		listview = (PullToRefreshListView) v.findViewById(R.id.listview);
@@ -131,6 +135,14 @@ public class Jwgou3Fragment extends Fragment implements OnClickListener, ItemLis
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.addaddress:
+			startActivity(new Intent(getActivity(), AddAddressActivity.class));
+			break;
+
+		default:
+			break;
+		}
 		
 	}
 

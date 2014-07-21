@@ -64,10 +64,23 @@ public class Login extends BaseActivity implements OnClickListener {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode == RESULT_OK) {
 			if (requestCode == ALIWEB) {
-				pd.show();
+//				pd.show();
 				Bundle b = data.getExtras();
-				String userid = b.getString("USERID");
-				login("alipay", userid, null);
+				String result = b.getString("RESULT");
+				if (!Util.isEmpty(result)) {
+					try {
+						JSONObject o = new JSONObject(result);
+						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
+							User u = new User();
+							u.Json2Self(o.optJSONObject("ResponseData"));
+							getApp().user = u;
+							setResult(RESULT_OK);
+							finish();
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		}
 	}
@@ -103,61 +116,6 @@ public class Login extends BaseActivity implements OnClickListener {
 		} else {
 //			fastLogin(Userid, pdb.getToken(), plat);
 		}
-	}
-
-	/**
-	 * 快登
-	 * 
-	 * @param UserId
-	 * @param ChannelType渠道： qq,sina,alipay
-	 */
-//	private void fastLogin(final String UserId, final String AccessToken, final String ChannelType) {
-//		new HttpManager(this).Excute(new AsyncTask<Void, Void, String>() {
-//
-//			@Override
-//			protected String doInBackground(Void... params) {
-//				return NetworkService.getInstance().FastLogin(UserId, AccessToken, ChannelType);
-//			}
-//
-//			@Override
-//			protected void onPostExecute(String result) {
-//				super.onPostExecute(result);
-//				if (!Util.isEmpty(result)) {
-//					try {
-//						JSONObject obj = new JSONObject(result);
-//						int status = obj.optInt("ResponseStatus", -1);
-//						if (status == Constants.RESPONSE_OK) {
-//							JSONObject data = obj.optJSONObject("ResponseData");
-//							// System.out.println("data==" + data);
-//							BaseApplication application = (BaseApplication) getApplication();
-//							User user = new User();
-//							user = User.JsonToSelf(data, "", "");
-//							application.user = user;
-//							// //返回数据标识是否登录成功
-//							Intent mIntent = new Intent();
-//							mIntent.putExtra(LOGIN_RESULT, true);
-//							setResult(RESULT_OK, mIntent);
-//							String userInfo = user.toString();
-//							SaveUserInfo(userInfo);
-//							finish();
-//						} else {
-//							ShowToast(obj.optString("ResponseMsg"));
-//						}
-//					} catch (Exception e) {
-//						e.printStackTrace();
-//					} finally {
-//						if (pd != null) {
-//							pd.dismiss();
-//						}
-//					}
-//				}
-//			}
-//		});
-//	}
-
-	private void SaveUserInfo(String userinfo) {
-		Util.saveFile(userinfo, this.getExternalFilesDir(null) + "/userinfo");
-		Util.saveFile(userinfo, this.getFilesDir().getAbsolutePath() + "/userinfo");
 	}
 
 	/*********************************** 授权的监听和回调 *************************************************/
@@ -288,15 +246,15 @@ public class Login extends BaseActivity implements OnClickListener {
 	}
 	
 	private void OtherLogin(final String token, final int state,final String uid){
-		final ProgressDialog dialog = new ProgressDialog(this);
-		dialog.setMessage("登录中...");
+//		final ProgressDialog dialog = new ProgressDialog(this);
+//		dialog.setMessage("登录中...");
 		new HttpManager(this).Excute(new AsyncTask<Void, Void, String>() {
 
 			@Override
 			protected void onPreExecute() {
 				// TODO Auto-generated method stub
 				super.onPreExecute();
-				dialog.show();
+//				dialog.show();
 			}
 
 			@Override
@@ -306,8 +264,8 @@ public class Login extends BaseActivity implements OnClickListener {
 
 			@Override
 			protected void onPostExecute(String result) {
-				if(dialog != null && dialog.isShowing() && dialog.getWindow().isActive())
-					dialog.dismiss();
+//				if(dialog != null && dialog.isShowing() && dialog.getWindow().isActive())
+//					dialog.dismiss();
 				if (!Util.isEmpty(result)) {
 					try {
 						JSONObject o = new JSONObject(result);

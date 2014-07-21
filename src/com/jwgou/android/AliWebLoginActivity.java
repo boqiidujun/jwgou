@@ -56,7 +56,7 @@ public class AliWebLoginActivity extends BaseActivity implements OnClickListener
 				public void run() {
 					if(!Util.isEmpty(json)){
 						Bundle bundle = new Bundle();
-						bundle.putString("USERID", json);
+						bundle.putString("RESULT", json);
 						setResult(RESULT_OK, new Intent().putExtras(bundle));
 						AliWebLoginActivity.this.finish();
 					}
