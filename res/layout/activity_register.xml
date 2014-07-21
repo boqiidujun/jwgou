@@ -55,7 +55,7 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="一、填写邮箱"
+                android:text="一、填写手机号码"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -116,7 +116,7 @@
                 android:layout_marginTop="20.0dip"
                 android:background="@drawable/button_ok_bg"
                 android:padding="10dp"
-                android:text="登录"
+                android:text="下一步"
                 android:textColor="@android:color/white"
                 android:textSize="16.0sp" />
         </LinearLayout>

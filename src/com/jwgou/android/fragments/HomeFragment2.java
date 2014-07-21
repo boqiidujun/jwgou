@@ -142,7 +142,7 @@ public class HomeFragment2 extends Fragment {
 			((TextView)v.findViewById(R.id.text2)).setText(Html.fromHtml("冰点价：" + "<font color=\"#e4007f\">"+item.MinPrice+"</font>"));
 			((TextView)v.findViewById(R.id.text22)).setText(Html.fromHtml("原价：" + "<font color=\"#e4007f\">"+item.YPrice+"</font>"));
 			((TextView)v.findViewById(R.id.text3)).setText(Html.fromHtml("下单人数：" + "<font color=\"#e4007f\">"+item.HaveJionNum+ "人" +"</font>"));
-			((TextView)v.findViewById(R.id.text4)).setText(item.NextNeedNum);
+			((TextView)v.findViewById(R.id.text4)).setText(Html.fromHtml(item.NextNeedNum));
 			final int id = item.JwgouId;
 			v.setOnClickListener(new OnClickListener() {
 				

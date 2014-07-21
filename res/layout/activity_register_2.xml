@@ -61,6 +61,7 @@
 
             <EditText
                 android:id="@+id/et1"
+                android:inputType="textPassword"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" />
 
@@ -73,6 +74,7 @@
 
             <EditText
                 android:id="@+id/et11"
+                android:inputType="textPassword"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" />
 
@@ -85,6 +87,7 @@
 
             <EditText
                 android:id="@+id/et2"
+                android:inputType="textPassword"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" />
 
@@ -97,6 +100,7 @@
 
             <EditText
                 android:id="@+id/et22"
+                android:inputType="textPassword"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" />
 
