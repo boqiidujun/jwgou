@@ -85,7 +85,8 @@
                     android:layout_height="fill_parent"
                     android:background="#c62b2f"
                     android:gravity="center"
-                    android:padding="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
                     android:text="验证"
                     android:textColor="@android:color/white" />
             </LinearLayout>

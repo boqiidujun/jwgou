@@ -39,7 +39,7 @@ public class JwgouCommitOrder extends BaseActivity implements OnClickListener {
 		((TextView)findViewById(R.id.address)).setOnClickListener(this);
 		((Button)findViewById(R.id.back)).setOnClickListener(this);
 		((Button)findViewById(R.id.commit)).setOnClickListener(this);
-		((TextView)findViewById(R.id.title_main)).setText(p.FmoContent);
+		((TextView)findViewById(R.id.title_main)).setText(p.Title);
 		if(!Util.isEmpty(p.Pic)){
 			JSONArray a;
 			try {

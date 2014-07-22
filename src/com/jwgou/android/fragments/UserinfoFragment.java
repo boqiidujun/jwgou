@@ -53,6 +53,14 @@ public class UserinfoFragment extends Fragment implements OnClickListener {
 		
 	}
 
+	
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		initUser();
+	}
+
 	private void initUser() {
 		User u = ((MainActivity)getActivity()).getApp().user;
 		((CircleNetImageView)view.findViewById(R.id.civSelf)).setImageUrl(Util.GetImageUrl(u.HeadStr, Util.dip2px(getActivity(), 64), Util.dip2px(getActivity(), 64)), Config.PATH, null);

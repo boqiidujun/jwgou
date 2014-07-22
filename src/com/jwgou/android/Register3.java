@@ -43,7 +43,6 @@ public class Register3 extends BaseActivity implements OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register_3);
 		initView();
@@ -51,7 +50,6 @@ public class Register3 extends BaseActivity implements OnClickListener {
 
 	private void initView() {
 		mDialog = new ProgressDialog(this);
-		// TODO Auto-generated method stub
 		((TextView) findViewById(R.id.title)).setText("账号注册");
 		photo = (ImageView) findViewById(R.id.photo);
 		photo.setOnClickListener(this);

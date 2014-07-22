@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical" >
 
     <RelativeLayout
+        android:id="@+id/toplayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#c40e24"
@@ -37,6 +38,7 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_below="@id/toplayout"
         android:fadingEdge="none"
         android:padding="5dp"
         android:scrollbars="none" >
@@ -196,8 +198,8 @@
                             android:id="@+id/rule"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="每50人降5元"
                             android:gravity="center"
+                            android:text="每50人降5元"
                             android:textColor="@android:color/black" />
                     </LinearLayout>
                 </LinearLayout>
@@ -295,35 +297,36 @@
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="100dp"
-                android:background="@drawable/bg_time_text"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="10dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="仅剩"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp" >
-                </TextView>
-
-                <TextView
-                    android:id="@+id/time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="09:50"
-                    android:textColor="@android:color/white"
-                    android:textSize="15sp" >
-                </TextView>
-            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/bg_time_text"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="仅剩"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="09:50"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" >
+        </TextView>
+    </LinearLayout>
+
+</RelativeLayout>

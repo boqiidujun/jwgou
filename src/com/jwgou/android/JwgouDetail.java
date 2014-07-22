@@ -1,6 +1,5 @@
 package com.jwgou.android;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -11,10 +10,10 @@ import org.json.JSONObject;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.Html;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
@@ -52,6 +51,7 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.jwgoudetail);
+		ShareSDK.initSDK(this);
 		JwgouId = this.getIntent().getIntExtra("ID", 0);
 		initView();
 		GetData();
@@ -121,6 +121,20 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 		}
 		((TextView)findViewById(R.id.title_main)).setText(Html.fromHtml(p.Title));
 		((TextView)findViewById(R.id.content)).setText(Html.fromHtml(p.FmoContent));
+
+		CountDownTimer timer = new CountDownTimer(p.havetime, 1000) {
+
+			@Override
+			public void onFinish() {
+				((TextView)findViewById(R.id.time)).setText("活动已结束");
+			}
+
+			@Override
+			public void onTick(long millisUntilFinished) {
+				((TextView)findViewById(R.id.time)).setText(Util.calculate(millisUntilFinished));
+			}
+		};
+		timer.start();
 		((TextView)findViewById(R.id.time)).setText(p.havetime + "");
 		((TextView)findViewById(R.id.tonight)).setText(p.NowPrice);
 		((TextView)findViewById(R.id.num)).setText(p.Num + "人");

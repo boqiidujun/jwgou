@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -36,6 +37,7 @@ public class Register extends BaseActivity implements OnClickListener {
 		((Button)findViewById(R.id.login)).setOnClickListener(this);
 	}
 
+	private boolean isSent = false;
 	private String phone;
 	@Override
 	public void onClick(View v) {
@@ -44,6 +46,9 @@ public class Register extends BaseActivity implements OnClickListener {
 			finish();
 			break;
 		case R.id.send:
+			if(isSent){
+				return;
+			}
 			phone = ((EditText)findViewById(R.id.email)).getText().toString();
 			if(Util.isEmpty(phone) || !Util.isMobileNO(phone)){
 				ShowToast("请输入正确手机号");
@@ -76,8 +81,25 @@ public class Register extends BaseActivity implements OnClickListener {
 					try {
 						JSONObject o = new JSONObject(result);
 						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
+							isSent = true;
+							((Button)findViewById(R.id.send)).setEnabled(false);
 							ShowToast("发送成功");
 							code = o.optString("ResponseData");
+
+							CountDownTimer timer = new CountDownTimer(5 * 60 * 1000, 1000) {
+
+								@Override
+								public void onFinish() {
+									((Button)findViewById(R.id.send)).setEnabled(true);
+									isSent = false;
+								}
+
+								@Override
+								public void onTick(long millisUntilFinished) {
+									((Button)findViewById(R.id.send)).setText(Util.calculate(millisUntilFinished));
+								}
+							};
+							timer.start();
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();

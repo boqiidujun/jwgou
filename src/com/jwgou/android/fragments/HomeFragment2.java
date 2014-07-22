@@ -16,6 +16,7 @@ import com.jwgou.android.widgets.NetImageView;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -134,10 +135,23 @@ public class HomeFragment2 extends Fragment {
 		for (int i = 0; i < data.length(); i++) {
 			Item item = new Item();
 			item.Json2Self(data.optJSONObject(i));
-			View v = mInflater.inflate(R.layout.item_layout1_right, null);
+			final View v = mInflater.inflate(R.layout.item_layout1_right, null);
 //			View v = mInflater.inflate(i % 2 == 0 ? R.layout.item_layout1_right : R.layout.item_layout1_left, null);
 			((NetImageView)v.findViewById(R.id.image)).setImageUrl(Util.GetImageUrl(item.Pic, Util.dip2px(getActivity(), 300), Util.dip2px(getActivity(), 200)), Config.PATH, null);
 			((TextView)v.findViewById(R.id.text1)).setText(item.NowPrice);
+			CountDownTimer timer = new CountDownTimer(item.HaveTime, 1000) {
+
+				@Override
+				public void onFinish() {
+					((TextView)v.findViewById(R.id.text0)).setText("活动已结束");
+				}
+
+				@Override
+				public void onTick(long millisUntilFinished) {
+					((TextView)v.findViewById(R.id.text0)).setText(Util.calculate(millisUntilFinished));
+				}
+			};
+			timer.start();
 			((TextView)v.findViewById(R.id.text0)).setText(item.HaveTime + "");
 			((TextView)v.findViewById(R.id.text2)).setText(Html.fromHtml("冰点价：" + "<font color=\"#e4007f\">"+item.MinPrice+"</font>"));
 			((TextView)v.findViewById(R.id.text22)).setText(Html.fromHtml("原价：" + "<font color=\"#e4007f\">"+item.YPrice+"</font>"));

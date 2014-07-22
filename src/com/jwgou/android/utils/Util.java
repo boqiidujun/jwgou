@@ -57,6 +57,15 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 public class Util {
 
 	private final static String NAME = "JWGOU";
+	
+	public static String calculate(long times) {
+		long time = times / 1000;
+		int hour = (int) (time / 3600);
+		int minute = (int) ((time - hour * 3600) / 60);
+		int second = (int) (time - hour * 3600 - minute * 60);
+		return hour + ":" + (minute < 10 ? "0" + minute : minute) + ":"
+				+ (second < 10 ? "0" + second : second);
+	}
 	public static void CopyAssets(final Context c, String assetDir, String dir) {
 		String[] files;
 		try {
