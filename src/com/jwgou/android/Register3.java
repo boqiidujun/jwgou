@@ -322,10 +322,14 @@ public class Register3 extends BaseActivity implements OnClickListener {
 					File file = new File(Config.PATH + "/" + "camera.png");
 					isOriginalPic = false;
 					if (file.exists()) {
-						Bitmap bitmap = BitmapFactory.decodeFile(Config.PATH + "/" + "camera.png");
-						if (bitmap != null) {
-							myBitmap = bitmap;
-							headimg = Util.setBitmapSize(myBitmap, Util.dip2px(this, 160), Util.dip2px(this, 160));
+						try {
+							Bitmap bitmap = BitmapFactory.decodeFile(Config.PATH + "/" + "camera.png");
+							if (bitmap != null) {
+								myBitmap = bitmap;
+								headimg = Util.setBitmapSize(myBitmap, Util.dip2px(this, 160), Util.dip2px(this, 160));
+							}
+						} catch (OutOfMemoryError e) {
+							ShowToast("图片太大");
 						}
 					}
 				} else {

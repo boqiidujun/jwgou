@@ -10,6 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import android.graphics.Bitmap;
+import android.util.Base64;
 
 import com.jwgou.android.baseservice.ClientHelper.TimeOutListener;
 import com.jwgou.android.utils.Config;
@@ -94,6 +95,15 @@ public class NetworkService {
 		return result;
 	}
 
+	public String UpLoadImg(String bmp) {
+		String result = "";
+		String url = getUrl("UpLoadImg") + "?";
+		RequestParameters params = new RequestParameters();
+		params.add("bmp", bmp);
+		result = clientHelper.execute(url, params, ClientHelper.POST);
+		return result;
+	}
+
 	private File convertBitmapToFile(File file, Bitmap bitmap) {
 		try {
 			FileOutputStream out = new FileOutputStream(file);
@@ -109,18 +119,18 @@ public class NetworkService {
 	}
 
 	public String uploadUserImg(Bitmap bitmap) {
-		String actionUrl = SERVER_URL + "UpLoadImg";
+//		String actionUrl = SERVER_URL + "UpLoadImg";
 //		String actionUrl = "http://localhost:27239/PhoneDate.asmx/UpLoadImg";
 		try {
-			URL url = new URL(actionUrl);
-			HttpURLConnection con = (HttpURLConnection) url.openConnection();
-			con.setDoInput(true);
-			con.setDoOutput(true);
-			con.setUseCaches(false);
-			con.setRequestMethod("POST");
-			DataOutputStream ds = new DataOutputStream(con.getOutputStream());
-			String s = "bmp=";
-			ds.write(s.getBytes());
+//			URL url = new URL(actionUrl);
+//			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+//			con.setDoInput(true);
+//			con.setDoOutput(true);
+//			con.setUseCaches(false);
+//			con.setRequestMethod("POST");
+//			DataOutputStream ds = new DataOutputStream(con.getOutputStream());
+//			String s = "bmp=";
+//			ds.write(s.getBytes());
 //			Bitmap tempBitmap = Helper.setBitmapSize(bitmap, 192, 192);
 			File fold = new File(Config.PATH);
 			if (!fold.exists()) {
@@ -129,23 +139,35 @@ public class NetworkService {
 			File file = new File(Config.PATH + "/temp.png");
 			file = convertBitmapToFile(file, bitmap);
 			FileInputStream fStream = new FileInputStream(file);
-			int bufferSize = 1024;
-			byte[] buffer = new byte[bufferSize];
-			int length = -1;
-			while ((length = fStream.read(buffer)) != -1) {
-				ds.write(buffer, 0, length);
+			
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			byte[] buffer =  new byte[1024];
+			int count = 0;
+			while((count = fStream.read(buffer)) >=0){
+				baos.write(buffer, 0, count);
 			}
+			String uploadBuffer = new String(Base64.encode(baos.toByteArray(), Base64.DEFAULT));
+			UpLoadImg(uploadBuffer);
 			fStream.close();
-			ds.flush();
-			InputStream is = con.getInputStream();
-
-			int ch;
-			StringBuffer b = new StringBuffer();
-			while ((ch = is.read()) != -1) {
-				b.append((char) ch);
-			}
-			ds.close();
-			return b.toString();
+			
+			
+//			int bufferSize = 1024;
+//			byte[] buffer = new byte[bufferSize];
+//			int length = -1;
+//			while ((length = fStream.read(buffer)) != -1) {
+//				ds.write(buffer, 0, length);
+//			}
+//			fStream.close();
+//			ds.flush();
+//			InputStream is = con.getInputStream();
+//
+//			int ch;
+//			StringBuffer b = new StringBuffer();
+//			while ((ch = is.read()) != -1) {
+//				b.append((char) ch);
+//			}
+//			ds.close();
+//			return b.toString();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
