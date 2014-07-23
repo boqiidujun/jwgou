@@ -10,6 +10,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.jwgou.android.Active;
 import com.jwgou.android.JwgouCommitOrder;
 import com.jwgou.android.JwgouOrderActivity;
 import com.jwgou.android.JwgouPay;
@@ -137,7 +138,10 @@ public class JwgouOrderFragment extends Fragment implements BtnListener {
 
 	@Override
 	public void Pay(JwgouOrder o) {
-		startActivity(new Intent(getActivity(), JwgouPay.class).putExtra("ORDER", o));
+		if(((MainActivity)getActivity()).getApp().user.UserState == 1)
+			startActivity(new Intent(getActivity(), JwgouPay.class).putExtra("ORDER", o));
+		else
+			startActivity(new Intent(getActivity(), Active.class));
 	}
 
 }

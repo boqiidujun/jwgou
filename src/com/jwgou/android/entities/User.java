@@ -15,6 +15,7 @@ public class User extends BaseObject {
 	public double UserMoney;// 余额
 	public int PhoneMessage;//站内信数量
 	public String HeadStr;//用户头像
+	public int UserState;//1 不需要激活
 	
 	public User Json2Self(JSONObject o){
 		UName = o.optString("UName");
@@ -22,6 +23,7 @@ public class User extends BaseObject {
 		UserMoney = o.optDouble("UserMoney");
 		PhoneMessage = o.optInt("PhoneMessage");
 		HeadStr = o.optString("HeadStr");
+		UserState = o.optInt("UserState");
 		return this;
 	}
 }

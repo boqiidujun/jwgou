@@ -86,6 +86,10 @@
         <activity android:name="AliWebLoginActivity" android:screenOrientation="portrait"></activity>
         <activity android:name="WebViewActivity" android:screenOrientation="portrait"></activity>
         <activity android:name="AddAddressActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="Active" android:screenOrientation="portrait"></activity>
+        <activity android:name="Active2" android:screenOrientation="portrait"></activity>
+        <activity android:name="Active3" android:screenOrientation="portrait"></activity>
+        <activity android:name="Active4" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

@@ -311,7 +311,19 @@ public class NetworkService {
 		result = clientHelper.execute(url, params, ClientHelper.GET);
 		return result;
 	}
-	
+	/**
+	 * 激活开始
+	 * @param Email
+	 * @return
+	 */
+	public String ActivetionStart(String Email) {
+		String result = "";
+		String url = getUrl("ActivetionStart") + "?";
+		RequestParameters params = new RequestParameters();
+		params.add("Phone", Email);
+		result = clientHelper.execute(url, params, ClientHelper.GET);
+		return result;
+	}
 	public String EidtPassWordStart(String Email) {
 		String result = "";
 		String url = getUrl("EidtPassWordStart") + "?";
@@ -344,6 +356,27 @@ public class NetworkService {
 		params.add("paypassword", paypassword);
 		params.add("Filename", Filename);
 		params.add("LoginName", LoginName);
+		result = clientHelper.execute(url, params, ClientHelper.POST);
+		return result;
+	}
+	/**
+	 * 
+	 * @param UserId
+	 * @param Phone
+	 * @param paypassword
+	 * @param Filename
+	 * @param LoginName
+	 * @return
+	 */
+	public String ActivetionEnd(int UserId, String Phone, String paypassword, String Filename, String LoginName) {
+		String result = "";
+		String url = getUrl("ActivetionEnd") + "?";
+		RequestParameters params = new RequestParameters();
+		params.add("Phone", Phone);
+		params.add("paypassword", paypassword);
+		params.add("Filename", Filename);
+		params.add("LoginName", LoginName);
+		params.add("UserId", UserId);
 		result = clientHelper.execute(url, params, ClientHelper.POST);
 		return result;
 	}
