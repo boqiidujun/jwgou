@@ -660,14 +660,14 @@ public class Util {
 	/**
 	 * 快捷分享的方法
 	 */
-	public static void share(final Context context, PlatformActionListener OneKeyShareCallback) {
+	public static void share(String title, String imgurl, final Context context, PlatformActionListener OneKeyShareCallback) {
 		Resources r= context.getResources();
 		OnekeyShare oks = new OnekeyShare();
-		String downloadAddress="http://www.boqii.com/resource/mobile/boqii.apk";
+		String downloadAddress="http://211.144.76.91:180/APP.aspx";
 		// 分享时 Notification 的图标和文字
 		oks.setNotification(R.drawable.ic_launcher, r.getString(R.string.app_name));
 		oks.setAddress("");// 仅在信息和邮箱时使用
-		oks.setTitle(r.getString(R.string.app_name));// 标题
+		oks.setTitle(title);// 标题
 		oks.setTitleUrl(downloadAddress);	
 		// 图片指向的链接
 //		oks.setComment(r.getString(R.string.share_all));// 分享的评论，仅在人人网和
@@ -675,9 +675,9 @@ public class Util {
 		// siteUrl 是分享此内容的网站地址，仅在 QQ 空间使用
 		//oks.setSiteUrl(downloadAddress);
 //		oks.setImagePath(SHARE_IMG);
-		//oks.setImageUrl("http://a.boqiicdn.com/Images/site/logo.jpg");
+		oks.setImageUrl(imgurl);
 		oks.setUrl(downloadAddress);
-		oks.setText("test");
+		oks.setText(title);
 		// 是否直接分享（true 则直接分享）
 		// oks.setSilent(true);
 

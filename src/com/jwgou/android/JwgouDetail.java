@@ -294,7 +294,7 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 			startActivity(new Intent(this, JwgouCommitOrder.class).putExtra("PRODUCT", p));
 			break;
 		case R.id.share:
-			Util.share(this, new OneKeyShareCallback());
+			Util.share(p.Title, Util.GetImageUrl(imageList.get(0), Util.dip2px(JwgouDetail.this, 300), Util.dip2px(JwgouDetail.this, 300)), this, new OneKeyShareCallback());
 			break;
 
 		default:

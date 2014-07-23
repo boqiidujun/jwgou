@@ -32,6 +32,7 @@ import android.widget.Toast;
 
 import com.jwgou.android.baseactivities.BaseActivity;
 import com.jwgou.android.baseservice.NetworkService;
+import com.jwgou.android.entities.User;
 import com.jwgou.android.utils.Config;
 import com.jwgou.android.utils.HttpManager;
 import com.jwgou.android.utils.Util;
@@ -99,6 +100,9 @@ public class Active3 extends BaseActivity implements OnClickListener {
 					try {
 						JSONObject o = new JSONObject(result);
 						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
+							User u = new User();
+							u.Json2Self(o.optJSONObject("ResponseData"));
+							getApp().user = u;
 							startActivity(new Intent(Active3.this, Active4.class));
 						}else
 							ShowToast(o.optString("ResponseMsg"));
@@ -301,7 +305,6 @@ public class Active3 extends BaseActivity implements OnClickListener {
 						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
 							UserImgUrl = o.optString("ResponseData");
 						}
-						ShowToast(o.optString("ResponseMsg"));
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

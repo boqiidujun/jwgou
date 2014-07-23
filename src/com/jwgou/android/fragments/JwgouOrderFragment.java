@@ -87,7 +87,6 @@ public class JwgouOrderFragment extends Fragment implements BtnListener {
 			}
 		});
 		fullscreen_loading_root = (LinearLayout) view.findViewById(R.id.fullscreen_loading_root);
-		getData();
 	}
 
 	private void getData() {

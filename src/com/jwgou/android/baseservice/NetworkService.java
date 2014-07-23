@@ -42,6 +42,15 @@ public class NetworkService {
 		return SERVER_URL + method;
 	}
 
+	public String GetLastAndroidVersion(int Version) {
+		String result = "";
+		String url = getUrl("GetLastAndroidVersion");
+		RequestParameters params = new RequestParameters();
+		params.add("Version", Version);
+		result = clientHelper.execute(url, params, ClientHelper.GET);
+		return result;
+	}
+
 	public String GetJwGouProductsDoing() {
 		String result = "";
 		String url = getUrl("GetJwGouProductsDoing");
@@ -147,10 +156,10 @@ public class NetworkService {
 				baos.write(buffer, 0, count);
 			}
 			String uploadBuffer = new String(Base64.encode(baos.toByteArray(), Base64.DEFAULT));
-			UpLoadImg(uploadBuffer);
+			String result = UpLoadImg(uploadBuffer);
 			fStream.close();
 			
-			
+			return result;
 //			int bufferSize = 1024;
 //			byte[] buffer = new byte[bufferSize];
 //			int length = -1;

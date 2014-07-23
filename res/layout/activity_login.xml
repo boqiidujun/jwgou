@@ -60,7 +60,6 @@
                 android:padding="4.0dip"
                 android:scrollHorizontally="true"
                 android:singleLine="true"
-                android:text="zj314000@126.com"
                 android:textColor="#ff686868"
                 android:textSize="16.0sp" />
 
@@ -79,7 +78,6 @@
                 android:padding="4.0dip"
                 android:scrollHorizontally="true"
                 android:singleLine="true"
-                android:text="111111"
                 android:textColor="#ff686868"
                 android:textSize="16.0sp" />
 
