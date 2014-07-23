@@ -17,7 +17,7 @@ public class JwgouOrder extends BaseObject {
     public String BuyerMessage;
     public float NowPrice;
     public int OrderId;
-    public int StateInt;
+    public int StateInt = -1;
 	
 	public JwgouOrder Json2Self(JSONObject o){
 		Title = o.optString("Title");
@@ -26,7 +26,7 @@ public class JwgouOrder extends BaseObject {
 		NowPrice = (float) o.optDouble("NowPrice");
 		Num = o.optInt("Num");
 		OrderId = o.optInt("OrderId");
-		StateInt = o.optInt("StateInt");
+		StateInt = o.optInt("StateInt", -1);
 		AddTime = o.optString("AddTime");
 		BuyerMessage = o.optString("BuyerMessage");
 		return this;

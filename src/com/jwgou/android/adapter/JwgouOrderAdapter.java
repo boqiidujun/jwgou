@@ -10,6 +10,7 @@ import com.jwgou.android.widgets.NetImageView;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -79,10 +80,11 @@ public class JwgouOrderAdapter extends BaseAdapter {
 		holder.message.setText(o.BuyerMessage);
 		holder.pay.setBackgroundColor(Color.parseColor("#00000000"));
 		holder.pay.setTextColor(Color.BLACK);
-		holder.pay.setText(o.Status);
+		holder.pay.setText(Html.fromHtml(o.Status));
 //		if(index == 1){
 			if(o.StateInt == 0){
 				holder.pay.setBackgroundColor(Color.RED);
+				holder.pay.setTextColor(Color.WHITE);
 				holder.pay.setOnClickListener(new OnClickListener() {
 					
 					@Override
@@ -93,6 +95,7 @@ public class JwgouOrderAdapter extends BaseAdapter {
 				});
 			}
 			if(o.StateInt == 2){
+				holder.pay.setTextColor(Color.WHITE);
 				holder.pay.setBackgroundColor(Color.RED);
 				holder.pay.setOnClickListener(new OnClickListener() {
 					
