@@ -25,15 +25,22 @@ import com.jwgou.android.utils.Config;
 import com.jwgou.android.utils.HttpManager;
 import com.jwgou.android.utils.Util;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class JwgouOrderFragment extends Fragment implements BtnListener {
@@ -141,6 +148,65 @@ public class JwgouOrderFragment extends Fragment implements BtnListener {
 			startActivity(new Intent(getActivity(), JwgouPay.class).putExtra("ORDER", o));
 		else
 			startActivity(new Intent(getActivity(), Active.class));
+	}
+
+	private View view1;
+	private EditText password;
+	private TextView sure;
+	@Override
+	public void GetGoods(final JwgouOrder o) {
+		view1 = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_password, null);
+		final Dialog dialog = new Dialog(getActivity(), R.style.MyDialog);
+		dialog.setContentView(view1);
+		dialog.show();
+		Window dialogWindow = dialog.getWindow();
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+        dialogWindow.setGravity(Gravity.CENTER);
+        lp.width = (int) (getActivity().getWindowManager().getDefaultDisplay().getWidth() * 0.8);
+        dialogWindow.setAttributes(lp);
+		
+//		final AlertDialog dialog = new AlertDialog.Builder(JwgouPay.this, R.style.MyDialog).setView(view).show();
+//		final AlertDialog dialog = new AlertDialog.Builder(JwgouPay.this).setView(view).show();
+		password = (EditText)view1.findViewById(R.id.password);
+		sure = (TextView)view1.findViewById(R.id.sure);
+		sure.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				PayPassword = password.getText().toString();
+				Receive(o);
+				dialog.dismiss();
+			}
+		});
+	}
+	
+	private String PayPassword;
+
+	private void Receive(final JwgouOrder o) {
+	
+		new HttpManager(getActivity()).Excute(new AsyncTask<Void, Void, String>() {
+
+			@Override
+			protected void onPostExecute(String result) {
+				if (!Util.isEmpty(result)) {
+					try {
+						JSONObject o = new JSONObject(result);
+						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
+							Toast.makeText(getActivity(), "操作成功", Toast.LENGTH_SHORT).show();
+							onResume();
+						}else
+							Toast.makeText(getActivity(), o.optString("ResponseMsg"), Toast.LENGTH_SHORT).show();
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
+			@Override
+			protected String doInBackground(Void... params) {
+				return NetworkService.getInstance().GetGoods(o.OrderId, PayPassword);
+			}
+		});
 	}
 
 }

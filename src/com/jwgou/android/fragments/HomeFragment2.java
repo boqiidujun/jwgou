@@ -23,6 +23,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -45,6 +46,22 @@ public class HomeFragment2 extends Fragment {
 		return view;
 	}
 
+	private boolean isActive;
+	
+	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		isActive = false;
+	}
+
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		isActive = true;
+	}
+
 	private void initView(View v) {
 		layout1 = (LinearLayout)v.findViewById(R.id.layout1);
 		layout2 = (LinearLayout)v.findViewById(R.id.layout2);
@@ -52,8 +69,47 @@ public class HomeFragment2 extends Fragment {
 		getData();
 		getWillData();
 		getOverData();
+		CountDownTimer timer = new CountDownTimer(Integer.MAX_VALUE, 60 * 1000) {
+
+			@Override
+			public void onFinish() {
+			}
+
+			@Override
+			public void onTick(long millisUntilFinished) {
+				if(isActive)
+					Refresh();
+			}
+		};
+		timer.start();
 	}
 	
+	protected void Refresh() {
+		new HttpManager(getActivity()).Excute(new AsyncTask<Void, Void, String>(){
+
+			@Override
+			protected void onPostExecute(String result) {
+				if (!Util.isEmpty(result)) {
+					try {
+						JSONObject o = new JSONObject(result);
+						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
+							JSONArray data = o.optJSONArray("ResponseData");
+							if (data != null && data.length() > 0) {
+								RefreshLayout1(data);
+							}
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
+			@Override
+			protected String doInBackground(Void... params) {
+				return NetworkService.getInstance().GetJwGouProductsJoinNum(0);
+			}});
+	}
+
 	private void getOverData() {
 		new HttpManager(getActivity()).Excute(new AsyncTask<Void, Void, String>() {
 
@@ -70,6 +126,7 @@ public class HomeFragment2 extends Fragment {
 						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
 							JSONArray data = o.optJSONArray("ResponseData");
 							if (data != null && data.length() > 0) {
+								((TextView)view.findViewById(R.id.tab3)).setVisibility(View.VISIBLE);
 								initLayout3(data);
 							}
 						}
@@ -130,6 +187,23 @@ public class HomeFragment2 extends Fragment {
 		}
 	}
 
+	protected void RefreshLayout1(JSONArray data) {
+		for (int j = 0; j < data.length(); j++) {
+			int id = data.optJSONObject(j).optInt("JwgouId");
+			int number = data.optJSONObject(j).optInt("HaveJionNum");
+			String nowprice = data.optJSONObject(j).optString("NowPrice");
+			String NextNeedNum = data.optJSONObject(j).optString("NextNeedNum");
+			for (int i = 0; i < layout1.getChildCount(); i++) {
+				View v = layout1.getChildAt(i);
+				if(id == Integer.parseInt((String) v.getTag())){
+					((TextView)v.findViewById(R.id.text1)).setText(nowprice);
+					((TextView)v.findViewById(R.id.text3)).setText(Html.fromHtml("下单人数：" + "<font color=\"#e4007f\">"+number+ "人" +"</font>"));
+					((TextView)v.findViewById(R.id.text4)).setText(Html.fromHtml(NextNeedNum));
+				}
+			}
+		}
+	}
+
 	protected void initLayout1(JSONArray data) {
 		layout1.removeAllViews();
 		for (int i = 0; i < data.length(); i++) {
@@ -158,6 +232,7 @@ public class HomeFragment2 extends Fragment {
 			((TextView)v.findViewById(R.id.text3)).setText(Html.fromHtml("下单人数：" + "<font color=\"#e4007f\">"+item.HaveJionNum+ "人" +"</font>"));
 			((TextView)v.findViewById(R.id.text4)).setText(Html.fromHtml(item.NextNeedNum));
 			final int id = item.JwgouId;
+			v.setTag(id + "");
 			v.setOnClickListener(new OnClickListener() {
 				
 				@Override
@@ -186,6 +261,7 @@ public class HomeFragment2 extends Fragment {
 						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
 							JSONArray data = o.optJSONArray("ResponseData");
 							if (data != null && data.length() > 0) {
+								((TextView)view.findViewById(R.id.tab2)).setVisibility(View.VISIBLE);
 								initLayout2(data);
 							}
 						}
@@ -255,6 +331,7 @@ public class HomeFragment2 extends Fragment {
 						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
 							JSONArray data = o.optJSONArray("ResponseData");
 							if (data != null && data.length() > 0) {
+								((TextView)view.findViewById(R.id.tab1)).setVisibility(View.VISIBLE);
 								initLayout1(data);
 							}
 						}

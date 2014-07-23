@@ -25,11 +25,13 @@
                 android:background="@drawable/bg_t" />
 
             <TextView
+                android:id="@+id/tab1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_text"
                 android:gravity="center_vertical"
                 android:paddingLeft="5dp"
+                android:visibility="gone"
                 android:text="正在抢购"
                 android:textColor="@android:color/white" />
 
@@ -41,12 +43,14 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tab2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_text"
                 android:gravity="center_vertical"
                 android:paddingLeft="5dp"
                 android:text="今晚推出"
+                android:visibility="gone"
                 android:textColor="@android:color/white" />
 
             <LinearLayout
@@ -57,12 +61,14 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tab3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_text"
                 android:gravity="center_vertical"
                 android:paddingLeft="5dp"
                 android:text="往期预告"
+                android:visibility="gone"
                 android:textColor="@android:color/white" />
 
             <LinearLayout

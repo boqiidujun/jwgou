@@ -50,6 +50,15 @@ public class NetworkService {
 		result = clientHelper.execute(url, params, ClientHelper.GET);
 		return result;
 	}
+	
+	public String GetJwGouProductsJoinNum(int JwgouId) {
+		String result = "";
+		String url = getUrl("GetJwGouProductsJoinNum");
+		RequestParameters params = new RequestParameters();
+		params.add("JwgouId", JwgouId);
+		result = clientHelper.execute(url, params, ClientHelper.GET);
+		return result;
+	}
 
 	public String GetJwGouProductsDoing() {
 		String result = "";
@@ -483,7 +492,7 @@ public class NetworkService {
 		RequestParameters params = new RequestParameters();
 		params.add("OrderId", OrderId);
 		params.add("PayPassword", PayPassword);
-		result = clientHelper.execute(url, params, ClientHelper.GET);
+		result = clientHelper.execute(url, params, ClientHelper.POST);
 		return result;
 	}
 

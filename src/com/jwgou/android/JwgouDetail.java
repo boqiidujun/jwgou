@@ -99,6 +99,22 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 		((ImageView)dotLayout.getChildAt(0)).setImageResource(R.drawable.ic_dot_red);
 	}
 
+
+	private boolean isActive;
+	
+	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		isActive = false;
+	}
+
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		isActive = true;
+	}
 	private JwgouProduct p;
 	protected void initData(JSONObject data) {
 		p = new JwgouProduct();
@@ -135,12 +151,59 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 			}
 		};
 		timer.start();
+		
+
+		CountDownTimer timer1 = new CountDownTimer(Integer.MAX_VALUE, 60 * 1000) {
+
+			@Override
+			public void onFinish() {
+			}
+
+			@Override
+			public void onTick(long millisUntilFinished) {
+				if(isActive)
+					Refresh();
+			}
+		};
+		timer1.start();
 		((TextView)findViewById(R.id.time)).setText(p.havetime + "");
+		((TextView)findViewById(R.id.minprice)).setText(p.MinPrice);
 		((TextView)findViewById(R.id.tonight)).setText(p.NowPrice);
 		((TextView)findViewById(R.id.num)).setText(p.Num + "人");
-		((TextView)findViewById(R.id.minprice)).setText(p.MinPrice);
 		((TextView)findViewById(R.id.rule)).setText(p.Rule);
 		((TextView)findViewById(R.id.oriprice)).setText(p.YPrice);
+	}
+
+	protected void Refresh() {
+		new HttpManager(this).Excute(new AsyncTask<Void, Void, String>(){
+
+			@Override
+			protected void onPostExecute(String result) {
+				if (!Util.isEmpty(result)) {
+					try {
+						JSONObject o = new JSONObject(result);
+						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
+							JSONArray data = o.optJSONArray("ResponseData");
+							if (data != null && data.length() > 0) {
+								RefreshData(data.optJSONObject(0));
+							}
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
+			@Override
+			protected String doInBackground(Void... params) {
+				return NetworkService.getInstance().GetJwGouProductsJoinNum(p.id);
+			}});
+	}
+
+	protected void RefreshData(JSONObject data) {
+		((TextView)findViewById(R.id.tonight)).setText(data.optString("NowPrice"));
+		((TextView)findViewById(R.id.num)).setText(data.optString("HaveJionNum") + "人");
+		((TextView)findViewById(R.id.rule)).setText(data.optString("NextNeedNum"));
 	}
 
 	private void initGallery() {

@@ -45,13 +45,13 @@
             android:orientation="vertical"
             android:padding="8dip" >
 
-            <TableLayout
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:shrinkColumns="1" >
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
@@ -73,14 +73,14 @@
                         android:background="@android:color/transparent"
                         android:singleLine="true"
                         android:textSize="15dip" />
-                </TableRow>
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="1px"
                     android:background="#cbc2ca" />
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
@@ -128,14 +128,14 @@
                             android:textColor="@android:color/white"
                             android:textSize="16dip" />
                     </LinearLayout>
-                </TableRow>
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="1px"
                     android:background="#cbc2ca" />
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
@@ -158,14 +158,14 @@
                         android:numeric="integer"
                         android:singleLine="true"
                         android:textSize="15dip" />
-                </TableRow>
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="1px"
                     android:background="#cbc2ca" />
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
@@ -187,14 +187,14 @@
                         android:background="@android:color/transparent"
                         android:lines="2"
                         android:textSize="15dip" />
-                </TableRow>
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="1px"
                     android:background="#cbc2ca" />
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
@@ -216,37 +216,9 @@
                         android:background="@android:color/transparent"
                         android:singleLine="true"
                         android:textSize="15dip" />
-                </TableRow>
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="1px"
-                    android:background="#cbc2ca" />
-
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="10dip"
-                    android:visibility="gone" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="电子邮件："
-                        android:textSize="16dip" />
-
-                    <EditText
-                        android:id="@+id/email"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        android:singleLine="true"
-                        android:textSize="15dip" />
-                </TableRow>
-            </TableLayout>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/save"

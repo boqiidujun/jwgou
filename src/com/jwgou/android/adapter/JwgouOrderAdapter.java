@@ -77,32 +77,48 @@ public class JwgouOrderAdapter extends BaseAdapter {
 		holder.title.setText(o.Title);
 		holder.time.setText("生成时间：" + o.AddTime);
 		holder.message.setText(o.BuyerMessage);
-		if(index == 1){
-			holder.pay.setBackgroundColor(Color.RED);
-			holder.pay.setText("订单已生成请付款");
+		holder.pay.setBackgroundColor(Color.parseColor("#00000000"));
+		holder.pay.setTextColor(Color.BLACK);
+		holder.pay.setText(o.Status);
+//		if(index == 1){
+			if(o.StateInt == 0){
+				holder.pay.setBackgroundColor(Color.RED);
+				holder.pay.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						if(listener != null)
+							listener.Pay(o);
+					}
+				});
+			}
+			if(o.StateInt == 2){
+				holder.pay.setBackgroundColor(Color.RED);
+				holder.pay.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						if(listener != null)
+							listener.GetGoods(o);
+					}
+				});
+			}
 			holder.price.setVisibility(View.VISIBLE);
 			holder.text5.setVisibility(View.VISIBLE);
 			holder.price.setText(o.NowPrice + "");
-			holder.pay.setOnClickListener(new OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					if(listener != null)
-						listener.Pay(o);
-				}
-			});
-		}else{
-			holder.pay.setBackgroundColor(Color.parseColor("#00000000"));
-			holder.pay.setText(o.Status);
-			holder.pay.setTextColor(Color.BLACK);
-			holder.price.setVisibility(View.GONE);
-			holder.text5.setVisibility(View.GONE);
-		}
+//		}else{
+//			holder.pay.setBackgroundColor(Color.parseColor("#00000000"));
+//			holder.pay.setText(o.Status);
+//			holder.pay.setTextColor(Color.BLACK);
+//			holder.price.setVisibility(View.GONE);
+//			holder.text5.setVisibility(View.GONE);
+//		}
 		holder.num.setText("" + o.Num);
 	}
 	
 	public interface BtnListener{
 		void Pay(JwgouOrder o);
+		void GetGoods(JwgouOrder o);
 	}
 
 	class ViewHolder{
