@@ -83,7 +83,7 @@ public class Jwgou3Fragment extends Fragment implements OnClickListener, ItemLis
 			}
 		});
 		list = new ArrayList<Address>();
-		mAdapter = new MyAddressAdapter(getActivity(), list, this);
+		mAdapter = new MyAddressAdapter(getActivity(), list, this, true);
 		listview.setAdapter(mAdapter);
 		fullscreen_loading_root = (LinearLayout) v.findViewById(R.id.fullscreen_loading_root);
 	}

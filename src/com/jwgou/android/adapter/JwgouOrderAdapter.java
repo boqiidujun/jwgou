@@ -117,6 +117,10 @@ public class JwgouOrderAdapter extends BaseAdapter {
 //			holder.text5.setVisibility(View.GONE);
 //		}
 		holder.num.setText("" + o.Num);
+		if(index != 1){
+			holder.price.setVisibility(View.GONE);
+			holder.text5.setVisibility(View.GONE);
+		}
 	}
 	
 	public interface BtnListener{

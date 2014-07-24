@@ -41,6 +41,7 @@ public class Password extends BaseActivity implements OnClickListener {
 
 	private boolean isSent = false;
 	private String phone;
+	private CountDownTimer timer;
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -51,10 +52,15 @@ public class Password extends BaseActivity implements OnClickListener {
 			if(isSent){
 				return;
 			}
+			phone = ((EditText)findViewById(R.id.email)).getText().toString();
+			if(Util.isEmpty(phone) || !Util.isMobileNO(phone)){
+				ShowToast("请输入正确手机号");
+				return;
+			}
 			isSent = true;
 			((Button)findViewById(R.id.send)).setEnabled(false);
 
-			CountDownTimer timer = new CountDownTimer(5 * 60 * 1000, 1000) {
+			timer = new CountDownTimer(5 * 60 * 1000, 1000) {
 
 				@Override
 				public void onFinish() {
@@ -69,11 +75,6 @@ public class Password extends BaseActivity implements OnClickListener {
 				}
 			};
 			timer.start();
-			phone = ((EditText)findViewById(R.id.email)).getText().toString();
-			if(Util.isEmpty(phone) || !Util.isMobileNO(phone)){
-				ShowToast("请输入正确手机号");
-				return;
-			}
 			register(phone);
 			break;
 		case R.id.login:
@@ -104,6 +105,14 @@ public class Password extends BaseActivity implements OnClickListener {
 							ShowToast("发送成功");
 							code = o.optString("ResponseData");
 
+						}else{
+
+							timer.cancel();
+							((Button)findViewById(R.id.send)).setText("发送");
+							((Button)findViewById(R.id.send)).setEnabled(true);
+							isSent = false;
+							ShowToast(o.optString("ResponseMsg"));
+						
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();

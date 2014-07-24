@@ -62,7 +62,8 @@ public class JwgouPay extends BaseActivity implements OnClickListener {
 							if (data != null) {
 								initData(data);
 							}
-						}
+						}else
+							ShowToast(o.optString("ResponseMsg"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}

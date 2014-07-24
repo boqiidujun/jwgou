@@ -304,7 +304,8 @@ public class Active3 extends BaseActivity implements OnClickListener {
 						JSONObject o = new JSONObject(result);
 						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
 							UserImgUrl = o.optString("ResponseData");
-						}
+						}else
+							ShowToast(o.optString("ResponseMsg"));
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

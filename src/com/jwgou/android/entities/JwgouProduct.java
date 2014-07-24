@@ -7,7 +7,7 @@ public class JwgouProduct extends BaseObject {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public String Pic, YPrice, NowPrice, Rule, FmoContent,MinPrice,Title;
+	public String Pic, YPrice, NowPrice, Rule, FmoContent,MinPrice,Title,timetopname;
 	public int HaveJionNum,havetime,Num;
 	public int id;
 	public JwgouProduct Json2Self(JSONObject o){
@@ -18,6 +18,7 @@ public class JwgouProduct extends BaseObject {
 		FmoContent = o.optString("FmoContent");
 		MinPrice = o.optString("MinPrice");
 		Title = o.optString("Title");
+		timetopname = o.optString("timetopname");
 		HaveJionNum = o.optInt("HaveJionNum");
 		havetime = o.optInt("havetime");
 		Num = o.optInt("Num");

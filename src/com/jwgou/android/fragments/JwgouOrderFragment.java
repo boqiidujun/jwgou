@@ -90,6 +90,7 @@ public class JwgouOrderFragment extends Fragment implements BtnListener {
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
 				pageNums = 1;
 				list.clear();
+				mAdapter.notifyDataSetChanged();
 				getData();
 			}
 		});
@@ -118,8 +119,8 @@ public class JwgouOrderFragment extends Fragment implements BtnListener {
 								}
 								mAdapter.notifyDataSetChanged();
 							}
-						}else{
-						}
+						}else
+							Toast.makeText(getActivity(), o.optString("ResponseMsg"), Toast.LENGTH_SHORT).show();
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}

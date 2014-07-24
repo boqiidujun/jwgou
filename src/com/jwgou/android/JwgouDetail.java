@@ -61,7 +61,15 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 		new HttpManager(this).Excute(new AsyncTask<Void, Void, String>() {
 
 			@Override
+			protected void onPreExecute() {
+				// TODO Auto-generated method stub
+				super.onPreExecute();
+				GetDialog().show();
+			}
+
+			@Override
 			protected void onPostExecute(String result) {
+				GetDialog().dismiss();
 				if (!Util.isEmpty(result)) {
 					try {
 						JSONObject o = new JSONObject(result);
@@ -70,7 +78,8 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 							if (data != null) {
 								initData(data);
 							}
-						}
+						}else
+							ShowToast(o.optString("ResponseMsg"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -135,6 +144,7 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 				e.printStackTrace();
 			}
 		}
+		((TextView)findViewById(R.id.timetopname)).setText(Html.fromHtml(p.timetopname));
 		((TextView)findViewById(R.id.title_main)).setText(Html.fromHtml(p.Title));
 		((TextView)findViewById(R.id.content)).setText(Html.fromHtml(p.FmoContent));
 
@@ -142,7 +152,7 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 
 			@Override
 			public void onFinish() {
-				((TextView)findViewById(R.id.time)).setText("活动已结束");
+				((TextView)findViewById(R.id.time)).setText("活动尚未开始");
 			}
 
 			@Override
@@ -169,7 +179,7 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 		((TextView)findViewById(R.id.time)).setText(p.havetime + "");
 		((TextView)findViewById(R.id.minprice)).setText(p.MinPrice);
 		((TextView)findViewById(R.id.tonight)).setText(p.NowPrice);
-		((TextView)findViewById(R.id.num)).setText(p.Num + "人");
+		((TextView)findViewById(R.id.num)).setText(p.HaveJionNum + "人");
 		((TextView)findViewById(R.id.rule)).setText(p.Rule);
 		((TextView)findViewById(R.id.oriprice)).setText(p.YPrice);
 	}
@@ -187,7 +197,8 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 							if (data != null && data.length() > 0) {
 								RefreshData(data.optJSONObject(0));
 							}
-						}
+						}else
+							ShowToast(o.optString("ResponseMsg"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -350,6 +361,8 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 			finish();
 			break;
 		case R.id.buy:
+			if(p == null || p.id == 0)
+				return;
 			if(getApp().user.UId == 0){
 				UserLoginForResult(1);
 				return;
@@ -357,6 +370,8 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 			startActivity(new Intent(this, JwgouCommitOrder.class).putExtra("PRODUCT", p));
 			break;
 		case R.id.share:
+			if(p == null || p.id == 0)
+				return;
 			Util.share(p.Title, Util.GetImageUrl(imageList.get(0), Util.dip2px(JwgouDetail.this, 300), Util.dip2px(JwgouDetail.this, 300)), this, new OneKeyShareCallback());
 			break;
 

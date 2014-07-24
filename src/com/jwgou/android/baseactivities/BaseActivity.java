@@ -3,13 +3,22 @@ package com.jwgou.android.baseactivities;
 import com.jwgou.android.Login;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.widget.Toast;
 
 public class BaseActivity extends Activity {
 
 	private BaseApplication app;
-	
+
+	private ProgressDialog mDialog;
+	public ProgressDialog GetDialog(){
+		if(mDialog == null){
+			mDialog = new ProgressDialog(this);
+			mDialog.setMessage("努力加载中...");
+		}
+		return mDialog;
+	}
 	public void ShowToast(String message){
 		Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 	};

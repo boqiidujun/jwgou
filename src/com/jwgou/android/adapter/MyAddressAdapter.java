@@ -22,10 +22,12 @@ public class MyAddressAdapter extends BaseAdapter {
 	private Context mContext;
 	private LayoutInflater mInflater;
 	private ItemListener listener;
-	public MyAddressAdapter(Context context, ArrayList<Address> l, ItemListener lis){
+	private boolean manager;
+	public MyAddressAdapter(Context context, ArrayList<Address> l, ItemListener lis, boolean manager){
 		this.mContext = context;
 		this.listener = lis;
 		this.list = l;
+		this.manager = manager;
 		mInflater = LayoutInflater.from(mContext);
 	}
 	
@@ -57,6 +59,7 @@ public class MyAddressAdapter extends BaseAdapter {
 			holder.fulladdress = (TextView) convertView.findViewById(R.id.fulladdress);
 			holder.telephone = (TextView) convertView.findViewById(R.id.telephone);
 			holder.delete = (TextView) convertView.findViewById(R.id.delete);
+			holder.select = (TextView) convertView.findViewById(R.id.select);
 			holder.checkbox = (CheckBox) convertView.findViewById(R.id.checkbox);
 			convertView.setTag(holder);
 		}else{
@@ -79,6 +82,16 @@ public class MyAddressAdapter extends BaseAdapter {
 		holder.name.setText(a.Name);
 		holder.fulladdress.setText(a.FullAddress);
 		holder.telephone.setText(a.Telephone);
+		if(manager)
+			holder.select.setVisibility(View.GONE);
+		holder.select.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(listener != null)
+					listener.ClickListener(index, 3);
+			}
+		});
 		holder.delete.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -104,7 +117,7 @@ public class MyAddressAdapter extends BaseAdapter {
 	}
 	
 	class ViewHolder{
-		TextView name, fulladdress, telephone, delete;
+		TextView name, fulladdress, telephone, delete, select;
 		CheckBox checkbox;
 	}
 

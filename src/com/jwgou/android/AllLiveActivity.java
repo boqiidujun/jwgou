@@ -87,7 +87,8 @@ public class AllLiveActivity extends BaseActivity implements OnClickListener{
 								}
 								mAdapter.notifyDataSetChanged();
 							}
-						}
+						}else
+							ShowToast(o.optString("ResponseMsg"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}

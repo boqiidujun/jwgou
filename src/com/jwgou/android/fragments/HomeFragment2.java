@@ -26,6 +26,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HomeFragment2 extends Fragment {
 
@@ -271,6 +272,10 @@ public class HomeFragment2 extends Fragment {
 				}
 			}
 		});
+	}
+
+	protected void ShowToast(String optString) {
+		Toast.makeText(getActivity(), optString, Toast.LENGTH_SHORT).show();
 	}
 
 	protected void initLayout2(JSONArray data) {

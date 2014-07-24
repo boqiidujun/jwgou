@@ -39,11 +39,13 @@ public class AddressManagerActivity extends BaseActivity implements OnClickListe
 	private ArrayList<Address> list = new ArrayList<Address>();
 	private LinearLayout fullscreen_loading_root;
 	private int pageNums = 1;
+	private boolean manager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list);
+		manager = this.getIntent().getBooleanExtra("MANAGER", false);
 		initView();
 	}
 
@@ -75,7 +77,7 @@ public class AddressManagerActivity extends BaseActivity implements OnClickListe
 			}
 		});
 		list = new ArrayList<Address>();
-		mAdapter = new MyAddressAdapter(this, list, this);
+		mAdapter = new MyAddressAdapter(this, list, this, manager);
 		listview.setAdapter(mAdapter);
 		fullscreen_loading_root = (LinearLayout) findViewById(R.id.fullscreen_loading_root);
 		getData();

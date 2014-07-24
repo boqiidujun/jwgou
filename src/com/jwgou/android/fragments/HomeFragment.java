@@ -128,13 +128,20 @@ public class HomeFragment extends Fragment implements Callback, OnClickListener 
 								listview.setAdapter(mAdapter);
 								new Utility().setListViewHeightBasedOnChildren(getActivity(), listview, mAdapter);
 							}
-						}
+						}else
+							ShowToast(o.optString("ResponseMsg"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
 				}
 			}
 		});
+	}
+
+	protected void ShowToast(String optString) {
+		// TODO Auto-generated method stub
+		Toast.makeText(getActivity(), optString, Toast.LENGTH_SHORT).show();;
+		
 	}
 
 	private void getData() {
@@ -163,7 +170,8 @@ public class HomeFragment extends Fragment implements Callback, OnClickListener 
 								viewpager.setAdapter(mAdapter);
 								getWillData();
 							}
-						}
+						}else
+							ShowToast(o.optString("ResponseMsg"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}

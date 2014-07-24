@@ -76,7 +76,8 @@ public class Login extends BaseActivity implements OnClickListener {
 							getApp().user = u;
 							setResult(RESULT_OK);
 							finish();
-						}
+						}else
+							ShowToast(o.optString("ResponseMsg"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -275,7 +276,8 @@ public class Login extends BaseActivity implements OnClickListener {
 							getApp().user = u;
 							setResult(RESULT_OK);
 							finish();
-						}
+						}else
+							ShowToast(o.optString("ResponseMsg"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -285,15 +287,16 @@ public class Login extends BaseActivity implements OnClickListener {
 	}
 
 	private void doLogin() {
-		final ProgressDialog dialog = new ProgressDialog(this);
-		dialog.setMessage("登录中...");
+//		final ProgressDialog dialog = new ProgressDialog(this);
+//		dialog.setMessage("登录中...");
 		new HttpManager(this).Excute(new AsyncTask<Void, Void, String>() {
 
 			@Override
 			protected void onPreExecute() {
 				// TODO Auto-generated method stub
 				super.onPreExecute();
-				dialog.show();
+				GetDialog().show();
+//				dialog.show();
 			}
 
 			@Override
@@ -303,8 +306,9 @@ public class Login extends BaseActivity implements OnClickListener {
 
 			@Override
 			protected void onPostExecute(String result) {
-				if(dialog != null && dialog.isShowing() && dialog.getWindow().isActive())
-					dialog.dismiss();
+//				if(dialog != null && dialog.isShowing() && dialog.getWindow().isActive())
+//					dialog.dismiss();
+				GetDialog().dismiss();
 				if (!Util.isEmpty(result)) {
 					try {
 						JSONObject o = new JSONObject(result);
@@ -314,7 +318,8 @@ public class Login extends BaseActivity implements OnClickListener {
 							getApp().user = u;
 							setResult(RESULT_OK);
 							finish();
-						}
+						}else
+							ShowToast(o.optString("ResponseMsg"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
