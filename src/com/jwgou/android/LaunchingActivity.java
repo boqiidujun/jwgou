@@ -35,16 +35,6 @@ public class LaunchingActivity extends BaseActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.launching);
-		BaseApplication app = (BaseApplication) getApplication();
-		try {
-			app.user.Json2Self(new JSONObject(Util.loadFile(this.getExternalFilesDir(null) + "/userinfo")));
-			if (app.user.UId == 0)
-				app.user.Json2Self(new JSONObject(Util.loadFile(this.getFilesDir().getAbsolutePath() + "/userinfo")));
-			JPushInterface.setAlias(this, app.user.UId + "", null);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	private PackageInfo getPackageInfo() throws Exception {

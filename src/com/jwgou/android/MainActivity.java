@@ -1,13 +1,19 @@
 package com.jwgou.android;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import cn.jpush.android.api.JPushInterface;
 import cn.sharesdk.framework.ShareSDK;
 
+import com.jwgou.android.baseactivities.BaseApplication;
 import com.jwgou.android.baseactivities.BaseFragmentActivity;
 import com.jwgou.android.fragments.Jwgou3Fragment;
 import com.jwgou.android.fragments.HomeFragment;
 import com.jwgou.android.fragments.HomeFragment2;
 import com.jwgou.android.fragments.Jwgou2Fragment;
 import com.jwgou.android.fragments.UserinfoFragment;
+import com.jwgou.android.utils.Util;
 import com.jwgou.android.widgets.DummyTabContent;
 
 import android.content.Intent;
@@ -43,6 +49,16 @@ public class MainActivity extends BaseFragmentActivity {
 		tabHost.setup();
 
 		ShareSDK.initSDK(this);
+		BaseApplication app = (BaseApplication) getApplication();
+		try {
+			app.user.Json2Self(new JSONObject(Util.loadFile(this.getExternalFilesDir(null) + "/userinfo")));
+			if (app.user.UId == 0)
+				app.user.Json2Self(new JSONObject(Util.loadFile(this.getFilesDir().getAbsolutePath() + "/userinfo")));
+			JPushInterface.setAlias(this, app.user.UId + "", null);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		TabHost.OnTabChangeListener tabChangeListener = new TabHost.OnTabChangeListener() {
 			@Override
