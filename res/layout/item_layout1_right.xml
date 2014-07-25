@@ -45,6 +45,7 @@
                 android:background="@drawable/bg_layout_item1"
                 android:layout_weight="0.15"
                 android:gravity="center"
+                android:paddingBottom="4dp"
                 android:text="￥32"
                 android:textSize="18sp" />
 

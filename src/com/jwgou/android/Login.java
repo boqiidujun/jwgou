@@ -18,6 +18,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import cn.jpush.android.api.JPushInterface;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.PlatformDb;
@@ -74,6 +75,8 @@ public class Login extends BaseActivity implements OnClickListener {
 							User u = new User();
 							u.Json2Self(o.optJSONObject("ResponseData"));
 							getApp().user = u;
+							JPushInterface.setAlias(this, u.UId + "", null);
+							SaveUserInfo(u.toString());
 							setResult(RESULT_OK);
 							finish();
 						}else
@@ -117,6 +120,11 @@ public class Login extends BaseActivity implements OnClickListener {
 		} else {
 //			fastLogin(Userid, pdb.getToken(), plat);
 		}
+	}
+
+	private void SaveUserInfo(String userinfo) {
+		Util.saveFile(userinfo, this.getExternalFilesDir(null) + "/userinfo");
+		Util.saveFile(userinfo, this.getFilesDir().getAbsolutePath() + "/userinfo");
 	}
 
 	/*********************************** 授权的监听和回调 *************************************************/
@@ -274,6 +282,8 @@ public class Login extends BaseActivity implements OnClickListener {
 							User u = new User();
 							u.Json2Self(o.optJSONObject("ResponseData"));
 							getApp().user = u;
+							JPushInterface.setAlias(Login.this, u.UId + "", null);
+							SaveUserInfo(u.toString());
 							setResult(RESULT_OK);
 							finish();
 						}else
@@ -316,6 +326,8 @@ public class Login extends BaseActivity implements OnClickListener {
 							User u = new User();
 							u.Json2Self(o.optJSONObject("ResponseData"));
 							getApp().user = u;
+							JPushInterface.setAlias(Login.this, u.UId + "", null);
+							SaveUserInfo(u.toString());
 							setResult(RESULT_OK);
 							finish();
 						}else

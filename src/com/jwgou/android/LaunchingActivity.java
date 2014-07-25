@@ -3,7 +3,10 @@ package com.jwgou.android;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.jpush.android.api.JPushInterface;
+
 import com.jwgou.android.baseactivities.BaseActivity;
+import com.jwgou.android.baseactivities.BaseApplication;
 import com.jwgou.android.baseservice.NetworkService;
 import com.jwgou.android.utils.Config;
 import com.jwgou.android.utils.HttpManager;
@@ -32,6 +35,16 @@ public class LaunchingActivity extends BaseActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.launching);
+		BaseApplication app = (BaseApplication) getApplication();
+		try {
+			app.user.Json2Self(new JSONObject(Util.loadFile(this.getExternalFilesDir(null) + "/userinfo")));
+			if (app.user.UId == 0)
+				app.user.Json2Self(new JSONObject(Util.loadFile(this.getFilesDir().getAbsolutePath() + "/userinfo")));
+			JPushInterface.setAlias(this, app.user.UId + "", null);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	private PackageInfo getPackageInfo() throws Exception {

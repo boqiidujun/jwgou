@@ -1,5 +1,7 @@
 package com.jwgou.android.fragments;
 
+import java.io.File;
+
 import com.jwgou.android.MainActivity;
 import com.jwgou.android.MyMessageActivity;
 import com.jwgou.android.R;
@@ -71,6 +73,13 @@ public class UserinfoFragment extends Fragment implements OnClickListener {
 		((TextView)view.findViewById(R.id.tvtolook)).setOnClickListener(this);;
 	}
 
+	public static void delFile( String filePath){
+		File mFile = new File(filePath);
+		if(mFile.isFile() && mFile.exists())
+		{
+			mFile.delete();
+		}
+	}
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -78,6 +87,8 @@ public class UserinfoFragment extends Fragment implements OnClickListener {
 		case R.id.right_text:
 			((MainActivity)getActivity()).getApp().user = new User();
 			((MainActivity)getActivity()).setTab(0);
+			delFile(getActivity().getFilesDir().getAbsolutePath() + "/userinfo");
+			delFile(getActivity().getExternalFilesDir(null) + "/userinfo");
 			break;
 		case R.id.llSelfOrders:
 //			startActivity(new Intent(getActivity(), MyOrderActivity.class));

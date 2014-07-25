@@ -1,48 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:padding="5dp"
-    android:layout_height="match_parent">
-    
-    <LinearLayout 
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:background="#dedede"
-        android:orientation="vertical"
-        >
-        <com.jwgou.android.widgets.NetImageView 
-            android:id="@+id/image1"
+    android:layout_width="fill_parent"
+    android:layout_height="220dp"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical" >
+
+        <com.jwgou.android.widgets.NetImageView
+            android:id="@+id/image"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            />
-        <TextView 
-            android:id="@+id/text1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="发的哈ufhodahfda发的"
-            />
-    </LinearLayout>
-    
-    <LinearLayout 
-        android:layout_marginLeft="5dp"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:background="#dedede"
-        android:orientation="vertical"
-        >
-        <com.jwgou.android.widgets.NetImageView 
-            android:id="@+id/image2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            />
-        <TextView 
-            android:id="@+id/text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="发的哈ufhodahfda发的"
-            />
-    </LinearLayout>
+            android:layout_height="fill_parent"
+            android:layout_marginRight="10dp" />
+
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/text1"
+                style="@style/Textlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_layout_item1"
+                android:layout_weight="0.15"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:text="￥32"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/text22"
+                style="@style/Textlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_layout_item2"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:layout_weight="0.15"
+                android:text="原价：￥32"
+                android:textSize="12sp" />
+            
+            <TextView
+                android:id="@+id/text2"
+                style="@style/Textlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.15"
+                android:background="@drawable/bg_layout_item3"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="冰点价：￥32"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/text3"
+                style="@style/Textlayout"
+                android:layout_width="fill_parent"
+                android:layout_weight="0.15"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_layout_item3"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="下单人数：32"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/text4"
+                style="@style/Textlayout"
+                android:layout_width="fill_parent"
+                android:layout_weight="0.25"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_layout_item3"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:minLines="2"
+                android:text="仅差10人再降5元"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="20dp" />
 
 </LinearLayout>

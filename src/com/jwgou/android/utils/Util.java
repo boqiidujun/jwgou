@@ -57,7 +57,28 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 public class Util {
 
 	private final static String NAME = "JWGOU";
-	
+
+	public static String loadFile(String filePath) {
+		File file = new File(filePath);
+		if(!file.exists())
+			return "";
+		
+		String content = "";
+		try {
+			StringBuffer sb = new StringBuffer();
+			BufferedReader br;
+			br = new BufferedReader(new FileReader(file));
+			String line = "";
+			while ((line = br.readLine()) != null) {
+				sb.append(line);
+			}
+			br.close();
+			content = sb.toString();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return content;
+	}
 	public static String calculate(long times) {
 		long time = times / 1000;
 		int hour = (int) (time / 3600);

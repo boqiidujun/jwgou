@@ -1,7 +1,7 @@
 package com.jwgou.android.entities;
 
+import org.json.JSONException;
 import org.json.JSONObject;
-
 
 public class User extends BaseObject {
 
@@ -25,5 +25,21 @@ public class User extends BaseObject {
 		HeadStr = o.optString("HeadStr");
 		UserState = o.optInt("UserState");
 		return this;
+	}
+
+	@Override
+	public String toString() {
+		JSONObject o = new JSONObject();
+		try {
+			o.accumulate("UName", UName);
+			o.accumulate("UId", UId);
+			o.accumulate("UserMoney", UserMoney);
+			o.accumulate("PhoneMessage", PhoneMessage);
+			o.accumulate("HeadStr", HeadStr);
+			o.accumulate("UserState", UserState);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return o.toString();
 	}
 }

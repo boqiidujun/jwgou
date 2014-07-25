@@ -35,13 +35,15 @@
             android:layout_centerVertical="true" />
     </RelativeLayout>
 
-    <ScrollView
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/refreshScrollview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/toplayout"
         android:fadingEdge="none"
-        android:padding="5dp"
-        android:scrollbars="none" >
+        android:scrollbars="none"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrMode="pullFromStart" >
 
         <RelativeLayout
             android:id="@+id/rela"
@@ -298,7 +300,7 @@
                     android:textSize="18sp" />
             </LinearLayout>
         </RelativeLayout>
-    </ScrollView>
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
 
     <LinearLayout
         android:layout_width="wrap_content"

@@ -102,6 +102,7 @@ public class JwgouCommitOrder extends BaseActivity implements OnClickListener {
 						JSONObject o = new JSONObject(result);
 						if (o.optInt("ResponseStatus") == Config.SUCCESS) {
 							//TODO
+							finish();
 							startActivity(new Intent(JwgouCommitOrder.this, MainActivity.class).putExtra("INDEX", 1).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 						}else{
 							ShowToast(o.optString("ResponseMsg"));

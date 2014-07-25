@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -150,6 +150,7 @@ public class JwgouPay extends BaseActivity implements OnClickListener {
 							JSONObject data = o.optJSONObject("ResponseData");
 							if(data == null){
 								finish();
+								startActivity(new Intent(JwgouPay.this, MainActivity.class).putExtra("INDEX", 1).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 							}else{
 								String info = data.optString("OrderInfo");
 								startAlipay(info);	
@@ -211,13 +212,11 @@ public class JwgouPay extends BaseActivity implements OnClickListener {
 
 						ResultChecker resultChecker = new ResultChecker(strRet);
 
-//						if (resultChecker.isPayOk()) { // alipay success
-//							ShowToast("支付成功");
-//							Intent intent = new Intent();
-//							intent.putExtra("ORDER", order);
-//							setResult(RESULT_OK, intent);
-//							PayOrder.this.finish();
-//						}
+						if (resultChecker.isPayOk()) {
+							ShowToast("支付成功");
+							finish();
+							startActivity(new Intent(JwgouPay.this, MainActivity.class).putExtra("INDEX", 1).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+						}
 
 					} catch (Exception e) {
 						e.printStackTrace();

@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Gallery.LayoutParams;
 import android.widget.Toast;
@@ -31,6 +32,9 @@ import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.framework.utils.UIHandler;
 
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.jwgou.android.baseactivities.BaseActivity;
 import com.jwgou.android.baseservice.NetworkService;
 import com.jwgou.android.entities.JwgouProduct;
@@ -46,6 +50,7 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 	private AdGallery gallery;
 	private LinearLayout dotLayout;
 	private MyImageAdapter mImageAdapter;
+	private PullToRefreshScrollView refreshScrollview;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -69,6 +74,7 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 
 			@Override
 			protected void onPostExecute(String result) {
+				refreshScrollview.onRefreshComplete();
 				GetDialog().dismiss();
 				if (!Util.isEmpty(result)) {
 					try {
@@ -224,6 +230,14 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 	private void initView() {
 		gallery = (AdGallery) findViewById(R.id.gallery);
 		mImageAdapter = new MyImageAdapter();
+		refreshScrollview = (PullToRefreshScrollView)findViewById(R.id.refreshScrollview);
+		refreshScrollview.setOnRefreshListener(new OnRefreshListener<ScrollView>() {
+
+			@Override
+			public void onRefresh(PullToRefreshBase<ScrollView> refreshView) {
+				GetData();
+			}
+		});
 		((Button)findViewById(R.id.back)).setOnClickListener(this);
 		((TextView)findViewById(R.id.buy)).setOnClickListener(this);
 		((TextView)findViewById(R.id.share)).setOnClickListener(this);

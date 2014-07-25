@@ -4,6 +4,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.jwgou.android.JwgouDetail;
 import com.jwgou.android.R;
 import com.jwgou.android.RedPackage;
@@ -25,6 +28,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +37,7 @@ public class HomeFragment2 extends Fragment {
 	private View view;
 	private LinearLayout layout1,layout2,layout3;
 	private LayoutInflater mInflater;
+	private PullToRefreshScrollView refreshScrollview;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -67,6 +72,16 @@ public class HomeFragment2 extends Fragment {
 		layout1 = (LinearLayout)v.findViewById(R.id.layout1);
 		layout2 = (LinearLayout)v.findViewById(R.id.layout2);
 		layout3 = (LinearLayout)v.findViewById(R.id.layout3);
+		refreshScrollview = (PullToRefreshScrollView)v.findViewById(R.id.refreshScrollview);
+		refreshScrollview.setOnRefreshListener(new OnRefreshListener<ScrollView>() {
+
+			@Override
+			public void onRefresh(PullToRefreshBase<ScrollView> refreshView) {
+				getData();
+				getWillData();
+				getOverData();
+			}
+		});
 		getData();
 		getWillData();
 		getOverData();
@@ -121,6 +136,7 @@ public class HomeFragment2 extends Fragment {
 
 			@Override
 			protected void onPostExecute(String result) {
+				refreshScrollview.onRefreshComplete();
 				if (!Util.isEmpty(result)) {
 					try {
 						JSONObject o = new JSONObject(result);
@@ -144,12 +160,10 @@ public class HomeFragment2 extends Fragment {
 		for (int i = 0; i < data.length(); i++) {
 			Item item = new Item();
 			item.Json2Self(data.optJSONObject(i));
-			View v = mInflater.inflate(R.layout.item_layout1_right, null);
+			View v = mInflater.inflate(R.layout.item_layout2, null);
 //			View v = mInflater.inflate(i % 2 == 0 ? R.layout.item_layout1_right : R.layout.item_layout1_left, null);
 			((NetImageView)v.findViewById(R.id.image)).setImageUrl(Util.GetImageUrl(item.Pic, Util.dip2px(getActivity(), 300), Util.dip2px(getActivity(), 200)), Config.PATH, null);
 			((TextView)v.findViewById(R.id.text1)).setText(item.NowPrice);
-			((TextView)v.findViewById(R.id.text0)).setCompoundDrawables(null, null, null, null);
-			((TextView)v.findViewById(R.id.text0)).setText("");
 			((TextView)v.findViewById(R.id.text2)).setText(Html.fromHtml("最终价：" + "<font color=\"#e4007f\">"+item.PayPrice+"</font>"));
 			((TextView)v.findViewById(R.id.text22)).setVisibility(View.GONE);
 			((TextView)v.findViewById(R.id.text3)).setText(Html.fromHtml("下单人数：" + "<font color=\"#e4007f\">"+item.HaveJionNum + "人" +"</font>"));
@@ -256,6 +270,7 @@ public class HomeFragment2 extends Fragment {
 
 			@Override
 			protected void onPostExecute(String result) {
+				refreshScrollview.onRefreshComplete();
 				if (!Util.isEmpty(result)) {
 					try {
 						JSONObject o = new JSONObject(result);
@@ -283,12 +298,10 @@ public class HomeFragment2 extends Fragment {
 		for (int i = 0; i < data.length(); i++) {
 			Item item = new Item();
 			item.Json2Self(data.optJSONObject(i));
-			View v = mInflater.inflate(R.layout.item_layout1_right, null);
+			View v = mInflater.inflate(R.layout.item_layout2, null);
 //			View v = mInflater.inflate(i % 2 == 0 ? R.layout.item_layout1_right : R.layout.item_layout1_left, null);
 			((NetImageView)v.findViewById(R.id.image)).setImageUrl(Util.GetImageUrl(item.Pic, Util.dip2px(getActivity(), 300), Util.dip2px(getActivity(), 200)), Config.PATH, null);
 			((TextView)v.findViewById(R.id.text1)).setText("￥？");
-			((TextView)v.findViewById(R.id.text0)).setCompoundDrawables(null, null, null, null);
-			((TextView)v.findViewById(R.id.text0)).setText("");
 			((TextView)v.findViewById(R.id.text22)).setText(Html.fromHtml("初始价：" + "<font color=\"#e4007f\">"+item.YPrice+"</font>"));
 			((TextView)v.findViewById(R.id.text2)).setText(Html.fromHtml("降价条件：" + "<font color=\"#e4007f\">"+item.NextNum+"</font>"));
 			((TextView)v.findViewById(R.id.text3)).setText(Html.fromHtml("降价金额：" + "<font color=\"#e4007f\">"+item.cutPrice+"</font>")); 
@@ -330,6 +343,7 @@ public class HomeFragment2 extends Fragment {
 
 			@Override
 			protected void onPostExecute(String result) {
+				refreshScrollview.onRefreshComplete();
 				if (!Util.isEmpty(result)) {
 					try {
 						JSONObject o = new JSONObject(result);

@@ -119,8 +119,7 @@ public class JwgouOrderFragment extends Fragment implements BtnListener {
 								}
 								mAdapter.notifyDataSetChanged();
 							}
-						}else
-							Toast.makeText(getActivity(), o.optString("ResponseMsg"), Toast.LENGTH_SHORT).show();
+						}
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
