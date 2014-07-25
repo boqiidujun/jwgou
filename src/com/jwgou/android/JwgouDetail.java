@@ -140,6 +140,7 @@ public class JwgouDetail extends BaseActivity implements OnClickListener, Callba
 			try {
 				array = new JSONArray(p.Pic);
 				if(array != null && array.length() > 0)
+					imageList.clear();
 					for (int i = 0; i < array.length(); i++) {
 						imageList.add(array.optJSONObject(i).optString("FPic"));
 					}
