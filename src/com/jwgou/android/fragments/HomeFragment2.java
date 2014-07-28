@@ -144,8 +144,9 @@ public class HomeFragment2 extends Fragment {
 							JSONArray data = o.optJSONArray("ResponseData");
 							if (data != null && data.length() > 0) {
 								((TextView)view.findViewById(R.id.tab3)).setVisibility(View.VISIBLE);
-								initLayout3(data);
-							}
+							}else
+								((TextView)view.findViewById(R.id.tab3)).setVisibility(View.GONE);
+							initLayout3(data);
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -157,6 +158,8 @@ public class HomeFragment2 extends Fragment {
 	
 	protected void initLayout3(JSONArray data) {
 		layout3.removeAllViews();
+		if(data == null || data.length() <= 0)
+			return;
 		for (int i = 0; i < data.length(); i++) {
 			Item item = new Item();
 			item.Json2Self(data.optJSONObject(i));
@@ -221,6 +224,9 @@ public class HomeFragment2 extends Fragment {
 
 	protected void initLayout1(JSONArray data) {
 		layout1.removeAllViews();
+		if(data == null || data.length() <= 0){
+			return;
+		}		
 		for (int i = 0; i < data.length(); i++) {
 			Item item = new Item();
 			item.Json2Self(data.optJSONObject(i));
@@ -278,8 +284,10 @@ public class HomeFragment2 extends Fragment {
 							JSONArray data = o.optJSONArray("ResponseData");
 							if (data != null && data.length() > 0) {
 								((TextView)view.findViewById(R.id.tab2)).setVisibility(View.VISIBLE);
-								initLayout2(data);
-							}
+							}else
+								((TextView)view.findViewById(R.id.tab2)).setVisibility(View.GONE);
+								
+							initLayout2(data);
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -295,6 +303,8 @@ public class HomeFragment2 extends Fragment {
 
 	protected void initLayout2(JSONArray data) {
 		layout2.removeAllViews();
+		if(data == null || data.length() <= 0)
+			return;
 		for (int i = 0; i < data.length(); i++) {
 			Item item = new Item();
 			item.Json2Self(data.optJSONObject(i));
@@ -351,8 +361,9 @@ public class HomeFragment2 extends Fragment {
 							JSONArray data = o.optJSONArray("ResponseData");
 							if (data != null && data.length() > 0) {
 								((TextView)view.findViewById(R.id.tab1)).setVisibility(View.VISIBLE);
-								initLayout1(data);
-							}
+							}else
+								((TextView)view.findViewById(R.id.tab1)).setVisibility(View.GONE);
+							initLayout1(data);
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
